@@ -1,0 +1,32 @@
+\begin{table*}[t!]
+\fontsize{8}{10}\selectfont
+\centering
+%\resizebox{\textwidth}{!}{
+\begin{tabular}{l|r|r|r|r}
+
+\multicolumn{1}{l|}{\textbf{Instruction}} & \textbf{$1^{st}$ iteration} & \textbf{$2^{nd}$ iteration} & \textbf{$3^{rd}$ iteration} & \textbf{$4^{th}$ iteration}  \\
+\hline
+Sign the zone& 62,406 (41.67\%) & 13,845 (89.98\%) & 1,148 (62.19\%) & 7 (19.44\%)  \\ 
+\hline
+Remove the incorrect \ds record& 46,242 (30.87\%) & 1,319 (8.57\%) & 668 (36.19\%) & 29 (80.56\%)  \\ 
+\hline
+Upload the \ds record& 14,066 (9.39\%) & 117 (0.76\%) & 12 (0.65\%) & -  \\ 
+\hline
+Generate a \ksk& 13,148 (8.78\%) & 83 (0.54\%) & - & -  \\ 
+\hline
+Synchronize the DNS authoritative server& 11,391 (7.61\%) & - & - & -  \\ 
+\hline
+Generate \zsk& 1,491 (1.0\%) & - & - & -  \\ 
+\hline
+Reduce TTL of a specific record& 947 (0.63\%) & 1 (0.01\%) & - & -  \\ 
+\hline
+Remove the revoked key& 82 (0.05\%) & 22 (0.14\%) & 18 (0.98\%) & -  \\ 
+
+
+\end{tabular}
+%}
+
+    \caption{Instructions issued by \dfixer during its iterative remediation process in the S2 subset (\ie zones with more complex DNSSEC errors).
+     This highlights how \dfixer repeatedly removes incorrect DS records, re-signs zones, or updates keys until all misconfigurations are resolved.}
+ \label{tab:fixes}
+\end{table*}

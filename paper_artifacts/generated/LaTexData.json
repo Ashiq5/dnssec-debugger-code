@@ -1,0 +1,22 @@
+{
+    "nb_files_with_errors": 296813,
+    "nb_were_we_generated_errors": 285953,
+    "nb_where_generated_errors_covers_intended": 267473,
+    "nb_files_with_errors_nnsic": 128331,
+    "nb_were_we_generated_errors_nnsic": 119362,
+    "nb_where_generated_errors_covers_intended_nnsic": 101003,
+    "errors_type_encountered": 47,
+    "errors_type_generated": 32,
+    "case_cannot_be_fixed": 5,
+    "case_cannot_be_fixed_without_nzic": 5,
+    "errors_combination": 2058,
+    "errors_combination_fully_covered": 1277,
+    "errors_combination_covered": 1961,
+    "pct_sign_first_iter": 41.67,
+    "pct_sign_second_iter": 89.98,
+    "pct_sign_third_iter": 62.19,
+    "pct_removeds_first_iter": 30.87,
+    "pct_removeds_second_iter": 8.57,
+    "pct_removeds_third_iter": 36.19,
+    "nb_line": 1161036
+}
