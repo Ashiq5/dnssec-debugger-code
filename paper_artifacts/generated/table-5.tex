@@ -1,0 +1,37 @@
+\begin{table*}[t!]
+    \fontsize{8}{10}\selectfont
+    \centering
+     %\resizebox{\textwidth}{!}{
+     \begin{tabular}{c|r|r|r|r|r|r}
+		 \textbf{Dataset} & \textbf {\# of Snapshots} &
+         \textbf{$\bm{GE \neq \phi}$} &
+		   \textbf{$\bm{IE \subseteq GE}$} &
+           \textbf{$\bm{AE = \phi}$ \& $\bm{IE \subseteq GE}$} &
+		 \textbf{RR} & \textbf{FR}  \\
+     \hline
+
+
+     \textbf{NZIC Only} ($S1$) & \DfixerDynamicNbJsonFileOnlyHavingNNSIC~  &
+     \DfixerDynamicNbJsonFileWithGeneratedErrorsNZICOnly & \DfixerDynamicNbJsonFileWithGeneratedErrorsCoversIntendedNZICOnly  & \DfixerDynamicNoMoreErrorAfterFixNZIConly  &
+     \DfixerDynamicReplicationRateNZICOnly & \DfixerDynamicFixingRateNZICOnly  \\
+
+         \textbf{Remaining} ($S2$)  & \DfixerDynamicNbJsonFileWithErrorsNNSIC  &
+         \DfixerDynamicNbJsonFileWithGeneratedErrorsNNSIC &\DfixerDynamicNbJsonFileWithGeneratedErrorsCoversIntendedNNSIC & \DfixerDynamicNoMoreErrorAfterFixNNSIC &
+     \DfixerDynamicReplicationRateNNSIC & 99.99\%  \\
+         \hline
+
+         \textbf{Total} & \DfixerDynamicNbJsonFileWithErrors
+         & \DfixerDynamicNbJsonFileWithGeneratedErrors &  \DfixerDynamicNbJsonFileWithGeneratedErrorsCoversIntended  & \DfixerDynamicNoMoreErrorAfterFix &  \DfixerDynamicReplicationRate & 99.99\% \\
+
+
+
+
+
+
+    \end{tabular}
+    %}
+     \caption{Performance of \zrep and \dfixer among the snapshots with $\text{IE} \ne \emptyset$.}
+     \label{tab:core_results}
+ \end{table*}
+
+
