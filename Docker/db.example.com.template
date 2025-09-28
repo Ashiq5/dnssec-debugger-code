@@ -1,0 +1,22 @@
+$${null_for_envsubst}TTL 86400   ; Default TTL (Time to Live) for records
+example.com.   IN  SOA  ns1-vt.spf-interoperability.site. admin.example.com. (
+            2024040901 ; Serial number (YYYYMMDDnn format)
+            3600       ; Refresh (1 hour)
+            1800       ; Retry (30 minutes)
+            1209600    ; Expire (2 weeks)
+            86400      ; Minimum TTL (1 day)
+            )
+
+; Name Servers
+example.com.       IN  NS     ns1-vt.spf-interoperability.site.
+example.com.       IN  NS     ns2-vt.spf-interoperability.site.
+
+; A Records (Address Records)
+example.com.       IN  A      ${BIND_IP}
+ns1     IN  A      ${BIND_IP}
+ns2     IN  A      ${BIND_IP}
+
+
+
+example.com. IN TXT "${BIND_DIR}"
+
