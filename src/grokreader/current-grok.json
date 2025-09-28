@@ -1,0 +1,2649 @@
+[
+    "3",
+    [
+        "200",
+        {
+            ".": {
+                "status": "NOERROR",
+                "queries": {
+                    "./IN/DNSKEY": {
+                        "answer": [
+                            {
+                                "id": "./IN/DNSKEY",
+                                "description": "RRset for ./DNSKEY",
+                                "name": ".",
+                                "ttl": 172800,
+                                "type": "DNSKEY",
+                                "rdata": [
+                                    "256 3 8 AwEAAeN+h0loXPKt7lFdW2zKIDkVHyJ1 aYGUVE1dMNBlRH3kTn40JKcHiPOs+fy0 OFVCBwoKa1s9qZtdyP1UC0hgKoldj3oE LK1yLI5MUbTMcNkWbBMRuxRz/CgZJu3I xcmuZWZMbn4LQDMj5YeiUiuWns5vipFG WWpyPyozQXmenSWOK2GJOwcm7I/DyHVt VdztTvqiHqzy2aRoxwPhmEuAoYzzuNJJ w6JNEnXaN/7l2TIciskFyPVPBFZYHnk+ 1ma906dfehIR190z3lh1ZESL2Yy3VIE2 QGpRU6Px4ydH5sXxZ2wSMgqNNga4kjnf M1msBqk3EI48RvTTkuV0yb1eFuU=",
+                                    "257 3 8 AwEAAaz/tAm8yTn4Mfeh5eyI96WSVexT BAvkMgJzkKTOiW1vkIbzxeF3+/4RgWOq 7HrxRixHlFlExOLAJr5emLvN7SWXgnLh 4+B5xQlNVz8Og8kvArMtNROxVQuCaSnI DdD5LKyWbRd2n9WGe2R8PzgCmr3EgVLr jyBxWezF0jLHwVN8efS3rCj/EWgvIWgb 9tarpVUDK/b58Da+sqqls3eNbuv7pr+e oZG+SrDK6nWeL3c6H5Apxz7LjVc1uTId sIXxuOLYA4/ilBmSVIzuDWfdRUfhHdY6 +cn8HFRm+2hM8AnXGXws9555KrUB5qih ylGa8subX2Nn6UwNR1AkUTV74bU=",
+                                ],
+                                "servers": [
+                                    "192.33.4.12",
+                                    "192.36.148.17",
+                                    "192.58.128.30",
+                                    "192.112.36.4",
+                                    "192.203.230.10",
+                                    "192.228.79.201",
+                                    "193.0.14.129",
+                                    "198.41.0.4",
+                                    "198.97.190.53",
+                                    "199.7.83.42",
+                                    "199.7.91.13",
+                                    "199.9.14.201",
+                                    "202.12.27.33",
+                                    "2001:500:1::53",
+                                    "2001:500:12::d0d",
+                                    "2001:500:2d::d",
+                                    "2001:500:2f::f",
+                                    "2001:500:9f::42",
+                                    "2001:500:a8::e",
+                                    "2001:500:200::b",
+                                    "2001:503:c27::2:30",
+                                    "2001:503:ba3e::2:30",
+                                    "2001:7fd::1",
+                                    "2001:7fe::53",
+                                    "2001:dc3::35",
+                                ],
+                                "ns_names": [
+                                    "a.root-servers.net.",
+                                    "b.root-servers.net.",
+                                    "c.root-servers.net.",
+                                    "d.root-servers.net.",
+                                    "e.root-servers.net.",
+                                    "f.root-servers.net.",
+                                    "g.root-servers.net.",
+                                    "h.root-servers.net.",
+                                    "i.root-servers.net.",
+                                    "j.root-servers.net.",
+                                    "k.root-servers.net.",
+                                    "l.root-servers.net.",
+                                    "m.root-servers.net.",
+                                ],
+                                "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                "rrsig": [
+                                    {
+                                        "id": "./8/20326",
+                                        "description": "RRSIG covering ./DNSKEY",
+                                        "signer": ".",
+                                        "algorithm": 8,
+                                        "key_tag": 20326,
+                                        "original_ttl": 172800,
+                                        "labels": 0,
+                                        "inception": "2020-03-11 00:00:00 UTC",
+                                        "expiration": "2020-04-01 00:00:00 UTC",
+                                        "signature": "ijeDOuGX3CSFYYHbAoNFf70N8AQBMX0obwPmkZ+0lgHge4eOY8tx+8Y6+/oYNkd4guBKNFYv2oL6kEt9FGkKl3LKBakTW8RslpY6ln/gNjTlHdw/cm+uWHJIeosZHgEUXAka9034wohUoAnjI5ZDg5XbdzCr0gHQXrNjl0GFcgyByI60m+43E4vhEOpBt1nFp22wnI+E98K2WTQEY9SE8s4QXDpO81K04Fx7IR3Yqvl+TBETNryQ5OF4iSl1a8Kz/21yemZsEquKr3H9sBWE0u13NuHpshgWrKD2YZpKAphM6PjcLEu8hAy1EQuINfuhGiEugOnieAZPQNBMK1dFvw==",
+                                        "ttl": 172800,
+                                        "status": "VALID",
+                                        "servers": [
+                                            "192.33.4.12",
+                                            "192.36.148.17",
+                                            "192.58.128.30",
+                                            "192.112.36.4",
+                                            "192.203.230.10",
+                                            "192.228.79.201",
+                                            "193.0.14.129",
+                                            "198.41.0.4",
+                                            "198.97.190.53",
+                                            "199.7.83.42",
+                                            "199.7.91.13",
+                                            "199.9.14.201",
+                                            "202.12.27.33",
+                                            "2001:500:1::53",
+                                            "2001:500:12::d0d",
+                                            "2001:500:2d::d",
+                                            "2001:500:2f::f",
+                                            "2001:500:9f::42",
+                                            "2001:500:a8::e",
+                                            "2001:500:200::b",
+                                            "2001:503:c27::2:30",
+                                            "2001:503:ba3e::2:30",
+                                            "2001:7fd::1",
+                                            "2001:7fe::53",
+                                            "2001:dc3::35",
+                                        ],
+                                        "ns_names": [
+                                            "a.root-servers.net.",
+                                            "b.root-servers.net.",
+                                            "c.root-servers.net.",
+                                            "d.root-servers.net.",
+                                            "e.root-servers.net.",
+                                            "f.root-servers.net.",
+                                            "g.root-servers.net.",
+                                            "h.root-servers.net.",
+                                            "i.root-servers.net.",
+                                            "j.root-servers.net.",
+                                            "k.root-servers.net.",
+                                            "l.root-servers.net.",
+                                            "m.root-servers.net.",
+                                        ],
+                                        "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                    }
+                                ],
+                                "cookie_status": {
+                                    "192.33.4.12": {
+                                        "request": "VALID_SERVER_COOKIE",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "192.36.148.17": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "192.58.128.30": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "192.112.36.4": {
+                                        "request": "VALID_SERVER_COOKIE",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "192.203.230.10": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "192.228.79.201": {
+                                        "request": "VALID_SERVER_COOKIE",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "193.0.14.129": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "198.41.0.4": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "198.97.190.53": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "199.7.83.42": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "199.7.91.13": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "199.9.14.201": {
+                                        "request": "VALID_SERVER_COOKIE",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "202.12.27.33": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:500:1::53": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:500:12::d0d": {
+                                        "request": "VALID_SERVER_COOKIE",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "2001:500:2d::d": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:500:2f::f": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:500:9f::42": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:500:a8::e": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:500:200::b": {
+                                        "request": "VALID_SERVER_COOKIE",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "2001:503:c27::2:30": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:503:ba3e::2:30": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:7fd::1": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:7fe::53": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:dc3::35": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                },
+                            }
+                        ]
+                    }
+                },
+                "dnskey": [
+                    {
+                        "id": "8/33853",
+                        "description": "DNSKEY for . (algorithm 8 (RSA/SHA-256), key tag 33853)",
+                        "flags": 256,
+                        "protocol": 3,
+                        "algorithm": 8,
+                        "key": "AwEAAeN+h0loXPKt7lFdW2zKIDkVHyJ1aYGUVE1dMNBlRH3kTn40JKcHiPOs+fy0OFVCBwoKa1s9qZtdyP1UC0hgKoldj3oELK1yLI5MUbTMcNkWbBMRuxRz/CgZJu3IxcmuZWZMbn4LQDMj5YeiUiuWns5vipFGWWpyPyozQXmenSWOK2GJOwcm7I/DyHVtVdztTvqiHqzy2aRoxwPhmEuAoYzzuNJJw6JNEnXaN/7l2TIciskFyPVPBFZYHnk+1ma906dfehIR190z3lh1ZESL2Yy3VIE2QGpRU6Px4ydH5sXxZ2wSMgqNNga4kjnfM1msBqk3EI48RvTTkuV0yb1eFuU=",
+                        "ttl": 172800,
+                        "key_length": 2048,
+                        "key_tag": 33853,
+                        "servers": [
+                            "192.33.4.12",
+                            "192.36.148.17",
+                            "192.58.128.30",
+                            "192.112.36.4",
+                            "192.203.230.10",
+                            "192.228.79.201",
+                            "193.0.14.129",
+                            "198.41.0.4",
+                            "198.97.190.53",
+                            "199.7.83.42",
+                            "199.7.91.13",
+                            "199.9.14.201",
+                            "202.12.27.33",
+                            "2001:500:1::53",
+                            "2001:500:12::d0d",
+                            "2001:500:2d::d",
+                            "2001:500:2f::f",
+                            "2001:500:9f::42",
+                            "2001:500:a8::e",
+                            "2001:500:200::b",
+                            "2001:503:c27::2:30",
+                            "2001:503:ba3e::2:30",
+                            "2001:7fd::1",
+                            "2001:7fe::53",
+                            "2001:dc3::35",
+                        ],
+                        "ns_names": [
+                            "a.root-servers.net.",
+                            "b.root-servers.net.",
+                            "c.root-servers.net.",
+                            "d.root-servers.net.",
+                            "e.root-servers.net.",
+                            "f.root-servers.net.",
+                            "g.root-servers.net.",
+                            "h.root-servers.net.",
+                            "i.root-servers.net.",
+                            "j.root-servers.net.",
+                            "k.root-servers.net.",
+                            "l.root-servers.net.",
+                            "m.root-servers.net.",
+                        ],
+                        "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                    },
+                    {
+                        "id": "8/20326",
+                        "description": "DNSKEY for . (algorithm 8 (RSA/SHA-256), key tag 20326)",
+                        "flags": 257,
+                        "protocol": 3,
+                        "algorithm": 8,
+                        "key": "AwEAAaz/tAm8yTn4Mfeh5eyI96WSVexTBAvkMgJzkKTOiW1vkIbzxeF3+/4RgWOq7HrxRixHlFlExOLAJr5emLvN7SWXgnLh4+B5xQlNVz8Og8kvArMtNROxVQuCaSnIDdD5LKyWbRd2n9WGe2R8PzgCmr3EgVLrjyBxWezF0jLHwVN8efS3rCj/EWgvIWgb9tarpVUDK/b58Da+sqqls3eNbuv7pr+eoZG+SrDK6nWeL3c6H5Apxz7LjVc1uTIdsIXxuOLYA4/ilBmSVIzuDWfdRUfhHdY6+cn8HFRm+2hM8AnXGXws9555KrUB5qihylGa8subX2Nn6UwNR1AkUTV74bU=",
+                        "ttl": 172800,
+                        "key_length": 2048,
+                        "key_tag": 20326,
+                        "servers": [
+                            "192.33.4.12",
+                            "192.36.148.17",
+                            "192.58.128.30",
+                            "192.112.36.4",
+                            "192.203.230.10",
+                            "192.228.79.201",
+                            "193.0.14.129",
+                            "198.41.0.4",
+                            "198.97.190.53",
+                            "199.7.83.42",
+                            "199.7.91.13",
+                            "199.9.14.201",
+                            "202.12.27.33",
+                            "2001:500:1::53",
+                            "2001:500:12::d0d",
+                            "2001:500:2d::d",
+                            "2001:500:2f::f",
+                            "2001:500:9f::42",
+                            "2001:500:a8::e",
+                            "2001:500:200::b",
+                            "2001:503:c27::2:30",
+                            "2001:503:ba3e::2:30",
+                            "2001:7fd::1",
+                            "2001:7fe::53",
+                            "2001:dc3::35",
+                        ],
+                        "ns_names": [
+                            "a.root-servers.net.",
+                            "b.root-servers.net.",
+                            "c.root-servers.net.",
+                            "d.root-servers.net.",
+                            "e.root-servers.net.",
+                            "f.root-servers.net.",
+                            "g.root-servers.net.",
+                            "h.root-servers.net.",
+                            "i.root-servers.net.",
+                            "j.root-servers.net.",
+                            "k.root-servers.net.",
+                            "l.root-servers.net.",
+                            "m.root-servers.net.",
+                        ],
+                        "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                    },
+                ],
+                "zone": {
+                    "servers": {
+                        "a.root-servers.net.": {
+                            "auth": ["198.41.0.4", "2001:503:ba3e::2:30"]
+                        },
+                        "b.root-servers.net.": {"stealth": ["192.228.79.201"]},
+                        "c.root-servers.net.": {
+                            "auth": ["192.33.4.12", "2001:500:2::c"]
+                        },
+                        "d.root-servers.net.": {
+                            "auth": ["199.7.91.13", "2001:500:2d::d"]
+                        },
+                        "e.root-servers.net.": {
+                            "auth": ["192.203.230.10", "2001:500:a8::e"]
+                        },
+                        "f.root-servers.net.": {
+                            "auth": ["192.5.5.241", "2001:500:2f::f"]
+                        },
+                        "g.root-servers.net.": {
+                            "auth": ["192.112.36.4", "2001:500:12::d0d"]
+                        },
+                        "h.root-servers.net.": {
+                            "auth": ["198.97.190.53", "2001:500:1::53"]
+                        },
+                        "i.root-servers.net.": {
+                            "auth": ["192.36.148.17", "2001:7fe::53"]
+                        },
+                        "j.root-servers.net.": {
+                            "auth": ["192.58.128.30", "2001:503:c27::2:30"]
+                        },
+                        "k.root-servers.net.": {
+                            "auth": ["193.0.14.129", "2001:7fd::1"]
+                        },
+                        "l.root-servers.net.": {
+                            "auth": ["199.7.83.42", "2001:500:9f::42"]
+                        },
+                        "m.root-servers.net.": {
+                            "auth": ["202.12.27.33", "2001:dc3::35"]
+                        },
+                    }
+                },
+            },
+            "gov.": {
+                "status": "NOERROR",
+                "queries": {
+                    "gov./IN/DS": {
+                        "answer": [
+                            {
+                                "id": "gov./IN/DS",
+                                "description": "RRset for gov/DS",
+                                "name": "gov.",
+                                "ttl": 86400,
+                                "type": "DS",
+                                "rdata": [
+                                    "7698 8 1 6f109b46a80cea9613dc86d5a3e065520505aafe",
+                                    "7698 8 2 6bc949e638442ead0bdaf0935763c8d003760384ff15ebbd5ce86bb5559561f0",
+                                ],
+                                "servers": [
+                                    "192.33.4.12",
+                                    "192.36.148.17",
+                                    "192.58.128.30",
+                                    "192.112.36.4",
+                                    "192.203.230.10",
+                                    "192.228.79.201",
+                                    "193.0.14.129",
+                                    "198.41.0.4",
+                                    "198.97.190.53",
+                                    "199.7.83.42",
+                                    "199.7.91.13",
+                                    "199.9.14.201",
+                                    "202.12.27.33",
+                                    "2001:500:1::53",
+                                    "2001:500:12::d0d",
+                                    "2001:500:2d::d",
+                                    "2001:500:2f::f",
+                                    "2001:500:9f::42",
+                                    "2001:500:a8::e",
+                                    "2001:500:200::b",
+                                    "2001:503:c27::2:30",
+                                    "2001:503:ba3e::2:30",
+                                    "2001:7fd::1",
+                                    "2001:7fe::53",
+                                    "2001:dc3::35",
+                                ],
+                                "ns_names": [
+                                    "a.root-servers.net.",
+                                    "b.root-servers.net.",
+                                    "c.root-servers.net.",
+                                    "d.root-servers.net.",
+                                    "e.root-servers.net.",
+                                    "f.root-servers.net.",
+                                    "g.root-servers.net.",
+                                    "h.root-servers.net.",
+                                    "i.root-servers.net.",
+                                    "j.root-servers.net.",
+                                    "k.root-servers.net.",
+                                    "l.root-servers.net.",
+                                    "m.root-servers.net.",
+                                ],
+                                "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                "rrsig": [
+                                    {
+                                        "id": "./8/33853",
+                                        "description": "RRSIG covering gov/DS",
+                                        "signer": ".",
+                                        "algorithm": 8,
+                                        "key_tag": 33853,
+                                        "original_ttl": 86400,
+                                        "labels": 1,
+                                        "inception": "2020-03-11 16:00:00 UTC",
+                                        "expiration": "2020-03-24 17:00:00 UTC",
+                                        "signature": "hX43fSHho/T2QVvkKwv1IbURzaqEszVLfcSepkw5WqLttR1HZLLOEYqAdUyu2Kc+JvGLB/SqW3+x6gkSOZUDycDYqnke+ARoGEf6UiGbhcrdsppZtEE9Db8zXBhAHCzGVgk5HQ64a09bO/1zuzLq+z5koAtfsAFYAHC20XiUz9dhVXiRjJqvtjRtRrguRF6zr6UdiG2Z3iyRGPq9iZyYXOpQYY+bXl3CrDw+4uOGbtWObxx8A6Fqk2tUkzQaSeDe1dcbSlh5kpg7UkdHOK6hfLJhpAPCXByshHL1owYIwquXg7EP7GBorJFPmhhLcjMUNrzMDlT0IyRakG/JOwau6w==",
+                                        "ttl": 86400,
+                                        "status": "VALID",
+                                        "servers": [
+                                            "192.33.4.12",
+                                            "192.36.148.17",
+                                            "192.58.128.30",
+                                            "192.112.36.4",
+                                            "192.203.230.10",
+                                            "192.228.79.201",
+                                            "193.0.14.129",
+                                            "198.41.0.4",
+                                            "198.97.190.53",
+                                            "199.7.83.42",
+                                            "199.7.91.13",
+                                            "199.9.14.201",
+                                            "202.12.27.33",
+                                            "2001:500:1::53",
+                                            "2001:500:12::d0d",
+                                            "2001:500:2d::d",
+                                            "2001:500:2f::f",
+                                            "2001:500:9f::42",
+                                            "2001:500:a8::e",
+                                            "2001:500:200::b",
+                                            "2001:503:c27::2:30",
+                                            "2001:503:ba3e::2:30",
+                                            "2001:7fd::1",
+                                            "2001:7fe::53",
+                                            "2001:dc3::35",
+                                        ],
+                                        "ns_names": [
+                                            "a.root-servers.net.",
+                                            "b.root-servers.net.",
+                                            "c.root-servers.net.",
+                                            "d.root-servers.net.",
+                                            "e.root-servers.net.",
+                                            "f.root-servers.net.",
+                                            "g.root-servers.net.",
+                                            "h.root-servers.net.",
+                                            "i.root-servers.net.",
+                                            "j.root-servers.net.",
+                                            "k.root-servers.net.",
+                                            "l.root-servers.net.",
+                                            "m.root-servers.net.",
+                                        ],
+                                        "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                    }
+                                ],
+                                "cookie_status": {
+                                    "192.33.4.12": {
+                                        "request": "VALID_SERVER_COOKIE",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "192.36.148.17": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "192.58.128.30": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "192.112.36.4": {
+                                        "request": "VALID_SERVER_COOKIE",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "192.203.230.10": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "192.228.79.201": {
+                                        "request": "VALID_SERVER_COOKIE",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "193.0.14.129": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "198.41.0.4": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "198.97.190.53": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "199.7.83.42": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "199.7.91.13": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "199.9.14.201": {
+                                        "request": "VALID_SERVER_COOKIE",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "202.12.27.33": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:500:1::53": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:500:12::d0d": {
+                                        "request": "VALID_SERVER_COOKIE",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "2001:500:2d::d": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:500:2f::f": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:500:9f::42": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:500:a8::e": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:500:200::b": {
+                                        "request": "VALID_SERVER_COOKIE",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "2001:503:c27::2:30": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:503:ba3e::2:30": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:7fd::1": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:7fe::53": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:dc3::35": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                },
+                            }
+                        ]
+                    },
+                    "gov./IN/DNSKEY": {
+                        "answer": [
+                            {
+                                "id": "gov./IN/DNSKEY",
+                                "description": "RRset for gov/DNSKEY",
+                                "name": "gov.",
+                                "ttl": 86400,
+                                "type": "DNSKEY",
+                                "rdata": [
+                                    "256 3 8 AwEAAdccuiuxqTxvRcMVh4o9DCfREPNT e3hGEklbdV+L99lKySyIzskGLJ6XDBrW gBeY7ZRSOWGQ2eHdQLN61fRyqWpVLpNz qaIz/UmMP74VPBCz4QXRDkG4hDO3uifC DVs8Jex4TrYT+hGNYmprbsrqdVQCgeeH c7UMKI/SjusQ4uTKgJ9CWt02/AgK+zKF i3LCBVDGnUwE2kUOL1b0MWfT0ks=",
+                                    "257 3 8 AQO8daaz7B+yshOfL60rytKd9aOSujgp onEw3fwBMEC3/+e9XzHw2k+VKnbJTZ+Q aVtpfUd1q9HKZIv/ck83Gl5TjYKE5jtU Z2kpEDZfVNGv6yx0smtWAXv1nCJS9ohn yOTd397eMojGDHqkEC+uojEScZheEkMx zgCZwDAs+/CSU7mSuHtCRZn19xlZUd5G v7yDQ3mbOUwuy30oSk0z1Q5UUPpoihOu gIZHFX6Jk7NLiW2wlqfq9qhV4zj7TiBi JY0mCc4zHN8/aq2VKDHp2Na7mWzvKyTy +SYQkBQ/08LbPwj9YMc+uCzKL6sU/ObH v17EFhD8aPDftTHZvV9L+OZr",
+                                ],
+                                "servers": [
+                                    "69.36.153.30",
+                                    "69.36.157.30",
+                                    "81.19.194.30",
+                                    "209.112.123.30",
+                                    "2001:500:4431::2:30",
+                                    "2620:74:27::2:30",
+                                    "2620:74:28::2:30",
+                                ],
+                                "ns_names": [
+                                    "a.gov-servers.net.",
+                                    "b.gov-servers.net.",
+                                    "c.gov-servers.net.",
+                                    "d.gov-servers.net.",
+                                ],
+                                "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                "rrsig": [
+                                    {
+                                        "id": "gov./8/7698",
+                                        "description": "RRSIG covering gov/DNSKEY",
+                                        "signer": "gov.",
+                                        "algorithm": 8,
+                                        "key_tag": 7698,
+                                        "original_ttl": 86400,
+                                        "labels": 1,
+                                        "inception": "2020-03-10 18:57:54 UTC",
+                                        "expiration": "2020-03-25 19:02:54 UTC",
+                                        "signature": "N1bf6gSCOtFXmxVNKn4YlxNIeZq9rfa7G0FZR8pYXPJT7VeqealjcaYXtt+tE7OvbJCigYX95ydhZokG+B9zPZIwJgWL4Bz+zt0NcHBiHUyd29gX3/gGlGZOvqm4ta190lfIBnQlujR2TqwX8ptZsUYQdQ/Yc59ReKiyq+4Mjnkz0jOQmAaDjPfopPgJT13WhfI7yC9+3BmNxB8JMjh8ikwKZwN3RP6junt833xepGCMcwQucpbPQDhYVHQCCEf9saBr8kGZ1HobYpDYIs1YejQgBjNv1eTmOjLV0GGBW0Cbq0dCogE5nPXzz1yvwrQNrxdTubU5bzccadG0+DOMPA==",
+                                        "ttl": 86400,
+                                        "status": "VALID",
+                                        "servers": [
+                                            "69.36.153.30",
+                                            "69.36.157.30",
+                                            "81.19.194.30",
+                                            "209.112.123.30",
+                                            "2001:500:4431::2:30",
+                                            "2620:74:27::2:30",
+                                            "2620:74:28::2:30",
+                                        ],
+                                        "ns_names": [
+                                            "a.gov-servers.net.",
+                                            "b.gov-servers.net.",
+                                            "c.gov-servers.net.",
+                                            "d.gov-servers.net.",
+                                        ],
+                                        "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                    }
+                                ],
+                                "cookie_status": {
+                                    "69.36.153.30": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "69.36.157.30": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "81.19.194.30": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "209.112.123.30": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:500:4431::2:30": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:74:27::2:30": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:74:28::2:30": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                },
+                            }
+                        ]
+                    },
+                },
+                "dnskey": [
+                    {
+                        "id": "8/7698",
+                        "description": "DNSKEY for gov (algorithm 8 (RSA/SHA-256), key tag 7698)",
+                        "flags": 257,
+                        "protocol": 3,
+                        "algorithm": 8,
+                        "key": "AQO8daaz7B+yshOfL60rytKd9aOSujgponEw3fwBMEC3/+e9XzHw2k+VKnbJTZ+QaVtpfUd1q9HKZIv/ck83Gl5TjYKE5jtUZ2kpEDZfVNGv6yx0smtWAXv1nCJS9ohnyOTd397eMojGDHqkEC+uojEScZheEkMxzgCZwDAs+/CSU7mSuHtCRZn19xlZUd5Gv7yDQ3mbOUwuy30oSk0z1Q5UUPpoihOugIZHFX6Jk7NLiW2wlqfq9qhV4zj7TiBiJY0mCc4zHN8/aq2VKDHp2Na7mWzvKyTy+SYQkBQ/08LbPwj9YMc+uCzKL6sU/ObHv17EFhD8aPDftTHZvV9L+OZr",
+                        "ttl": 86400,
+                        "key_length": 2048,
+                        "key_tag": 7698,
+                        "servers": [
+                            "69.36.153.30",
+                            "69.36.157.30",
+                            "81.19.194.30",
+                            "209.112.123.30",
+                            "2001:500:4431::2:30",
+                            "2620:74:27::2:30",
+                            "2620:74:28::2:30",
+                        ],
+                        "ns_names": [
+                            "a.gov-servers.net.",
+                            "b.gov-servers.net.",
+                            "c.gov-servers.net.",
+                            "d.gov-servers.net.",
+                        ],
+                        "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                    },
+                    {
+                        "id": "8/36558",
+                        "description": "DNSKEY for gov (algorithm 8 (RSA/SHA-256), key tag 36558)",
+                        "flags": 256,
+                        "protocol": 3,
+                        "algorithm": 8,
+                        "key": "AwEAAdccuiuxqTxvRcMVh4o9DCfREPNTe3hGEklbdV+L99lKySyIzskGLJ6XDBrWgBeY7ZRSOWGQ2eHdQLN61fRyqWpVLpNzqaIz/UmMP74VPBCz4QXRDkG4hDO3uifCDVs8Jex4TrYT+hGNYmprbsrqdVQCgeeHc7UMKI/SjusQ4uTKgJ9CWt02/AgK+zKFi3LCBVDGnUwE2kUOL1b0MWfT0ks=",
+                        "ttl": 86400,
+                        "key_length": 1280,
+                        "key_tag": 36558,
+                        "servers": [
+                            "69.36.153.30",
+                            "69.36.157.30",
+                            "81.19.194.30",
+                            "209.112.123.30",
+                            "2001:500:4431::2:30",
+                            "2620:74:27::2:30",
+                            "2620:74:28::2:30",
+                        ],
+                        "ns_names": [
+                            "a.gov-servers.net.",
+                            "b.gov-servers.net.",
+                            "c.gov-servers.net.",
+                            "d.gov-servers.net.",
+                        ],
+                        "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                    },
+                ],
+                "zone": {
+                    "servers": {
+                        "a.gov-servers.net.": {
+                            "glue": ["69.36.157.30", "2001:500:4431::2:30"],
+                            "auth": ["69.36.157.30", "2001:500:4431::2:30"],
+                        },
+                        "b.gov-servers.net.": {
+                            "glue": ["209.112.123.30", "2620:74:27::2:30"],
+                            "auth": ["209.112.123.30", "2620:74:27::2:30"],
+                        },
+                        "c.gov-servers.net.": {
+                            "glue": ["69.36.153.30", "2620:74:28::2:30"],
+                            "auth": ["69.36.153.30", "2620:74:28::2:30"],
+                        },
+                        "d.gov-servers.net.": {
+                            "glue": ["81.19.194.30", "2620:74:29::2:30"],
+                            "auth": ["81.19.194.30", "2620:74:29::2:30"],
+                        },
+                    },
+                    "errors": [
+                        {
+                            "description": "The server(s) were not responsive to queries over UDP.  See RFC 1035, Sec. 4.2.",
+                            "code": "SERVER_UNRESPONSIVE_UDP",
+                            "servers": ["2620:74:29::2:30"],
+                        }
+                    ],
+                },
+                "delegation": {
+                    "ds": [
+                        {
+                            "id": "8/7698/1",
+                            "description": "DS record(s) corresponding to DNSKEY for gov (algorithm 8 (RSA/SHA-256), key tag 7698)",
+                            "algorithm": 8,
+                            "key_tag": 7698,
+                            "digest_type": 1,
+                            "digest": "bxCbRqgM6pYT3IbVo+BlUgUFqv4=",
+                            "ttl": 86400,
+                            "status": "ALGORITHM_IGNORED",
+                            "servers": [
+                                "192.33.4.12",
+                                "192.36.148.17",
+                                "192.58.128.30",
+                                "192.112.36.4",
+                                "192.203.230.10",
+                                "192.228.79.201",
+                                "193.0.14.129",
+                                "198.41.0.4",
+                                "198.97.190.53",
+                                "199.7.83.42",
+                                "199.7.91.13",
+                                "199.9.14.201",
+                                "202.12.27.33",
+                                "2001:500:1::53",
+                                "2001:500:12::d0d",
+                                "2001:500:2d::d",
+                                "2001:500:2f::f",
+                                "2001:500:9f::42",
+                                "2001:500:a8::e",
+                                "2001:500:200::b",
+                                "2001:503:c27::2:30",
+                                "2001:503:ba3e::2:30",
+                                "2001:7fd::1",
+                                "2001:7fe::53",
+                                "2001:dc3::35",
+                            ],
+                            "ns_names": [
+                                "a.root-servers.net.",
+                                "b.root-servers.net.",
+                                "c.root-servers.net.",
+                                "d.root-servers.net.",
+                                "e.root-servers.net.",
+                                "f.root-servers.net.",
+                                "g.root-servers.net.",
+                                "h.root-servers.net.",
+                                "i.root-servers.net.",
+                                "j.root-servers.net.",
+                                "k.root-servers.net.",
+                                "l.root-servers.net.",
+                                "m.root-servers.net.",
+                            ],
+                            "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                            "warnings": [
+                                {
+                                    "description": "DNSSEC implementers are prohibited from implementing signing with DS algorithm 1 (SHA-1).  See RFC 8624, Sec. 3.2.",
+                                    "code": "DIGEST_ALGORITHM_PROHIBITED",
+                                },
+                                {
+                                    "description": "DS records with digest type 1 (SHA-1) are ignored when DS records with digest type 2 (SHA-256) exist in the same RRset.  See RFC 4509, Sec. 3.",
+                                    "code": "DS_DIGEST_ALGORITHM_IGNORED",
+                                },
+                            ],
+                        },
+                        {
+                            "id": "8/7698/2",
+                            "description": "DS record(s) corresponding to DNSKEY for gov (algorithm 8 (RSA/SHA-256), key tag 7698)",
+                            "algorithm": 8,
+                            "key_tag": 7698,
+                            "digest_type": 2,
+                            "digest": "a8lJ5jhELq0L2vCTV2PI0AN2A4T/Feu9XOhrtVWVYfA=",
+                            "ttl": 86400,
+                            "status": "VALID",
+                            "servers": [
+                                "192.33.4.12",
+                                "192.36.148.17",
+                                "192.58.128.30",
+                                "192.112.36.4",
+                                "192.203.230.10",
+                                "192.228.79.201",
+                                "193.0.14.129",
+                                "198.41.0.4",
+                                "198.97.190.53",
+                                "199.7.83.42",
+                                "199.7.91.13",
+                                "199.9.14.201",
+                                "202.12.27.33",
+                                "2001:500:1::53",
+                                "2001:500:12::d0d",
+                                "2001:500:2d::d",
+                                "2001:500:2f::f",
+                                "2001:500:9f::42",
+                                "2001:500:a8::e",
+                                "2001:500:200::b",
+                                "2001:503:c27::2:30",
+                                "2001:503:ba3e::2:30",
+                                "2001:7fd::1",
+                                "2001:7fe::53",
+                                "2001:dc3::35",
+                            ],
+                            "ns_names": [
+                                "a.root-servers.net.",
+                                "b.root-servers.net.",
+                                "c.root-servers.net.",
+                                "d.root-servers.net.",
+                                "e.root-servers.net.",
+                                "f.root-servers.net.",
+                                "g.root-servers.net.",
+                                "h.root-servers.net.",
+                                "i.root-servers.net.",
+                                "j.root-servers.net.",
+                                "k.root-servers.net.",
+                                "l.root-servers.net.",
+                                "m.root-servers.net.",
+                            ],
+                            "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                        },
+                    ],
+                    "status": "SECURE",
+                },
+            },
+            "sandia.gov.": {
+                "status": "NOERROR",
+                "queries": {
+                    "sandia.gov./IN/A": {
+                        "answer": [
+                            {
+                                "id": "sandia.gov./IN/A",
+                                "description": "RRset for sandia.gov/A",
+                                "name": "sandia.gov.",
+                                "ttl": 14400,
+                                "type": "A",
+                                "rdata": ["198.102.153.153"],
+                                "servers": [
+                                    "132.175.7.209",
+                                    "132.175.7.210",
+                                    "198.206.219.65",
+                                    "198.206.219.66",
+                                    "2620:106:6000:40::65",
+                                    "2620:106:6000:40::66",
+                                    "2620:106:6008:7:f0::209",
+                                    "2620:106:6008:7:f0::210",
+                                ],
+                                "ns_names": [
+                                    "ns1.ca.sandia.gov.",
+                                    "ns2.ca.sandia.gov.",
+                                    "ns8.sandia.gov.",
+                                    "ns9.sandia.gov.",
+                                ],
+                                "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                "rrsig": [
+                                    {
+                                        "id": "sandia.gov./7/24743",
+                                        "description": "RRSIG covering sandia.gov/A",
+                                        "signer": "sandia.gov.",
+                                        "algorithm": 7,
+                                        "key_tag": 24743,
+                                        "original_ttl": 14400,
+                                        "labels": 2,
+                                        "inception": "2020-03-06 10:04:44 UTC",
+                                        "expiration": "2020-04-05 10:04:44 UTC",
+                                        "signature": "4iaBec2myq4FAirM8fZIMZBN17NT5sjhUGl1GIgH8KuMban0zidGU7cV5AFTwWhE81l3TpqhDTbHRMqYbiGEoEjeyzJi8gRvuEdUJOsr/pAMZckWIC+mevs312fteBvAkwtxGFDkmGNy+UTmFX0wEzdo4Jas/YhS5ZdCxmnVXKk=",
+                                        "ttl": 14400,
+                                        "status": "VALID",
+                                        "servers": [
+                                            "132.175.7.209",
+                                            "132.175.7.210",
+                                            "198.206.219.65",
+                                            "198.206.219.66",
+                                            "2620:106:6000:40::65",
+                                            "2620:106:6000:40::66",
+                                            "2620:106:6008:7:f0::209",
+                                            "2620:106:6008:7:f0::210",
+                                        ],
+                                        "ns_names": [
+                                            "ns1.ca.sandia.gov.",
+                                            "ns2.ca.sandia.gov.",
+                                            "ns8.sandia.gov.",
+                                            "ns9.sandia.gov.",
+                                        ],
+                                        "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                        "warnings": [
+                                            {
+                                                "description": "DNSSEC implementers are recommended against implementing signing with DNSSEC algorithm 7 (RSASHA1NSEC3SHA1).  See RFC 8624, Sec. 3.1.",
+                                                "code": "ALGORITHM_NOT_RECOMMENDED",
+                                            }
+                                        ],
+                                    }
+                                ],
+                                "cookie_status": {
+                                    "132.175.7.209": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "132.175.7.210": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "198.206.219.65": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "198.206.219.66": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6000:40::65": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6000:40::66": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6008:7:f0::209": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "2620:106:6008:7:f0::210": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                },
+                            }
+                        ]
+                    },
+                    "sandia.gov./IN/NS": {
+                        "answer": [
+                            {
+                                "id": "sandia.gov./IN/NS",
+                                "description": "RRset for sandia.gov/NS",
+                                "name": "sandia.gov.",
+                                "ttl": 86400,
+                                "type": "NS",
+                                "rdata": [
+                                    "ns1.ca.sandia.gov.",
+                                    "ns2.ca.sandia.gov.",
+                                    "ns8.sandia.gov.",
+                                    "ns9.sandia.gov.",
+                                ],
+                                "servers": [
+                                    "132.175.7.209",
+                                    "132.175.7.210",
+                                    "198.206.219.65",
+                                    "198.206.219.66",
+                                    "2620:106:6000:40::65",
+                                    "2620:106:6000:40::66",
+                                    "2620:106:6008:7:f0::209",
+                                    "2620:106:6008:7:f0::210",
+                                ],
+                                "ns_names": [
+                                    "ns1.ca.sandia.gov.",
+                                    "ns2.ca.sandia.gov.",
+                                    "ns8.sandia.gov.",
+                                    "ns9.sandia.gov.",
+                                ],
+                                "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                "rrsig": [
+                                    {
+                                        "id": "sandia.gov./7/24743",
+                                        "description": "RRSIG covering sandia.gov/NS",
+                                        "signer": "sandia.gov.",
+                                        "algorithm": 7,
+                                        "key_tag": 24743,
+                                        "original_ttl": 86400,
+                                        "labels": 2,
+                                        "inception": "2020-03-06 10:04:44 UTC",
+                                        "expiration": "2020-04-05 10:04:44 UTC",
+                                        "signature": "XZGdCjV8KC1YlAf9PEmPAhqzhDLB/0vc6k70J2zKd4lPH9y1dq4HSH6+WLcCSrGJ66em7fLxTnanvF6Pg4kOQht80GGdLhzAolzZUuSgFFL3xsZaeU5WsUyjoTcnmbP0il8QVij348EkrIFXMi8cBWCqZ8DtgUY0L7/5xUqzl30=",
+                                        "ttl": 86400,
+                                        "status": "VALID",
+                                        "servers": [
+                                            "132.175.7.209",
+                                            "132.175.7.210",
+                                            "198.206.219.65",
+                                            "198.206.219.66",
+                                            "2620:106:6000:40::65",
+                                            "2620:106:6000:40::66",
+                                            "2620:106:6008:7:f0::209",
+                                            "2620:106:6008:7:f0::210",
+                                        ],
+                                        "ns_names": [
+                                            "ns1.ca.sandia.gov.",
+                                            "ns2.ca.sandia.gov.",
+                                            "ns8.sandia.gov.",
+                                            "ns9.sandia.gov.",
+                                        ],
+                                        "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                        "warnings": [
+                                            {
+                                                "description": "DNSSEC implementers are recommended against implementing signing with DNSSEC algorithm 7 (RSASHA1NSEC3SHA1).  See RFC 8624, Sec. 3.1.",
+                                                "code": "ALGORITHM_NOT_RECOMMENDED",
+                                            }
+                                        ],
+                                    }
+                                ],
+                                "cookie_status": {
+                                    "132.175.7.209": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "132.175.7.210": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "198.206.219.65": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "198.206.219.66": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6000:40::65": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6000:40::66": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6008:7:f0::209": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "2620:106:6008:7:f0::210": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                },
+                            }
+                        ]
+                    },
+                    "sandia.gov./IN/CNAME": {
+                        "nodata": [
+                            {
+                                "id": "sandia.gov./IN/CNAME",
+                                "proof": [
+                                    {
+                                        "id": "NSEC3",
+                                        "description": "NSEC3 record(s) proving non-existence (NODATA) of sandia.gov/CNAME",
+                                        "nsec3": [
+                                            {
+                                                "id": "IVTPVBBB8S1IP4CBOP4NJD1398QR5P6G.sandia.gov./IN/NSEC3",
+                                                "description": "RRset for IVTPVBBB8S1IP4CBOP4NJD1398QR5P6G.sandia.gov/NSEC3",
+                                                "name": "IVTPVBBB8S1IP4CBOP4NJD1398QR5P6G.sandia.gov.",
+                                                "ttl": 3600,
+                                                "type": "NSEC3",
+                                                "rdata": [
+                                                    "1 0 2 95cad2 IVTUV6ECKB07ULRQPQRGAABMU6E9HB38 A NS SOA MX TXT AAAA RRSIG DNSKEY NSEC3PARAM"
+                                                ],
+                                                "servers": [
+                                                    "132.175.7.209",
+                                                    "132.175.7.210",
+                                                    "198.206.219.65",
+                                                    "198.206.219.66",
+                                                    "2620:106:6000:40::65",
+                                                    "2620:106:6000:40::66",
+                                                    "2620:106:6008:7:f0::209",
+                                                    "2620:106:6008:7:f0::210",
+                                                ],
+                                                "ns_names": [
+                                                    "ns1.ca.sandia.gov.",
+                                                    "ns2.ca.sandia.gov.",
+                                                    "ns8.sandia.gov.",
+                                                    "ns9.sandia.gov.",
+                                                ],
+                                                "query_options": [
+                                                    "UDP_-_EDNS0_4096_D_K"
+                                                ],
+                                                "rrsig": [
+                                                    {
+                                                        "id": "sandia.gov./7/24743",
+                                                        "description": "RRSIG covering ivtpvbbb8s1ip4cbop4njd1398qr5p6g.sandia.gov/NSEC3",
+                                                        "signer": "sandia.gov.",
+                                                        "algorithm": 7,
+                                                        "key_tag": 24743,
+                                                        "original_ttl": 3600,
+                                                        "labels": 3,
+                                                        "inception": "2020-03-06 10:04:44 UTC",
+                                                        "expiration": "2020-04-05 10:04:44 UTC",
+                                                        "signature": "zTHas7jn9e/dB7WcM0EadsrNjlegwL2R/iYMJMCADCEjYfxpOShoYH0ceKSxy+00s6UQ0ODReiE6CS8wiXWEgOsWwzuz+QEj3t9thgEtGOGSsAUr7ABrO/aMSR4Tl5dU+a8JaAhbeSTbXv9/sKbjXA3r9BiDAfxlcF5xafQYhFE=",
+                                                        "ttl": 3600,
+                                                        "status": "VALID",
+                                                        "servers": [
+                                                            "132.175.7.209",
+                                                            "132.175.7.210",
+                                                            "198.206.219.65",
+                                                            "198.206.219.66",
+                                                            "2620:106:6000:40::65",
+                                                            "2620:106:6000:40::66",
+                                                            "2620:106:6008:7:f0::209",
+                                                            "2620:106:6008:7:f0::210",
+                                                        ],
+                                                        "ns_names": [
+                                                            "ns1.ca.sandia.gov.",
+                                                            "ns2.ca.sandia.gov.",
+                                                            "ns8.sandia.gov.",
+                                                            "ns9.sandia.gov.",
+                                                        ],
+                                                        "query_options": [
+                                                            "UDP_-_EDNS0_4096_D_K"
+                                                        ],
+                                                        "warnings": [
+                                                            {
+                                                                "description": "DNSSEC implementers are recommended against implementing signing with DNSSEC algorithm 7 (RSASHA1NSEC3SHA1).  See RFC 8624, Sec. 3.1.",
+                                                                "code": "ALGORITHM_NOT_RECOMMENDED",
+                                                            }
+                                                        ],
+                                                    }
+                                                ],
+                                            }
+                                        ],
+                                        "sname_hash": "IVTPVBBB8S1IP4CBOP4NJD1398QR5P6G.sandia.gov.",
+                                        "sname_nsec_match": "IVTPVBBB8S1IP4CBOP4NJD1398QR5P6G.sandia.gov.",
+                                        "status": "VALID",
+                                        "servers": [
+                                            "132.175.7.209",
+                                            "132.175.7.210",
+                                            "198.206.219.65",
+                                            "198.206.219.66",
+                                            "2620:106:6000:40::65",
+                                            "2620:106:6000:40::66",
+                                            "2620:106:6008:7:f0::209",
+                                            "2620:106:6008:7:f0::210",
+                                        ],
+                                        "ns_names": [
+                                            "ns1.ca.sandia.gov.",
+                                            "ns2.ca.sandia.gov.",
+                                            "ns8.sandia.gov.",
+                                            "ns9.sandia.gov.",
+                                        ],
+                                        "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                        "warnings": [
+                                            {
+                                                "description": "The salt value for an NSEC3 record should be empty.  See RFC 9276, Sec. 3.1.",
+                                                "code": "NONEMPTY_NSEC3_SALT",
+                                            }
+                                        ],
+                                        "errors": [
+                                            {
+                                                "description": "An iterations count of 0 must be used in NSEC3 records to alleviate computational burdens.  See RFC 9276, Sec. 3.1.",
+                                                "code": "NONZERO_NSEC3_ITERATION_COUNT",
+                                            }
+                                        ],
+                                    }
+                                ],
+                                "soa": [
+                                    {
+                                        "id": "sandia.gov./IN/SOA",
+                                        "description": "RRset for sandia.gov/SOA",
+                                        "name": "sandia.gov.",
+                                        "ttl": 3600,
+                                        "type": "SOA",
+                                        "rdata": [
+                                            "taurus.sandia.gov. dnsadmin.sandia.gov. 1880513 1800 900 604800 3600"
+                                        ],
+                                        "servers": [
+                                            "132.175.7.209",
+                                            "132.175.7.210",
+                                            "198.206.219.65",
+                                            "198.206.219.66",
+                                            "2620:106:6000:40::65",
+                                            "2620:106:6000:40::66",
+                                            "2620:106:6008:7:f0::209",
+                                            "2620:106:6008:7:f0::210",
+                                        ],
+                                        "ns_names": [
+                                            "ns1.ca.sandia.gov.",
+                                            "ns2.ca.sandia.gov.",
+                                            "ns8.sandia.gov.",
+                                            "ns9.sandia.gov.",
+                                        ],
+                                        "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                        "rrsig": [
+                                            {
+                                                "id": "sandia.gov./7/24743",
+                                                "description": "RRSIG covering sandia.gov/SOA",
+                                                "signer": "sandia.gov.",
+                                                "algorithm": 7,
+                                                "key_tag": 24743,
+                                                "original_ttl": 86400,
+                                                "labels": 2,
+                                                "inception": "2020-03-11 17:35:43 UTC",
+                                                "expiration": "2020-04-10 18:35:43 UTC",
+                                                "signature": "djgi66JElSXlSw2Kkumn46tL/l24BzNyvur4xq7yxJm/Po6/5+5mH03EudAD2SZVBjFb1ggTHQ33c5PEBf2KHpXqyL5HMMArLWeRT2LVHr1Ikyu33dloHIc9Eydy8CX0GIf1nVXPWSpGVA1d1O6BhjrsAjCoV75nPTZ3tSJLdCg=",
+                                                "ttl": 3600,
+                                                "status": "VALID",
+                                                "servers": [
+                                                    "132.175.7.209",
+                                                    "132.175.7.210",
+                                                    "198.206.219.65",
+                                                    "198.206.219.66",
+                                                    "2620:106:6000:40::65",
+                                                    "2620:106:6000:40::66",
+                                                    "2620:106:6008:7:f0::209",
+                                                    "2620:106:6008:7:f0::210",
+                                                ],
+                                                "ns_names": [
+                                                    "ns1.ca.sandia.gov.",
+                                                    "ns2.ca.sandia.gov.",
+                                                    "ns8.sandia.gov.",
+                                                    "ns9.sandia.gov.",
+                                                ],
+                                                "query_options": [
+                                                    "UDP_-_EDNS0_4096_D_K"
+                                                ],
+                                                "warnings": [
+                                                    {
+                                                        "description": "DNSSEC implementers are recommended against implementing signing with DNSSEC algorithm 7 (RSASHA1NSEC3SHA1).  See RFC 8624, Sec. 3.1.",
+                                                        "code": "ALGORITHM_NOT_RECOMMENDED",
+                                                    }
+                                                ],
+                                            }
+                                        ],
+                                    }
+                                ],
+                                "servers": [
+                                    "132.175.7.209",
+                                    "132.175.7.210",
+                                    "198.206.219.65",
+                                    "198.206.219.66",
+                                    "2620:106:6000:40::65",
+                                    "2620:106:6000:40::66",
+                                    "2620:106:6008:7:f0::209",
+                                    "2620:106:6008:7:f0::210",
+                                ],
+                                "ns_names": [
+                                    "ns1.ca.sandia.gov.",
+                                    "ns2.ca.sandia.gov.",
+                                    "ns8.sandia.gov.",
+                                    "ns9.sandia.gov.",
+                                ],
+                                "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                "cookie_status": {
+                                    "132.175.7.209": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "132.175.7.210": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "198.206.219.65": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "198.206.219.66": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6000:40::65": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6000:40::66": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6008:7:f0::209": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "2620:106:6008:7:f0::210": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                },
+                            }
+                        ]
+                    },
+                    "sandia.gov./IN/SOA": {
+                        "answer": [
+                            {
+                                "id": "sandia.gov./IN/SOA",
+                                "description": "RRset for sandia.gov/SOA",
+                                "name": "sandia.gov.",
+                                "ttl": 86400,
+                                "type": "SOA",
+                                "rdata": [
+                                    "taurus.sandia.gov. dnsadmin.sandia.gov. 1880513 1800 900 604800 3600"
+                                ],
+                                "servers": [
+                                    "132.175.7.209",
+                                    "132.175.7.210",
+                                    "198.206.219.65",
+                                    "198.206.219.66",
+                                    "2620:106:6000:40::65",
+                                    "2620:106:6000:40::66",
+                                    "2620:106:6008:7:f0::209",
+                                    "2620:106:6008:7:f0::210",
+                                ],
+                                "ns_names": [
+                                    "ns1.ca.sandia.gov.",
+                                    "ns2.ca.sandia.gov.",
+                                    "ns8.sandia.gov.",
+                                    "ns9.sandia.gov.",
+                                ],
+                                "query_options": [
+                                    "TCP_-_EDNS0_4096_D",
+                                    "UDP_-_EDNS0_4096_D_K",
+                                    "UDP_-_EDNS0_4096_D_K_0x20",
+                                ],
+                                "rrsig": [
+                                    {
+                                        "id": "sandia.gov./7/24743",
+                                        "description": "RRSIG covering sandia.gov/SOA",
+                                        "signer": "sandia.gov.",
+                                        "algorithm": 7,
+                                        "key_tag": 24743,
+                                        "original_ttl": 86400,
+                                        "labels": 2,
+                                        "inception": "2020-03-11 17:35:43 UTC",
+                                        "expiration": "2020-04-10 18:35:43 UTC",
+                                        "signature": "djgi66JElSXlSw2Kkumn46tL/l24BzNyvur4xq7yxJm/Po6/5+5mH03EudAD2SZVBjFb1ggTHQ33c5PEBf2KHpXqyL5HMMArLWeRT2LVHr1Ikyu33dloHIc9Eydy8CX0GIf1nVXPWSpGVA1d1O6BhjrsAjCoV75nPTZ3tSJLdCg=",
+                                        "ttl": 86400,
+                                        "status": "VALID",
+                                        "servers": [
+                                            "132.175.7.209",
+                                            "132.175.7.210",
+                                            "198.206.219.65",
+                                            "198.206.219.66",
+                                            "2620:106:6000:40::65",
+                                            "2620:106:6000:40::66",
+                                            "2620:106:6008:7:f0::209",
+                                            "2620:106:6008:7:f0::210",
+                                        ],
+                                        "ns_names": [
+                                            "ns1.ca.sandia.gov.",
+                                            "ns2.ca.sandia.gov.",
+                                            "ns8.sandia.gov.",
+                                            "ns9.sandia.gov.",
+                                        ],
+                                        "query_options": [
+                                            "TCP_-_EDNS0_4096_D",
+                                            "UDP_-_EDNS0_4096_D_K",
+                                            "UDP_-_EDNS0_4096_D_K_0x20",
+                                        ],
+                                        "warnings": [
+                                            {
+                                                "description": "DNSSEC implementers are recommended against implementing signing with DNSSEC algorithm 7 (RSASHA1NSEC3SHA1).  See RFC 8624, Sec. 3.1.",
+                                                "code": "ALGORITHM_NOT_RECOMMENDED",
+                                            }
+                                        ],
+                                    }
+                                ],
+                                "cookie_status": {
+                                    "132.175.7.209": {
+                                        "request": "INVALID_SERVER_COOKIE",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "132.175.7.210": {
+                                        "request": "INVALID_SERVER_COOKIE",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "198.206.219.65": {
+                                        "request": "INVALID_SERVER_COOKIE",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "198.206.219.66": {
+                                        "request": "INVALID_SERVER_COOKIE",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6000:40::65": {
+                                        "request": "INVALID_SERVER_COOKIE",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6000:40::66": {
+                                        "request": "INVALID_SERVER_COOKIE",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6008:7:f0::209": {
+                                        "request": "INVALID_SERVER_COOKIE",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "2620:106:6008:7:f0::210": {
+                                        "request": "INVALID_SERVER_COOKIE",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                },
+                            }
+                        ]
+                    },
+                    "sandia.gov./IN/MX": {
+                        "answer": [
+                            {
+                                "id": "sandia.gov./IN/MX",
+                                "description": "RRset for sandia.gov/MX",
+                                "name": "sandia.gov.",
+                                "ttl": 14400,
+                                "type": "MX",
+                                "rdata": [
+                                    "10 smtp01asnl.sandia.gov.",
+                                    "10 smtp02asnl.sandia.gov.",
+                                ],
+                                "servers": [
+                                    "132.175.7.209",
+                                    "132.175.7.210",
+                                    "198.206.219.65",
+                                    "198.206.219.66",
+                                    "2620:106:6000:40::65",
+                                    "2620:106:6000:40::66",
+                                    "2620:106:6008:7:f0::209",
+                                    "2620:106:6008:7:f0::210",
+                                ],
+                                "ns_names": [
+                                    "ns1.ca.sandia.gov.",
+                                    "ns2.ca.sandia.gov.",
+                                    "ns8.sandia.gov.",
+                                    "ns9.sandia.gov.",
+                                ],
+                                "query_options": [
+                                    "UDP_-_EDNS0_4096_D_K",
+                                    "UDP_-_EDNS0_512_D_K",
+                                ],
+                                "rrsig": [
+                                    {
+                                        "id": "sandia.gov./7/24743",
+                                        "description": "RRSIG covering sandia.gov/MX",
+                                        "signer": "sandia.gov.",
+                                        "algorithm": 7,
+                                        "key_tag": 24743,
+                                        "original_ttl": 14400,
+                                        "labels": 2,
+                                        "inception": "2020-03-06 10:04:44 UTC",
+                                        "expiration": "2020-04-05 10:04:44 UTC",
+                                        "signature": "yhLppS/9T/P0WpliIK34U+Z3J9S3/Eu/YCR5eOdmOThfWAIalFINkrWmF+G7lsM+tiHwWzBqzkS72Aga7Jw/7IPBAu/8zXKaujhyegr51kHIpV7uFEeSvSDKqPA5IvcPX8RUmy+0l0FwfnnFPOtW1ikyEim9I7yN33vZksO/Log=",
+                                        "ttl": 14400,
+                                        "status": "VALID",
+                                        "servers": [
+                                            "132.175.7.209",
+                                            "132.175.7.210",
+                                            "198.206.219.65",
+                                            "198.206.219.66",
+                                            "2620:106:6000:40::65",
+                                            "2620:106:6000:40::66",
+                                            "2620:106:6008:7:f0::209",
+                                            "2620:106:6008:7:f0::210",
+                                        ],
+                                        "ns_names": [
+                                            "ns1.ca.sandia.gov.",
+                                            "ns2.ca.sandia.gov.",
+                                            "ns8.sandia.gov.",
+                                            "ns9.sandia.gov.",
+                                        ],
+                                        "query_options": [
+                                            "UDP_-_EDNS0_4096_D_K",
+                                            "UDP_-_EDNS0_512_D_K",
+                                        ],
+                                        "warnings": [
+                                            {
+                                                "description": "DNSSEC implementers are recommended against implementing signing with DNSSEC algorithm 7 (RSASHA1NSEC3SHA1).  See RFC 8624, Sec. 3.1.",
+                                                "code": "ALGORITHM_NOT_RECOMMENDED",
+                                            }
+                                        ],
+                                    }
+                                ],
+                                "cookie_status": {
+                                    "132.175.7.209": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "132.175.7.210": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "198.206.219.65": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "198.206.219.66": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6000:40::65": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6000:40::66": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6008:7:f0::209": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "2620:106:6008:7:f0::210": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                },
+                            }
+                        ]
+                    },
+                    "sandia.gov./IN/TXT": {
+                        "answer": [
+                            {
+                                "id": "sandia.gov./IN/TXT",
+                                "description": "RRset for sandia.gov/TXT",
+                                "name": "sandia.gov.",
+                                "ttl": 3600,
+                                "type": "TXT",
+                                "rdata": ['"v=spf1 mx -all"'],
+                                "servers": [
+                                    "132.175.7.209",
+                                    "132.175.7.210",
+                                    "198.206.219.65",
+                                    "198.206.219.66",
+                                    "2620:106:6000:40::65",
+                                    "2620:106:6000:40::66",
+                                    "2620:106:6008:7:f0::209",
+                                    "2620:106:6008:7:f0::210",
+                                ],
+                                "ns_names": [
+                                    "ns1.ca.sandia.gov.",
+                                    "ns2.ca.sandia.gov.",
+                                    "ns8.sandia.gov.",
+                                    "ns9.sandia.gov.",
+                                ],
+                                "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                "rrsig": [
+                                    {
+                                        "id": "sandia.gov./7/24743",
+                                        "description": "RRSIG covering sandia.gov/TXT",
+                                        "signer": "sandia.gov.",
+                                        "algorithm": 7,
+                                        "key_tag": 24743,
+                                        "original_ttl": 3600,
+                                        "labels": 2,
+                                        "inception": "2020-03-06 10:04:44 UTC",
+                                        "expiration": "2020-04-05 10:04:44 UTC",
+                                        "signature": "go+S6JlN5ndhFgNNmgFgz/GPBupzd+fGuWFPOs+z1rgFXu2ncjhlF7VkWEslg4BWrlc9ObpZKKYC2/YkEaGMW7BkOI3W9VPU64Dgs6cOxE1x0qZE9wOzu2Kx/bxjyqz34MGmFxEoyMMcnZxdTYFYh30rivcMjK1NDZh0fuKo86U=",
+                                        "ttl": 3600,
+                                        "status": "VALID",
+                                        "servers": [
+                                            "132.175.7.209",
+                                            "132.175.7.210",
+                                            "198.206.219.65",
+                                            "198.206.219.66",
+                                            "2620:106:6000:40::65",
+                                            "2620:106:6000:40::66",
+                                            "2620:106:6008:7:f0::209",
+                                            "2620:106:6008:7:f0::210",
+                                        ],
+                                        "ns_names": [
+                                            "ns1.ca.sandia.gov.",
+                                            "ns2.ca.sandia.gov.",
+                                            "ns8.sandia.gov.",
+                                            "ns9.sandia.gov.",
+                                        ],
+                                        "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                        "warnings": [
+                                            {
+                                                "description": "DNSSEC implementers are recommended against implementing signing with DNSSEC algorithm 7 (RSASHA1NSEC3SHA1).  See RFC 8624, Sec. 3.1.",
+                                                "code": "ALGORITHM_NOT_RECOMMENDED",
+                                            }
+                                        ],
+                                    }
+                                ],
+                                "cookie_status": {
+                                    "132.175.7.209": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "132.175.7.210": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "198.206.219.65": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "198.206.219.66": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6000:40::65": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6000:40::66": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6008:7:f0::209": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "2620:106:6008:7:f0::210": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                },
+                            }
+                        ]
+                    },
+                    "sandia.gov./IN/AAAA": {
+                        "answer": [
+                            {
+                                "id": "sandia.gov./IN/AAAA",
+                                "description": "RRset for sandia.gov/AAAA",
+                                "name": "sandia.gov.",
+                                "ttl": 300,
+                                "type": "AAAA",
+                                "rdata": ["2620:106:6008:99:f0::153"],
+                                "servers": [
+                                    "132.175.7.209",
+                                    "132.175.7.210",
+                                    "198.206.219.65",
+                                    "198.206.219.66",
+                                    "2620:106:6000:40::65",
+                                    "2620:106:6000:40::66",
+                                    "2620:106:6008:7:f0::209",
+                                    "2620:106:6008:7:f0::210",
+                                ],
+                                "ns_names": [
+                                    "ns1.ca.sandia.gov.",
+                                    "ns2.ca.sandia.gov.",
+                                    "ns8.sandia.gov.",
+                                    "ns9.sandia.gov.",
+                                ],
+                                "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                "rrsig": [
+                                    {
+                                        "id": "sandia.gov./7/24743",
+                                        "description": "RRSIG covering sandia.gov/AAAA",
+                                        "signer": "sandia.gov.",
+                                        "algorithm": 7,
+                                        "key_tag": 24743,
+                                        "original_ttl": 300,
+                                        "labels": 2,
+                                        "inception": "2020-03-06 10:04:44 UTC",
+                                        "expiration": "2020-04-05 10:04:44 UTC",
+                                        "signature": "KDjkokVOnYSCjRTC7p9lXH/WmRQlgoVZjjuy0Ssan9wDpVriXsUBSm6tQgXkdzdssYVDe3plXUz3sRQkH49avY90shYUWzmmceijo4tFami9w/leWRPnhpgWBkIShRb2lofIpGkRAuOWk4y0M61wIfIWXb7TD6r1ALcGXCXzN70=",
+                                        "ttl": 300,
+                                        "status": "VALID",
+                                        "servers": [
+                                            "132.175.7.209",
+                                            "132.175.7.210",
+                                            "198.206.219.65",
+                                            "198.206.219.66",
+                                            "2620:106:6000:40::65",
+                                            "2620:106:6000:40::66",
+                                            "2620:106:6008:7:f0::209",
+                                            "2620:106:6008:7:f0::210",
+                                        ],
+                                        "ns_names": [
+                                            "ns1.ca.sandia.gov.",
+                                            "ns2.ca.sandia.gov.",
+                                            "ns8.sandia.gov.",
+                                            "ns9.sandia.gov.",
+                                        ],
+                                        "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                        "warnings": [
+                                            {
+                                                "description": "DNSSEC implementers are recommended against implementing signing with DNSSEC algorithm 7 (RSASHA1NSEC3SHA1).  See RFC 8624, Sec. 3.1.",
+                                                "code": "ALGORITHM_NOT_RECOMMENDED",
+                                            }
+                                        ],
+                                    }
+                                ],
+                                "cookie_status": {
+                                    "132.175.7.209": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "132.175.7.210": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "198.206.219.65": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "198.206.219.66": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6000:40::65": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6000:40::66": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6008:7:f0::209": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "2620:106:6008:7:f0::210": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                },
+                            }
+                        ]
+                    },
+                    "sandia.gov./IN/DS": {
+                        "answer": [
+                            {
+                                "id": "sandia.gov./IN/DS",
+                                "description": "RRset for sandia.gov/DS",
+                                "name": "sandia.gov.",
+                                "ttl": 3600,
+                                "type": "DS",
+                                "rdata": [
+                                    "20739 7 1 3ca461ff5496bc72a772056489d944621eda774e",
+                                    "20739 7 2 0c5f4cdff8824665acd1d8a132951b193c59fa7fe6cf7b1f82484c25b410cdc6",
+                                    "36033 7 1 e33b4526cecf2a1b7c733d645b30cd5c912d9538",
+                                    "36033 7 2 4677626abe69fd1d8dd8e5de10533d2b264a91a7bf1ab3a6bffc4c408a3752ff",
+                                ],
+                                "servers": [
+                                    "69.36.153.30",
+                                    "69.36.157.30",
+                                    "81.19.194.30",
+                                    "209.112.123.30",
+                                    "2001:500:4431::2:30",
+                                    "2620:74:27::2:30",
+                                    "2620:74:28::2:30",
+                                ],
+                                "ns_names": [
+                                    "a.gov-servers.net.",
+                                    "b.gov-servers.net.",
+                                    "c.gov-servers.net.",
+                                    "d.gov-servers.net.",
+                                ],
+                                "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                "rrsig": [
+                                    {
+                                        "id": "gov./8/36558",
+                                        "description": "RRSIG covering sandia.gov/DS",
+                                        "signer": "gov.",
+                                        "algorithm": 8,
+                                        "key_tag": 36558,
+                                        "original_ttl": 3600,
+                                        "labels": 2,
+                                        "inception": "2020-03-11 16:10:07 UTC",
+                                        "expiration": "2020-03-18 16:10:07 UTC",
+                                        "signature": "iAJJQnSvMGnH4MhLPbl7qGAOOMuoYGX99Z7FTX4HzZ0JKOBlOh9DmiSmY0sF+o3R433y9WMrQNvFfFmNnG6V5KvLnUrh4PMvkgZn9U3p1PqOFV4E5fIcoIaDtOEgvdfWZYZ1dPyakLyocdgXo1DkzZW28zohd9xVxoR/TT+tX/ARyCT3eAaHZDuQ61C5/XGDZ8Fwgx2YyYyA+1HA40CsGQ==",
+                                        "ttl": 3600,
+                                        "status": "VALID",
+                                        "servers": [
+                                            "69.36.153.30",
+                                            "69.36.157.30",
+                                            "81.19.194.30",
+                                            "209.112.123.30",
+                                            "2001:500:4431::2:30",
+                                            "2620:74:27::2:30",
+                                            "2620:74:28::2:30",
+                                        ],
+                                        "ns_names": [
+                                            "a.gov-servers.net.",
+                                            "b.gov-servers.net.",
+                                            "c.gov-servers.net.",
+                                            "d.gov-servers.net.",
+                                        ],
+                                        "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                    }
+                                ],
+                                "cookie_status": {
+                                    "69.36.153.30": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "69.36.157.30": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "81.19.194.30": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "209.112.123.30": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2001:500:4431::2:30": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:74:27::2:30": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:74:28::2:30": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                },
+                            }
+                        ]
+                    },
+                    "sandia.gov./IN/DNSKEY": {
+                        "answer": [
+                            {
+                                "id": "sandia.gov./IN/DNSKEY",
+                                "description": "RRset for sandia.gov/DNSKEY",
+                                "name": "sandia.gov.",
+                                "ttl": 86400,
+                                "type": "DNSKEY",
+                                "rdata": [
+                                    "256 3 7 AwEAAfI9/89dtvJPdmC0XbvT73fbjj9D AEQJN4r7lcwpEhCbjUo4HY45YrPCE/+0 RQShR6ZhA9mx8YI20KHP8oDspZHKPdCy 6ir/Kl/j6hzGJ/lVZLNlicyyiDFfmznf +wqxGwWeEca/1xOJ9U+p7h+l9VC2lhe7 2nwNlhOjXiNFp7+L",
+                                    "257 3 7 AwEAAb80HHQXbrsrmm8L5T1V3QDoXEED Jpts4S6ttkFVOa+fb4anMU3B7KNK4jgg 8sDXMhDfgTWHOc9EEAuy3Obv/6ArD4+3 85P+EuH5NGLd5f/lWl8GC9S24mDTpe2s NKi4AHJQxnREuI8Oxr/Mh92W5+HWDdIB t5IKH/nu9Wlf76Yg3x8jHZYgxVBMgPGF +UYUMQLKAjtJ/XFRObLLL+RQNdNkBqrQ LDkPBxbG1m8rDNa+uCbBiOWGBjZxrjEy QCA/2ZAKQ9lhVFZWuxb8DA3meiu8sfhW b3tbuZHhCb2HniV43oPKICN4GdIDrHQk ZCUOzEMKLSyX98VWQoHdaaOT1is=",
+                                    "257 3 7 AwEAAeWCWZhMfUwZSU+3Sqqk3OvDCDPw 9sBWL7HioNjo8FI90QdbNYRh6z9Ks2fE oguMRHlTobVbptJ2wlRQPWTyC8qlaWnT 82hdj5tpOzNlfuWywRu7Yw+DOBJUT1d1 ygwGVl9YbNl2gw4JCbVjqyZl2SogXAXW JecQKrJZgToYW/hkoTUWEnW80j60wwXy eBR6TExVNTsuimV4vNas1nDqKd3jf8fS pszH5CFR/Ytw29f4qaZRxGfgtQf05AwM LrKNfiHXjRnhQ/Wc4irjW4o6J07xJumd Vm2edvevOwPc5HvoTcHKueBn+8cyq7FD c0pwutB190FV8WU6XTTQMJQpOAE=",
+                                ],
+                                "servers": [
+                                    "132.175.7.209",
+                                    "132.175.7.210",
+                                    "198.206.219.65",
+                                    "198.206.219.66",
+                                    "2620:106:6000:40::65",
+                                    "2620:106:6000:40::66",
+                                    "2620:106:6008:7:f0::209",
+                                    "2620:106:6008:7:f0::210",
+                                ],
+                                "ns_names": [
+                                    "ns1.ca.sandia.gov.",
+                                    "ns2.ca.sandia.gov.",
+                                    "ns8.sandia.gov.",
+                                    "ns9.sandia.gov.",
+                                ],
+                                "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                "rrsig": [
+                                    {
+                                        "id": "sandia.gov./7/20739",
+                                        "description": "RRSIG covering sandia.gov/DNSKEY",
+                                        "signer": "sandia.gov.",
+                                        "algorithm": 7,
+                                        "key_tag": 20739,
+                                        "original_ttl": 86400,
+                                        "labels": 2,
+                                        "inception": "2020-03-06 10:04:44 UTC",
+                                        "expiration": "2020-04-05 10:04:44 UTC",
+                                        "signature": "bw9N5XuWVf4BUJC/AMbhPRQpp/yvshMuJGPgMrJ6Gr/5BR9jmiBjP2x0x4Mv0EUHCM2llZqmNnEqCzW2NaPPOCaAlbiwCkK7gd+rGW3i1icoDzm+mOwy+SUFPii6Ovzs4vJsmFeuIKauUCLbJPrW+6Iu2VgKgM/U0We+Ww6924ccP66vRq7QoTEuV16RxIRoELpDXtccNSgJGinOgqCzSKmNQUjbww1U3wKF6YinckQ/xxp6GoSuNbtTm69Ww/8bZ7SV9wMv0SDCIsIhXi8ta+i5ScXT9oJrgwEcocviyhBFDc6vKWVQQr5zgvWFpLOPZ5Mw2mgwBYDpqLx1F/oTIw==",
+                                        "ttl": 86400,
+                                        "status": "VALID",
+                                        "servers": [
+                                            "132.175.7.209",
+                                            "132.175.7.210",
+                                            "198.206.219.65",
+                                            "198.206.219.66",
+                                            "2620:106:6000:40::65",
+                                            "2620:106:6000:40::66",
+                                            "2620:106:6008:7:f0::209",
+                                            "2620:106:6008:7:f0::210",
+                                        ],
+                                        "ns_names": [
+                                            "ns1.ca.sandia.gov.",
+                                            "ns2.ca.sandia.gov.",
+                                            "ns8.sandia.gov.",
+                                            "ns9.sandia.gov.",
+                                        ],
+                                        "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                        "warnings": [
+                                            {
+                                                "description": "DNSSEC implementers are recommended against implementing signing with DNSSEC algorithm 7 (RSASHA1NSEC3SHA1).  See RFC 8624, Sec. 3.1.",
+                                                "code": "ALGORITHM_NOT_RECOMMENDED",
+                                            }
+                                        ],
+                                    },
+                                    {
+                                        "id": "sandia.gov./7/36033",
+                                        "description": "RRSIG covering sandia.gov/DNSKEY",
+                                        "signer": "sandia.gov.",
+                                        "algorithm": 7,
+                                        "key_tag": 36033,
+                                        "original_ttl": 86400,
+                                        "labels": 2,
+                                        "inception": "2020-03-06 10:04:44 UTC",
+                                        "expiration": "2020-04-05 10:04:44 UTC",
+                                        "signature": "D0xC+KwVpzXcRbu5iloXSqUEzKhTorrB3aOX+3nM5ya9l3Ueakmm7Devi9geDO/9XJeAY4vf5QAYU1xZ28dx5N9tnx8br8xZDymMP4GZXkAWA3bnPtM1Yrd8Dv+eUgq0wLTzuOm4VYNbICH40r28C5witsWgVxdqNglqxAacHXcCeXaFFZxW9h5efwBECeF5F+MW54IpQPhRcSfBZJAdSx5gIw3RCCIfshHE+SDkBkrTxrhT9WdfmlXGG4Eek3+ZyQwUL2I+p4LJbPPTnNSGsoJjWes6G4OpGVs2cWZ67e7vkHY8iCrYicZ72ExjNRMOM2lFNK2INaa/MsSKVjsNTw==",
+                                        "ttl": 86400,
+                                        "status": "VALID",
+                                        "servers": [
+                                            "132.175.7.209",
+                                            "132.175.7.210",
+                                            "198.206.219.65",
+                                            "198.206.219.66",
+                                            "2620:106:6000:40::65",
+                                            "2620:106:6000:40::66",
+                                            "2620:106:6008:7:f0::209",
+                                            "2620:106:6008:7:f0::210",
+                                        ],
+                                        "ns_names": [
+                                            "ns1.ca.sandia.gov.",
+                                            "ns2.ca.sandia.gov.",
+                                            "ns8.sandia.gov.",
+                                            "ns9.sandia.gov.",
+                                        ],
+                                        "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                        "warnings": [
+                                            {
+                                                "description": "DNSSEC implementers are recommended against implementing signing with DNSSEC algorithm 7 (RSASHA1NSEC3SHA1).  See RFC 8624, Sec. 3.1.",
+                                                "code": "ALGORITHM_NOT_RECOMMENDED",
+                                            }
+                                        ],
+                                    },
+                                ],
+                                "cookie_status": {
+                                    "132.175.7.209": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "132.175.7.210": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "198.206.219.65": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "198.206.219.66": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6000:40::65": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6000:40::66": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6008:7:f0::209": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "2620:106:6008:7:f0::210": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                },
+                            }
+                        ]
+                    },
+                    "2k7jzvtr4e.sandia.gov./IN/A": {
+                        "nxdomain": [
+                            {
+                                "id": "2k7jzvtr4e.sandia.gov./IN/A",
+                                "proof": [
+                                    {
+                                        "id": "NSEC3",
+                                        "description": "NSEC3 record(s) proving the non-existence (NXDOMAIN) of 2k7jzvtr4e.sandia.gov",
+                                        "nsec3": [
+                                            {
+                                                "id": "TL26LANMHHQGVTDPUJ1A02HLJP1L7PG4.sandia.gov./IN/NSEC3",
+                                                "description": "RRset for TL26LANMHHQGVTDPUJ1A02HLJP1L7PG4.sandia.gov/NSEC3",
+                                                "name": "TL26LANMHHQGVTDPUJ1A02HLJP1L7PG4.sandia.gov.",
+                                                "ttl": 3600,
+                                                "type": "NSEC3",
+                                                "rdata": [
+                                                    "1 0 2 95cad2 TL6KD8MBU9CV2C4272EK5IKO8D728TC5 CNAME RRSIG"
+                                                ],
+                                                "servers": [
+                                                    "132.175.7.209",
+                                                    "132.175.7.210",
+                                                    "198.206.219.65",
+                                                    "198.206.219.66",
+                                                    "2620:106:6000:40::65",
+                                                    "2620:106:6000:40::66",
+                                                    "2620:106:6008:7:f0::209",
+                                                    "2620:106:6008:7:f0::210",
+                                                ],
+                                                "ns_names": [
+                                                    "ns1.ca.sandia.gov.",
+                                                    "ns2.ca.sandia.gov.",
+                                                    "ns8.sandia.gov.",
+                                                    "ns9.sandia.gov.",
+                                                ],
+                                                "query_options": [
+                                                    "UDP_-_EDNS0_4096_D_K"
+                                                ],
+                                                "rrsig": [
+                                                    {
+                                                        "id": "sandia.gov./7/24743",
+                                                        "description": "RRSIG covering tl26lanmhhqgvtdpuj1a02hljp1l7pg4.sandia.gov/NSEC3",
+                                                        "signer": "sandia.gov.",
+                                                        "algorithm": 7,
+                                                        "key_tag": 24743,
+                                                        "original_ttl": 3600,
+                                                        "labels": 3,
+                                                        "inception": "2020-03-06 10:04:44 UTC",
+                                                        "expiration": "2020-04-05 10:04:44 UTC",
+                                                        "signature": "sipDuQQfPyjEz0tPgJHLPTnfEGf9E77Liz3T6PoWIi+POktqUpVFxGDMp2NNwpepsOp3gehIVyu6ID2gXT2lxT6ikN8wyJ+MdmqQCZnCISVh9lY8taHpcw82vAY5rk0LaaROrars2nBH8ql4uny5eqCx8zL7sb66NJRD65elJjo=",
+                                                        "ttl": 3600,
+                                                        "status": "VALID",
+                                                        "servers": [
+                                                            "132.175.7.209",
+                                                            "132.175.7.210",
+                                                            "198.206.219.65",
+                                                            "198.206.219.66",
+                                                            "2620:106:6000:40::65",
+                                                            "2620:106:6000:40::66",
+                                                            "2620:106:6008:7:f0::209",
+                                                            "2620:106:6008:7:f0::210",
+                                                        ],
+                                                        "ns_names": [
+                                                            "ns1.ca.sandia.gov.",
+                                                            "ns2.ca.sandia.gov.",
+                                                            "ns8.sandia.gov.",
+                                                            "ns9.sandia.gov.",
+                                                        ],
+                                                        "query_options": [
+                                                            "UDP_-_EDNS0_4096_D_K"
+                                                        ],
+                                                        "warnings": [
+                                                            {
+                                                                "description": "DNSSEC implementers are recommended against implementing signing with DNSSEC algorithm 7 (RSASHA1NSEC3SHA1).  See RFC 8624, Sec. 3.1.",
+                                                                "code": "ALGORITHM_NOT_RECOMMENDED",
+                                                            }
+                                                        ],
+                                                    }
+                                                ],
+                                            },
+                                            {
+                                                "id": "K3EOPSKB9F62VQF3BBQSM74S8O7H953U.sandia.gov./IN/NSEC3",
+                                                "description": "RRset for K3EOPSKB9F62VQF3BBQSM74S8O7H953U.sandia.gov/NSEC3",
+                                                "name": "K3EOPSKB9F62VQF3BBQSM74S8O7H953U.sandia.gov.",
+                                                "ttl": 3600,
+                                                "type": "NSEC3",
+                                                "rdata": [
+                                                    "1 0 2 95cad2 K3FGV11A7K427O8AP6VJ8U6SRDVA9RL4 A RRSIG"
+                                                ],
+                                                "servers": [
+                                                    "132.175.7.209",
+                                                    "132.175.7.210",
+                                                    "198.206.219.65",
+                                                    "198.206.219.66",
+                                                    "2620:106:6000:40::65",
+                                                    "2620:106:6000:40::66",
+                                                    "2620:106:6008:7:f0::209",
+                                                    "2620:106:6008:7:f0::210",
+                                                ],
+                                                "ns_names": [
+                                                    "ns1.ca.sandia.gov.",
+                                                    "ns2.ca.sandia.gov.",
+                                                    "ns8.sandia.gov.",
+                                                    "ns9.sandia.gov.",
+                                                ],
+                                                "query_options": [
+                                                    "UDP_-_EDNS0_4096_D_K"
+                                                ],
+                                                "rrsig": [
+                                                    {
+                                                        "id": "sandia.gov./7/24743",
+                                                        "description": "RRSIG covering k3eopskb9f62vqf3bbqsm74s8o7h953u.sandia.gov/NSEC3",
+                                                        "signer": "sandia.gov.",
+                                                        "algorithm": 7,
+                                                        "key_tag": 24743,
+                                                        "original_ttl": 3600,
+                                                        "labels": 3,
+                                                        "inception": "2020-03-06 10:04:44 UTC",
+                                                        "expiration": "2020-04-05 10:04:44 UTC",
+                                                        "signature": "QJ/s3I5a3x3HnzgmqXOkFrkZuPZexFzyZlazDu3vcmpal6aosgxteQr6SiuQQ9sHhYxzfKM8csjlfdknZLKvFb84DtnACNqUBJeXicP+BwS7mkC02lQ3YSho6M3gNyFIj0vXOY5fzPrDcWetOhe8JV54nRiAXUWAUyaQ8q2vW+k=",
+                                                        "ttl": 3600,
+                                                        "status": "VALID",
+                                                        "servers": [
+                                                            "132.175.7.209",
+                                                            "132.175.7.210",
+                                                            "198.206.219.65",
+                                                            "198.206.219.66",
+                                                            "2620:106:6000:40::65",
+                                                            "2620:106:6000:40::66",
+                                                            "2620:106:6008:7:f0::209",
+                                                            "2620:106:6008:7:f0::210",
+                                                        ],
+                                                        "ns_names": [
+                                                            "ns1.ca.sandia.gov.",
+                                                            "ns2.ca.sandia.gov.",
+                                                            "ns8.sandia.gov.",
+                                                            "ns9.sandia.gov.",
+                                                        ],
+                                                        "query_options": [
+                                                            "UDP_-_EDNS0_4096_D_K"
+                                                        ],
+                                                        "warnings": [
+                                                            {
+                                                                "description": "DNSSEC implementers are recommended against implementing signing with DNSSEC algorithm 7 (RSASHA1NSEC3SHA1).  See RFC 8624, Sec. 3.1.",
+                                                                "code": "ALGORITHM_NOT_RECOMMENDED",
+                                                            }
+                                                        ],
+                                                    }
+                                                ],
+                                            },
+                                            {
+                                                "id": "IVTPVBBB8S1IP4CBOP4NJD1398QR5P6G.sandia.gov./IN/NSEC3",
+                                                "description": "RRset for IVTPVBBB8S1IP4CBOP4NJD1398QR5P6G.sandia.gov/NSEC3",
+                                                "name": "IVTPVBBB8S1IP4CBOP4NJD1398QR5P6G.sandia.gov.",
+                                                "ttl": 3600,
+                                                "type": "NSEC3",
+                                                "rdata": [
+                                                    "1 0 2 95cad2 IVTUV6ECKB07ULRQPQRGAABMU6E9HB38 A NS SOA MX TXT AAAA RRSIG DNSKEY NSEC3PARAM"
+                                                ],
+                                                "servers": [
+                                                    "132.175.7.209",
+                                                    "132.175.7.210",
+                                                    "198.206.219.65",
+                                                    "198.206.219.66",
+                                                    "2620:106:6000:40::65",
+                                                    "2620:106:6000:40::66",
+                                                    "2620:106:6008:7:f0::209",
+                                                    "2620:106:6008:7:f0::210",
+                                                ],
+                                                "ns_names": [
+                                                    "ns1.ca.sandia.gov.",
+                                                    "ns2.ca.sandia.gov.",
+                                                    "ns8.sandia.gov.",
+                                                    "ns9.sandia.gov.",
+                                                ],
+                                                "query_options": [
+                                                    "UDP_-_EDNS0_4096_D_K"
+                                                ],
+                                                "rrsig": [
+                                                    {
+                                                        "id": "sandia.gov./7/24743",
+                                                        "description": "RRSIG covering ivtpvbbb8s1ip4cbop4njd1398qr5p6g.sandia.gov/NSEC3",
+                                                        "signer": "sandia.gov.",
+                                                        "algorithm": 7,
+                                                        "key_tag": 24743,
+                                                        "original_ttl": 3600,
+                                                        "labels": 3,
+                                                        "inception": "2020-03-06 10:04:44 UTC",
+                                                        "expiration": "2020-04-05 10:04:44 UTC",
+                                                        "signature": "zTHas7jn9e/dB7WcM0EadsrNjlegwL2R/iYMJMCADCEjYfxpOShoYH0ceKSxy+00s6UQ0ODReiE6CS8wiXWEgOsWwzuz+QEj3t9thgEtGOGSsAUr7ABrO/aMSR4Tl5dU+a8JaAhbeSTbXv9/sKbjXA3r9BiDAfxlcF5xafQYhFE=",
+                                                        "ttl": 3600,
+                                                        "status": "VALID",
+                                                        "servers": [
+                                                            "132.175.7.209",
+                                                            "132.175.7.210",
+                                                            "198.206.219.65",
+                                                            "198.206.219.66",
+                                                            "2620:106:6000:40::65",
+                                                            "2620:106:6000:40::66",
+                                                            "2620:106:6008:7:f0::209",
+                                                            "2620:106:6008:7:f0::210",
+                                                        ],
+                                                        "ns_names": [
+                                                            "ns1.ca.sandia.gov.",
+                                                            "ns2.ca.sandia.gov.",
+                                                            "ns8.sandia.gov.",
+                                                            "ns9.sandia.gov.",
+                                                        ],
+                                                        "query_options": [
+                                                            "UDP_-_EDNS0_4096_D_K"
+                                                        ],
+                                                        "warnings": [
+                                                            {
+                                                                "description": "DNSSEC implementers are recommended against implementing signing with DNSSEC algorithm 7 (RSASHA1NSEC3SHA1).  See RFC 8624, Sec. 3.1.",
+                                                                "code": "ALGORITHM_NOT_RECOMMENDED",
+                                                            }
+                                                        ],
+                                                    }
+                                                ],
+                                            },
+                                        ],
+                                        "opt_out": false,
+                                        "closest_encloser": "sandia.gov.",
+                                        "closest_encloser_hash": "IVTPVBBB8S1IP4CBOP4NJD1398QR5P6G.sandia.gov.",
+                                        "next_closest_encloser": "2k7jzvtr4e.sandia.gov.",
+                                        "next_closest_encloser_hash": "TL31NGCP5DJRR3ROTI67V3R8CEQ7JFE2.sandia.gov.",
+                                        "next_closest_encloser_covering": {
+                                            "covered_name": "TL31NGCP5DJRR3ROTI67V3R8CEQ7JFE2.sandia.gov.",
+                                            "nsec_owner": "TL26LANMHHQGVTDPUJ1A02HLJP1L7PG4.sandia.gov.",
+                                            "nsec_next": "TL6KD8MBU9CV2C4272EK5IKO8D728TC5.sandia.gov.",
+                                        },
+                                        "wildcard": "*.sandia.gov.",
+                                        "wildcard_hash": "K3F2I5LOLBRCJ18NJM02MSP1G1014ER4.sandia.gov.",
+                                        "wildcard_covering": {
+                                            "covered_name": "K3F2I5LOLBRCJ18NJM02MSP1G1014ER4.sandia.gov.",
+                                            "nsec3_owner": "K3EOPSKB9F62VQF3BBQSM74S8O7H953U.sandia.gov.",
+                                            "nsec3_next": "K3FGV11A7K427O8AP6VJ8U6SRDVA9RL4.sandia.gov.",
+                                        },
+                                        "status": "VALID",
+                                        "servers": [
+                                            "132.175.7.209",
+                                            "132.175.7.210",
+                                            "198.206.219.65",
+                                            "198.206.219.66",
+                                            "2620:106:6000:40::65",
+                                            "2620:106:6000:40::66",
+                                            "2620:106:6008:7:f0::209",
+                                            "2620:106:6008:7:f0::210",
+                                        ],
+                                        "ns_names": [
+                                            "ns1.ca.sandia.gov.",
+                                            "ns2.ca.sandia.gov.",
+                                            "ns8.sandia.gov.",
+                                            "ns9.sandia.gov.",
+                                        ],
+                                        "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                        "warnings": [
+                                            {
+                                                "description": "The salt value for an NSEC3 record should be empty.  See RFC 9276, Sec. 3.1.",
+                                                "code": "NONEMPTY_NSEC3_SALT",
+                                            }
+                                        ],
+                                        "errors": [
+                                            {
+                                                "description": "An iterations count of 0 must be used in NSEC3 records to alleviate computational burdens.  See RFC 9276, Sec. 3.1.",
+                                                "code": "NONZERO_NSEC3_ITERATION_COUNT",
+                                            }
+                                        ],
+                                    }
+                                ],
+                                "soa": [
+                                    {
+                                        "id": "sandia.gov./IN/SOA",
+                                        "description": "RRset for sandia.gov/SOA",
+                                        "name": "sandia.gov.",
+                                        "ttl": 3600,
+                                        "type": "SOA",
+                                        "rdata": [
+                                            "taurus.sandia.gov. dnsadmin.sandia.gov. 1880513 1800 900 604800 3600"
+                                        ],
+                                        "servers": [
+                                            "132.175.7.209",
+                                            "132.175.7.210",
+                                            "198.206.219.65",
+                                            "198.206.219.66",
+                                            "2620:106:6000:40::65",
+                                            "2620:106:6000:40::66",
+                                            "2620:106:6008:7:f0::209",
+                                            "2620:106:6008:7:f0::210",
+                                        ],
+                                        "ns_names": [
+                                            "ns1.ca.sandia.gov.",
+                                            "ns2.ca.sandia.gov.",
+                                            "ns8.sandia.gov.",
+                                            "ns9.sandia.gov.",
+                                        ],
+                                        "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                        "rrsig": [
+                                            {
+                                                "id": "sandia.gov./7/24743",
+                                                "description": "RRSIG covering sandia.gov/SOA",
+                                                "signer": "sandia.gov.",
+                                                "algorithm": 7,
+                                                "key_tag": 24743,
+                                                "original_ttl": 86400,
+                                                "labels": 2,
+                                                "inception": "2020-03-11 17:35:43 UTC",
+                                                "expiration": "2020-04-10 18:35:43 UTC",
+                                                "signature": "djgi66JElSXlSw2Kkumn46tL/l24BzNyvur4xq7yxJm/Po6/5+5mH03EudAD2SZVBjFb1ggTHQ33c5PEBf2KHpXqyL5HMMArLWeRT2LVHr1Ikyu33dloHIc9Eydy8CX0GIf1nVXPWSpGVA1d1O6BhjrsAjCoV75nPTZ3tSJLdCg=",
+                                                "ttl": 3600,
+                                                "status": "VALID",
+                                                "servers": [
+                                                    "132.175.7.209",
+                                                    "132.175.7.210",
+                                                    "198.206.219.65",
+                                                    "198.206.219.66",
+                                                    "2620:106:6000:40::65",
+                                                    "2620:106:6000:40::66",
+                                                    "2620:106:6008:7:f0::209",
+                                                    "2620:106:6008:7:f0::210",
+                                                ],
+                                                "ns_names": [
+                                                    "ns1.ca.sandia.gov.",
+                                                    "ns2.ca.sandia.gov.",
+                                                    "ns8.sandia.gov.",
+                                                    "ns9.sandia.gov.",
+                                                ],
+                                                "query_options": [
+                                                    "UDP_-_EDNS0_4096_D_K"
+                                                ],
+                                                "warnings": [
+                                                    {
+                                                        "description": "DNSSEC implementers are recommended against implementing signing with DNSSEC algorithm 7 (RSASHA1NSEC3SHA1).  See RFC 8624, Sec. 3.1.",
+                                                        "code": "ALGORITHM_NOT_RECOMMENDED",
+                                                    }
+                                                ],
+                                            }
+                                        ],
+                                    }
+                                ],
+                                "servers": [
+                                    "132.175.7.209",
+                                    "132.175.7.210",
+                                    "198.206.219.65",
+                                    "198.206.219.66",
+                                    "2620:106:6000:40::65",
+                                    "2620:106:6000:40::66",
+                                    "2620:106:6008:7:f0::209",
+                                    "2620:106:6008:7:f0::210",
+                                ],
+                                "ns_names": [
+                                    "ns1.ca.sandia.gov.",
+                                    "ns2.ca.sandia.gov.",
+                                    "ns8.sandia.gov.",
+                                    "ns9.sandia.gov.",
+                                ],
+                                "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                                "cookie_status": {
+                                    "132.175.7.209": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "132.175.7.210": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "198.206.219.65": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "198.206.219.66": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6000:40::65": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6000:40::66": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "NO_COOKIE_OPT",
+                                    },
+                                    "2620:106:6008:7:f0::209": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                    "2620:106:6008:7:f0::210": {
+                                        "request": "CLIENT_COOKIE_ONLY",
+                                        "response": "CLIENT_AND_SERVER_COOKIE",
+                                    },
+                                },
+                            }
+                        ]
+                    },
+                },
+                "dnskey": [
+                    {
+                        "id": "7/36033",
+                        "description": "DNSKEY for sandia.gov (algorithm 7 (RSASHA1-NSEC3-SHA1), key tag 36033)",
+                        "flags": 257,
+                        "protocol": 3,
+                        "algorithm": 7,
+                        "key": "AwEAAb80HHQXbrsrmm8L5T1V3QDoXEEDJpts4S6ttkFVOa+fb4anMU3B7KNK4jgg8sDXMhDfgTWHOc9EEAuy3Obv/6ArD4+385P+EuH5NGLd5f/lWl8GC9S24mDTpe2sNKi4AHJQxnREuI8Oxr/Mh92W5+HWDdIBt5IKH/nu9Wlf76Yg3x8jHZYgxVBMgPGF+UYUMQLKAjtJ/XFRObLLL+RQNdNkBqrQLDkPBxbG1m8rDNa+uCbBiOWGBjZxrjEyQCA/2ZAKQ9lhVFZWuxb8DA3meiu8sfhWb3tbuZHhCb2HniV43oPKICN4GdIDrHQkZCUOzEMKLSyX98VWQoHdaaOT1is=",
+                        "ttl": 86400,
+                        "key_length": 2048,
+                        "key_tag": 36033,
+                        "servers": [
+                            "132.175.7.209",
+                            "132.175.7.210",
+                            "198.206.219.65",
+                            "198.206.219.66",
+                            "2620:106:6000:40::65",
+                            "2620:106:6000:40::66",
+                            "2620:106:6008:7:f0::209",
+                            "2620:106:6008:7:f0::210",
+                        ],
+                        "ns_names": [
+                            "ns1.ca.sandia.gov.",
+                            "ns2.ca.sandia.gov.",
+                            "ns8.sandia.gov.",
+                            "ns9.sandia.gov.",
+                        ],
+                        "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                    },
+                    {
+                        "id": "7/20739",
+                        "description": "DNSKEY for sandia.gov (algorithm 7 (RSASHA1-NSEC3-SHA1), key tag 20739)",
+                        "flags": 257,
+                        "protocol": 3,
+                        "algorithm": 7,
+                        "key": "AwEAAeWCWZhMfUwZSU+3Sqqk3OvDCDPw9sBWL7HioNjo8FI90QdbNYRh6z9Ks2fEoguMRHlTobVbptJ2wlRQPWTyC8qlaWnT82hdj5tpOzNlfuWywRu7Yw+DOBJUT1d1ygwGVl9YbNl2gw4JCbVjqyZl2SogXAXWJecQKrJZgToYW/hkoTUWEnW80j60wwXyeBR6TExVNTsuimV4vNas1nDqKd3jf8fSpszH5CFR/Ytw29f4qaZRxGfgtQf05AwMLrKNfiHXjRnhQ/Wc4irjW4o6J07xJumdVm2edvevOwPc5HvoTcHKueBn+8cyq7FDc0pwutB190FV8WU6XTTQMJQpOAE=",
+                        "ttl": 86400,
+                        "key_length": 2048,
+                        "key_tag": 20739,
+                        "servers": [
+                            "132.175.7.209",
+                            "132.175.7.210",
+                            "198.206.219.65",
+                            "198.206.219.66",
+                            "2620:106:6000:40::65",
+                            "2620:106:6000:40::66",
+                            "2620:106:6008:7:f0::209",
+                            "2620:106:6008:7:f0::210",
+                        ],
+                        "ns_names": [
+                            "ns1.ca.sandia.gov.",
+                            "ns2.ca.sandia.gov.",
+                            "ns8.sandia.gov.",
+                            "ns9.sandia.gov.",
+                        ],
+                        "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                    },
+                    {
+                        "id": "7/24743",
+                        "description": "DNSKEY for sandia.gov (algorithm 7 (RSASHA1-NSEC3-SHA1), key tag 24743)",
+                        "flags": 256,
+                        "protocol": 3,
+                        "algorithm": 7,
+                        "key": "AwEAAfI9/89dtvJPdmC0XbvT73fbjj9DAEQJN4r7lcwpEhCbjUo4HY45YrPCE/+0RQShR6ZhA9mx8YI20KHP8oDspZHKPdCy6ir/Kl/j6hzGJ/lVZLNlicyyiDFfmznf+wqxGwWeEca/1xOJ9U+p7h+l9VC2lhe72nwNlhOjXiNFp7+L",
+                        "ttl": 86400,
+                        "key_length": 1024,
+                        "key_tag": 24743,
+                        "servers": [
+                            "132.175.7.209",
+                            "132.175.7.210",
+                            "198.206.219.65",
+                            "198.206.219.66",
+                            "2620:106:6000:40::65",
+                            "2620:106:6000:40::66",
+                            "2620:106:6008:7:f0::209",
+                            "2620:106:6008:7:f0::210",
+                        ],
+                        "ns_names": [
+                            "ns1.ca.sandia.gov.",
+                            "ns2.ca.sandia.gov.",
+                            "ns8.sandia.gov.",
+                            "ns9.sandia.gov.",
+                        ],
+                        "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                    },
+                ],
+                "zone": {
+                    "servers": {
+                        "ns1.ca.sandia.gov.": {
+                            "glue": ["198.206.219.65", "2620:106:6000:40::65"],
+                            "auth": ["198.206.219.65", "2620:106:6000:40::65"],
+                        },
+                        "ns2.ca.sandia.gov.": {
+                            "glue": ["198.206.219.66", "2620:106:6000:40::66"],
+                            "auth": ["198.206.219.66", "2620:106:6000:40::66"],
+                        },
+                        "ns8.sandia.gov.": {
+                            "glue": ["132.175.7.209", "2620:106:6008:7:f0::209"],
+                            "auth": ["132.175.7.209", "2620:106:6008:7:f0::209"],
+                        },
+                        "ns9.sandia.gov.": {
+                            "glue": ["132.175.7.210", "2620:106:6008:7:f0::210"],
+                            "auth": ["132.175.7.210", "2620:106:6008:7:f0::210"],
+                        },
+                    }
+                },
+                "delegation": {
+                    "ds": [
+                        {
+                            "id": "7/20739/1",
+                            "description": "DS record(s) corresponding to DNSKEY for sandia.gov (algorithm 7 (RSASHA1-NSEC3-SHA1), key tag 20739)",
+                            "algorithm": 7,
+                            "key_tag": 20739,
+                            "digest_type": 1,
+                            "digest": "PKRh/1SWvHKncgVkidlEYh7ad04=",
+                            "ttl": 3600,
+                            "status": "ALGORITHM_IGNORED",
+                            "servers": [
+                                "69.36.153.30",
+                                "69.36.157.30",
+                                "81.19.194.30",
+                                "209.112.123.30",
+                                "2001:500:4431::2:30",
+                                "2620:74:27::2:30",
+                                "2620:74:28::2:30",
+                            ],
+                            "ns_names": [
+                                "a.gov-servers.net.",
+                                "b.gov-servers.net.",
+                                "c.gov-servers.net.",
+                                "d.gov-servers.net.",
+                            ],
+                            "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                            "warnings": [
+                                {
+                                    "description": "DNSSEC implementers are prohibited from implementing signing with DS algorithm 1 (SHA-1).  See RFC 8624, Sec. 3.2.",
+                                    "code": "DIGEST_ALGORITHM_PROHIBITED",
+                                },
+                                {
+                                    "description": "DS records with digest type 1 (SHA-1) are ignored when DS records with digest type 2 (SHA-256) exist in the same RRset.  See RFC 4509, Sec. 3.",
+                                    "code": "DS_DIGEST_ALGORITHM_IGNORED",
+                                },
+                            ],
+                        },
+                        {
+                            "id": "7/20739/2",
+                            "description": "DS record(s) corresponding to DNSKEY for sandia.gov (algorithm 7 (RSASHA1-NSEC3-SHA1), key tag 20739)",
+                            "algorithm": 7,
+                            "key_tag": 20739,
+                            "digest_type": 2,
+                            "digest": "DF9M3/iCRmWs0dihMpUbGTxZ+n/mz3sfgkhMJbQQzcY=",
+                            "ttl": 3600,
+                            "status": "VALID",
+                            "servers": [
+                                "69.36.153.30",
+                                "69.36.157.30",
+                                "81.19.194.30",
+                                "209.112.123.30",
+                                "2001:500:4431::2:30",
+                                "2620:74:27::2:30",
+                                "2620:74:28::2:30",
+                            ],
+                            "ns_names": [
+                                "a.gov-servers.net.",
+                                "b.gov-servers.net.",
+                                "c.gov-servers.net.",
+                                "d.gov-servers.net.",
+                            ],
+                            "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                        },
+                        {
+                            "id": "7/36033/1",
+                            "description": "DS record(s) corresponding to DNSKEY for sandia.gov (algorithm 7 (RSASHA1-NSEC3-SHA1), key tag 36033)",
+                            "algorithm": 7,
+                            "key_tag": 36033,
+                            "digest_type": 1,
+                            "digest": "4ztFJs7PKht8cz1kWzDNXJEtlTg=",
+                            "ttl": 3600,
+                            "status": "ALGORITHM_IGNORED",
+                            "servers": [
+                                "69.36.153.30",
+                                "69.36.157.30",
+                                "81.19.194.30",
+                                "209.112.123.30",
+                                "2001:500:4431::2:30",
+                                "2620:74:27::2:30",
+                                "2620:74:28::2:30",
+                            ],
+                            "ns_names": [
+                                "a.gov-servers.net.",
+                                "b.gov-servers.net.",
+                                "c.gov-servers.net.",
+                                "d.gov-servers.net.",
+                            ],
+                            "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                            "warnings": [
+                                {
+                                    "description": "DNSSEC implementers are prohibited from implementing signing with DS algorithm 1 (SHA-1).  See RFC 8624, Sec. 3.2.",
+                                    "code": "DIGEST_ALGORITHM_PROHIBITED",
+                                },
+                                {
+                                    "description": "DS records with digest type 1 (SHA-1) are ignored when DS records with digest type 2 (SHA-256) exist in the same RRset.  See RFC 4509, Sec. 3.",
+                                    "code": "DS_DIGEST_ALGORITHM_IGNORED",
+                                },
+                            ],
+                        },
+                        {
+                            "id": "7/36033/2",
+                            "description": "DS record(s) corresponding to DNSKEY for sandia.gov (algorithm 7 (RSASHA1-NSEC3-SHA1), key tag 36033)",
+                            "algorithm": 7,
+                            "key_tag": 36033,
+                            "digest_type": 2,
+                            "digest": "Rndiar5p/R2N2OXeEFM9KyZKkae/GrOmv/xMQIo3Uv8=",
+                            "ttl": 3600,
+                            "status": "VALID",
+                            "servers": [
+                                "69.36.153.30",
+                                "69.36.157.30",
+                                "81.19.194.30",
+                                "209.112.123.30",
+                                "2001:500:4431::2:30",
+                                "2620:74:27::2:30",
+                                "2620:74:28::2:30",
+                            ],
+                            "ns_names": [
+                                "a.gov-servers.net.",
+                                "b.gov-servers.net.",
+                                "c.gov-servers.net.",
+                                "d.gov-servers.net.",
+                            ],
+                            "query_options": ["UDP_-_EDNS0_4096_D_K"],
+                        },
+                    ],
+                    "status": "SECURE",
+                },
+            },
+        },
+    ],
+]
