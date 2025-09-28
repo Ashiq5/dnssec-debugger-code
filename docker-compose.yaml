@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  dns-zone-gen:
+    build:
+      context: Docker/
+      dockerfile: Dockerfile
+    container_name: ErroneousZoneGeneration
+    cap_add:
+      - NET_ADMIN
+    user: "${USER_ID}:${GROUP_ID}"
+    volumes:
+      - ./:/data/ErroneousZoneGeneration
+    command: ["/usr/local/bin/start.sh"]
+    stdin_open: true
+    tty: true
+    ports:
+      - "2222:2222"
+
