@@ -1,4 +1,4 @@
-# ErroneousZoneGeneration
+# ZReplicator & DFixer
 
 This repository contains the codebase and the artifact generation (table 6 and 7) of the paper : **Decoding DNSSEC Errors at Scale: An Automated DNSSEC Error Resolution Framework using Insights from DNSViz Logs**
 
