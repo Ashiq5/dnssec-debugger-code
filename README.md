@@ -2,7 +2,7 @@
 
 This repository contains the codebase and the artifact generation (table 6 and 7) of the paper : **Decoding DNSSEC Errors at Scale: An Automated DNSSEC Error Resolution Framework using Insights from DNSViz Logs**
 
-It contains :
+It contains:
 - The code and the instruction to generate table 6 and 7 of the paper in the folder **paper_artifacts**
 - The source code of all the packages written for our experiment in the **src/** folder.
 - Everything needed to run the measurement container in the **Docker** folder.
