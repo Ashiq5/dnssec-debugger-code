@@ -1,4 +1,3 @@
-
 import dns.zone
 from dns import rdataclass, rdatatype
 
@@ -81,9 +80,14 @@ class ZonefileGenerator:
                 # DNSKEYS are signed by Key Signing Keys
                 if r.rdtype == rdatatype.DNSKEY:
                     for KSK in ksks + zsks:
-                        if signing_parameters is not None and KSK.origin_id != "ERROR_HANDLER":
+                        if (
+                            signing_parameters is not None
+                            and KSK.origin_id != "ERROR_HANDLER"
+                        ):
                             if KSK.origin_id not in signing_parameters.DNSKEY:
-                                logger.logger.debug("Skipping a Key, was not in the origin one")
+                                logger.logger.debug(
+                                    "Skipping a Key, was not in the origin one"
+                                )
                                 continue
 
                         rrset = dns.rrset.from_rdata_list(name, r.ttl, r)
@@ -105,7 +109,10 @@ class ZonefileGenerator:
                         if len(r) == 0:
                             continue
 
-                        if signing_parameters is not None and ZSK.origin_id != "ERROR_HANDLER":
+                        if (
+                            signing_parameters is not None
+                            and ZSK.origin_id != "ERROR_HANDLER"
+                        ):
                             if ZSK.origin_id not in signing_parameters.OTHER:
                                 logger.logger.debug(
                                     "Skipping a Key for other record, was not in the origin one"
@@ -130,8 +137,6 @@ class ZonefileGenerator:
                         except Exception as e:
                             raise e
 
-
-
                 self.zone.replace_rdataset(name, rdataset)
 
     def add_dnskey(self, ttl: int = TTL):
@@ -150,7 +155,9 @@ class ZonefileGenerator:
         ttl=TTL,
     ):
         rdataset = dns.rdataset.Rdataset(dns.rdataclass.IN, dns.rdatatype.DS, ttl=ttl)
-        ds_origin = set(["/".join(_k.split("/")[:-1]) for _k in list(self.ds_map.keys())])
+        ds_origin = set(
+            ["/".join(_k.split("/")[:-1]) for _k in list(self.ds_map.keys())]
+        )
         ds_origin.add("CHILD_ERROR")
         for key in sub.get_keys():
             if key.origin_id in ds_origin:

@@ -23,9 +23,29 @@ from dns.rdtypes.ANY.DNSKEY import DNSKEY
 from utils.logging_utils import logger
 from .utils import base64_encode_int
 
-key_algo_list_usable = [7,8,10,13,14]
+key_algo_list_usable = [7, 8, 10, 13, 14]
 
-key_algo_list_not_usable = [0,1, 2,3,5,4,6,11,12,15,16,18,19,21,200,252,253,254,255,]
+key_algo_list_not_usable = [
+    0,
+    1,
+    2,
+    3,
+    5,
+    4,
+    6,
+    11,
+    12,
+    15,
+    16,
+    18,
+    19,
+    21,
+    200,
+    252,
+    253,
+    254,
+    255,
+]
 
 
 def get_random_algo_not_in_list(algo_list):
@@ -36,6 +56,7 @@ def get_random_algo_not_in_list(algo_list):
         )
 
     return random.choice(list(diff))
+
 
 class DigestAlgorithm(IntEnum):
     "As defined by IANA : https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml"
@@ -410,11 +431,10 @@ def generate_bind_private_key(
             b64_scalar = base64.b64encode(raw_scalar).decode("ascii")
             bind_key_info = f"PrivateKey: {b64_scalar}\n"
 
-
         elif algorithm in [15, 16]:
             if algorithm == 15:  # Ed25519
                 private_key = ed25519.Ed25519PrivateKey.generate()
-            else :  # Ed448
+            else:  # Ed448
                 private_key = ed448.Ed448PrivateKey.generate()
 
             bind_key_info = f"PrivateKey: {base64.b64encode((private_key.private_bytes_raw())).decode('utf-8')}\n"
@@ -860,6 +880,7 @@ def generate_nsec_record(subdomain_list: List[str]):
 
     return nsec_data
 
+
 class KeysOption:
     def __init__(
         self,
@@ -873,7 +894,9 @@ class KeysOption:
         self.revoked = revoked
         if origin_id is None:
 
-            logger.logger.debug("Cannot find the origin id of the current key in the options")
+            logger.logger.debug(
+                "Cannot find the origin id of the current key in the options"
+            )
         self.origin_id = origin_id
 
 
@@ -883,10 +906,12 @@ class KeysOptions:
         if self.list is None:
             self.list = []
 
+
 class NsecVersion(IntEnum):
     NSEC3 = 0
     NSEC = 1
     NO = 2
+
 
 class NsecOption:
 

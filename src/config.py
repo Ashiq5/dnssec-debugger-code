@@ -40,13 +40,15 @@ class Config:
     ZONE_CONF_FILE = "/data/bind1/named.conf.local"
     SERVER_ZONE_DIR = "/data/bind1/zones/"
 
-    # Secondary bind server paths  
+    # Secondary bind server paths
     ZONE_DIR_SECOND_NS = "/data/bind2/zones/"
     ZONE_CONF_FILE_SECONDARY_NS = "/data/bind2/named.conf.local"
     SERVER_ZONE_DIR_SECOND_NS = "/data/bind2/zones/"
     SERVER_ZONE_CONF_DIR_SECOND_NS = "/data/bind2/"
     SERVER_KEY_DIR_SECOND_NS = "/data/bind2/keys/"
-    SERVER_ZONE_CONF_PATH_SECOND_NS = f"{SERVER_ZONE_CONF_DIR_SECOND_NS}named.conf.local"
+    SERVER_ZONE_CONF_PATH_SECOND_NS = (
+        f"{SERVER_ZONE_CONF_DIR_SECOND_NS}named.conf.local"
+    )
 
     # DNSSEC defaults
     DEFAULT_SALT = "8D4557157F54153F"
@@ -68,6 +70,7 @@ class Config:
         f"<name> <extra_args> | dnsviz grok -o {GENERATED_GROK_PATH}"
     )
     NSEC3_KEY_NOT_USED_PATH = "/tmp/nsec3-key-not-used.txt"
+
     @classmethod
     def validate(cls) -> None:
         """Validate configuration and create necessary directories."""
@@ -85,12 +88,12 @@ class Config:
             Path(directory).mkdir(parents=True, exist_ok=True)
 
         # Validate domain format
-        if not cls.DOMAIN.endswith('.'):
+        if not cls.DOMAIN.endswith("."):
             raise ValueError("DOMAIN must end with '.'")
 
         # Validate nameservers
         for ns in [cls.NS1, cls.NS2, cls.NS3, cls.NS4]:
-            if not ns.endswith('.'):
+            if not ns.endswith("."):
                 raise ValueError(f"Nameserver {ns} must end with '.'")
 
     @classmethod
@@ -108,7 +111,7 @@ class Config:
                 "working": cls.WORKING_PATH,
                 "zones": cls.ZONE_DIR,
                 "keys": cls.BASE_KEY_DIR,
-            }
+            },
         }
 
 

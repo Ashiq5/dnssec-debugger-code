@@ -48,7 +48,7 @@ def validate_domain_name_safe(domain: str) -> bool:
         return False
 
     # Basic checks that won't break existing functionality
-    if not domain.endswith('.'):
+    if not domain.endswith("."):
         return False
 
     if len(domain) > 255:  # RFC limit

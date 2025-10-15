@@ -15,7 +15,8 @@ from crypto.dnssec import (
     dns_sort_key,
     generate_nsec_record,
     generate_nsec3_records,
-    nsec3_hash, get_random_algo_not_in_list
+    nsec3_hash,
+    get_random_algo_not_in_list,
 )
 from domaingenerator import Domain
 from domaingenerator import ZonefileGenerator
@@ -155,7 +156,9 @@ def revoke_bit_dnskey(children: ZonefileGenerator, keyFlags: KeyFlags):
 
                     if not modification_done and current_keyf == keyFlags:
                         # Set the Revoke bit (bit 7)
-                        logger.logger.debug(f"Original DNSKEY Record at {name}: {rdata}")
+                        logger.logger.debug(
+                            f"Original DNSKEY Record at {name}: {rdata}"
+                        )
                         modification_done = True
 
                         new_flags = rdata.flags | 0x80
@@ -167,7 +170,9 @@ def revoke_bit_dnskey(children: ZonefileGenerator, keyFlags: KeyFlags):
                             rdata.algorithm,
                             rdata.key,
                         )
-                        logger.logger.debug(f"Modified DNSKEY Record at {name}: {modified_rdata}")
+                        logger.logger.debug(
+                            f"Modified DNSKEY Record at {name}: {modified_rdata}"
+                        )
 
                         new_rdataset.add(modified_rdata, ttl=rdataset.ttl)
                         node.replace_rdataset(new_rdataset)
@@ -283,7 +288,10 @@ def remove_last_nsec_records(zone_children: ZonefileGenerator):
             if rdataset.rdtype != dns.rdatatype.NSEC:
                 continue  # Skip non-RRSIG records
 
-            if rdataset.fto_text().split("NSEC ")[1].split(" ")[0] == zone_children.fqdn:
+            if (
+                rdataset.fto_text().split("NSEC ")[1].split(" ")[0]
+                == zone_children.fqdn
+            ):
                 logger.logger.debug(rdataset.to_text())
                 node.rdatasets.remove(rdataset)  # Remove empty RRSIG set
 
@@ -511,7 +519,9 @@ def modify_all_rrsigs(zone_children: ZonefileGenerator):
                         modified_sig,
                     )
 
-                    logger.logger.debug("Original RRSIG: ", rdata.signature, rdata.key_tag)
+                    logger.logger.debug(
+                        "Original RRSIG: ", rdata.signature, rdata.key_tag
+                    )
                     logger.logger.debug("Modified RRSIG: ", modified_sig)
                     new_rdataset.add(modified_rrsig, ttl=rdataset.ttl)
 
@@ -587,7 +597,9 @@ def add_a_ds_to_the_parent_zone(children_fqdn: str, zone_parent: ZonefileGenerat
             )
             new_rdataset.add(dummy_ds, ttl=TTL)
 
-            logger.logger.debug(f"Added a new dummy DS record {children_fqdn}: {new_rdataset}")
+            logger.logger.debug(
+                f"Added a new dummy DS record {children_fqdn}: {new_rdataset}"
+            )
 
 
 def remove_a_record_from_subdomain_a(children: Domain):
@@ -833,7 +845,9 @@ def manipulate_nsec_bitmap(
                 set([rdataset.rdtype for rdataset in node.rdatasets]),
             )
             types_present = get_types_present(node, mandatory_types, error_list, which)
-            logger.logger.debug("Modified Type bitmap for " + owner_name + " is ", types_present)
+            logger.logger.debug(
+                "Modified Type bitmap for " + owner_name + " is ", types_present
+            )
             rdataset = node.get_rdataset(dns.rdataclass.IN, dns.rdatatype.NSEC)
             if rdataset:
                 for rdata in rdataset:
@@ -880,7 +894,9 @@ def manipulate_nsec3_bitmap(
                 set([rdataset.rdtype for rdataset in node.rdatasets]),
             )
             types_present = get_types_present(node, mandatory_types, error_list, which)
-            logger.logger.debug("Modified Type bitmap for " + owner_name + " is ", types_present)
+            logger.logger.debug(
+                "Modified Type bitmap for " + owner_name + " is ", types_present
+            )
             for hname, hnode in zone_to_change.zone.nodes.items():
                 if str(hname) == hashed_name:
                     rdataset = hnode.get_rdataset(
@@ -908,7 +924,9 @@ def manipulate_nsec3_bitmap(
                                 type=dns.rdatatype.NSEC3,
                                 new_rdata=nsec3_rdata,
                             )
-                            logger.logger.debug("Replaced rdata and RRSIG of " + hashed_name)
+                            logger.logger.debug(
+                                "Replaced rdata and RRSIG of " + hashed_name
+                            )
                             return
 
 

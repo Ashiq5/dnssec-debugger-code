@@ -19,13 +19,18 @@ def get_errcodes(zone_name, dom2err):
                         # REFERRAL_WITH_DS type errors are available here
                         if "delegation -> insecurity_proof" in path:
                             for terr in dom2err[domain][path]:
-                                if terr["code"] in {"REFERRAL_WITH_DS", "REFERRAL_WITHOUT_NS", "REFERRAL_WITH_SOA"}:
+                                if terr["code"] in {
+                                    "REFERRAL_WITH_DS",
+                                    "REFERRAL_WITHOUT_NS",
+                                    "REFERRAL_WITH_SOA",
+                                }:
                                     err_codes.add(terr["code"])
                             continue
 
                     for err in dom2err[domain][path]:
                         err_codes.add(err["code"])
     return err_codes
+
 
 KEY2ALGO_MAPPING = {
     1: "RSAMD5",

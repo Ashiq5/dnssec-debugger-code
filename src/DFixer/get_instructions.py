@@ -1,12 +1,35 @@
 from config import INSTRUCTION_PATH, X3LD_KEY_DIR, ZONE_DIR
-from utils import KEY2ALGO_MAPPING, keysize_required_algorithms, DEFAULT_ALGORITHM_TEXT, get_errcodes
+from utils import (
+    KEY2ALGO_MAPPING,
+    keysize_required_algorithms,
+    DEFAULT_ALGORITHM_TEXT,
+    get_errcodes,
+)
 from utils.logging_utils import logger
 from .execute_instructions import identify_zone_from_instr
-from .util import get_dnsviz_validation_cmd, run_dnsviz_validation, load_grok, find_errors_in_analysis, \
-    identify_zone_name, get_parent_zone, get_doe_params, populate_ds_map, populate_key_map, identify_auth_servers, \
-    pick_topologically_first, generate_resign_command, identify_erroneous_servers, identify_revoked_zone_sep_keys, \
-    identify_revoked_zone_keys, identify_non_revoked_zone_keys, identify_invalid_keys, find_out_dnskey_rrsig_key_tags, \
-    get_ttl_and_signature_validity, identify_delegated_names, identify_missing_algorithm
+from .util import (
+    get_dnsviz_validation_cmd,
+    run_dnsviz_validation,
+    load_grok,
+    find_errors_in_analysis,
+    identify_zone_name,
+    get_parent_zone,
+    get_doe_params,
+    populate_ds_map,
+    populate_key_map,
+    identify_auth_servers,
+    pick_topologically_first,
+    generate_resign_command,
+    identify_erroneous_servers,
+    identify_revoked_zone_sep_keys,
+    identify_revoked_zone_keys,
+    identify_non_revoked_zone_keys,
+    identify_invalid_keys,
+    find_out_dnskey_rrsig_key_tags,
+    get_ttl_and_signature_validity,
+    identify_delegated_names,
+    identify_missing_algorithm,
+)
 
 
 def _dump_and_replace_instr_for_study(instructions):
@@ -115,14 +138,13 @@ def get_instructions(zone_name: str = None, name: str = None, extra_qtypes: str 
         logger.logger.debug("First errcode in topological order is", top_errcode)
 
         # Step 7: generate manual signing command based on DoE parameters
-        common_instr = "Suggested commands are applicable if you are using BIND as your authoritative server software but should be easily extendable to other software as well. Replace the variables in angle brackets with values of your own environment."
+        common_instr = "Suggested commands are applicable if you are using BIND as your authoritative server software but should be easily extensible to other software as well. Replace the variables in angle brackets with values of your own environment. "
         resign_command = generate_resign_command(zone_name, doe_params)
         instructions = [
             common_instr,
             "Parent zone -p " + parent_zone_name + " , invalid zone -c " + zone_name,
         ]
         # todo: add the root cause at the start of the set of instructions. should be easily doable but will do it later
-
 
         # Step 8: formulate instructions based on the error
         if top_errcode == "DNSKEY_MISSING_FROM_SERVERS":

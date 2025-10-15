@@ -20,7 +20,8 @@ oterg = DnssecError(
     priority=DnssecPriority.LAST_AFTER_SIGNATURE,
 )
 texp = DnssecError(
-    error=DnssecErrorType.TTL_BEYOND_EXPIRATION, priority=DnssecPriority.LAST_AFTER_SIGNATURE
+    error=DnssecErrorType.TTL_BEYOND_EXPIRATION,
+    priority=DnssecPriority.LAST_AFTER_SIGNATURE,
 )
 ens = DnssecError(
     error=DnssecErrorType.EXISTING_NAME_COVERED, priority=DnssecPriority.AFTER_SIGNATURE

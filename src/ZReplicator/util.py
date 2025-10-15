@@ -4,20 +4,48 @@ import glob
 import dns
 
 from config import *
-from crypto import KeysOption, KeysOptions, NsecOption, NsecVersion, DnssecKey, DnssecKeyInfo, KeyAlgorithm, \
-    KeyFlags
+from crypto import (
+    KeysOption,
+    KeysOptions,
+    NsecOption,
+    NsecVersion,
+    DnssecKey,
+    DnssecKeyInfo,
+    KeyAlgorithm,
+    KeyFlags,
+)
 from domaingenerator import SOAContent, AContent, DomainSpecificParameters, Domain
 from domaingenerator import SigningParameters, ZonefileGenerator
 from utils import get_errcodes
 from utils.logging_utils import logger
 from .dnssec_error import DnssecPriority, DnssecError, DnssecErrorType, DnssecErrors
-from .error_handler import get_nsec_parameters_from_zone, modify_last_char_ds, modify_all_rrsigs, \
-    remove_one_ksk_from_the_children, \
-    remove_rrsig_ksk, change_apex_nsec, remove_record_type_for_a_subdomain, remove_nsec, remove_all_nsec_rr, \
-    remove_last_nsec3_records, remove_nsec_for_a_specific_subdomain, remove_all_subdomains_rrsig, remove_all_rrsig_ksk, \
-    revoke_one_ksk, revoke_one_zsk, add_a_ds_to_the_parent_zone, remove_rrsig_for_an_algo, remove_all_rrsig_zsk, \
-    add_a_zsk_to_children, replace_rdata_and_rrsig, change_nsec_next, change_nsec3_next, modify_last_bit_of_nsec3_hash, \
-    manipulate_nsec_bitmap, manipulate_nsec3_bitmap
+from .error_handler import (
+    get_nsec_parameters_from_zone,
+    modify_last_char_ds,
+    modify_all_rrsigs,
+    remove_one_ksk_from_the_children,
+    remove_rrsig_ksk,
+    change_apex_nsec,
+    remove_record_type_for_a_subdomain,
+    remove_nsec,
+    remove_all_nsec_rr,
+    remove_last_nsec3_records,
+    remove_nsec_for_a_specific_subdomain,
+    remove_all_subdomains_rrsig,
+    remove_all_rrsig_ksk,
+    revoke_one_ksk,
+    revoke_one_zsk,
+    add_a_ds_to_the_parent_zone,
+    remove_rrsig_for_an_algo,
+    remove_all_rrsig_zsk,
+    add_a_zsk_to_children,
+    replace_rdata_and_rrsig,
+    change_nsec_next,
+    change_nsec3_next,
+    modify_last_bit_of_nsec3_hash,
+    manipulate_nsec_bitmap,
+    manipulate_nsec3_bitmap,
+)
 
 
 # from .error_handler import
@@ -38,7 +66,7 @@ def prepare_root():
 
     # Instead we are going to load the key
     # Load root keys
-  # DOCKER
+    # DOCKER
     ksk_root = DnssecKeyInfo.from_file(
         BASE_KEY_DIR, fqdn=root_domain_name, algo=8, key_tag=16969
     )
@@ -50,8 +78,6 @@ def prepare_root():
     # Add the keys to root
     root_domain_class.add_key(zsk_root)
     root_domain_class.add_key(ksk_root)
-
-
 
     ns1_sub = Domain.generate(
         "ns1." + root_domain_class.get_fqdn(),
@@ -234,14 +260,15 @@ def handle_error(
     elif error.error_type == DnssecErrorType.DNSKEY_MISSING_FROM_SERVERS:
         # Add a new key to children
 
-        children_use_case.add_key(DnssecKeyInfo(
-            key=DnssecKey.generate(algorithm=KeyAlgorithm.RSASHA256),
-            type=KeyFlags.ZSK,
-            origin_id="ERROR_HANDLER"
-        ))
+        children_use_case.add_key(
+            DnssecKeyInfo(
+                key=DnssecKey.generate(algorithm=KeyAlgorithm.RSASHA256),
+                type=KeyFlags.ZSK,
+                origin_id="ERROR_HANDLER",
+            )
+        )
 
-
-        #remove_a_zsk_from_the_children_for_secondary_server(zone_children)
+        # remove_a_zsk_from_the_children_for_secondary_server(zone_children)
 
     elif error.error_type == DnssecErrorType.REMOVE_RRSIG_FROM_AN_ALGO_DNSKEY:
         key_algos = children_use_case.get_list_keys_algo()
@@ -295,9 +322,9 @@ def handle_error(
             type=dns.rdatatype.A,
             ttl=2678400,
             rrsig_ttl=2678400,
-            expiration=(datetime.now(tz=datetime.timezone.utc) + datetime.timedelta(days=5)).strftime(
-                "%Y%m%d%H%M%S"
-            ),
+            expiration=(
+                datetime.now(tz=datetime.timezone.utc) + datetime.timedelta(days=5)
+            ).strftime("%Y%m%d%H%M%S"),
         )
     elif error.error_type == DnssecErrorType.EXISTING_NAME_COVERED:
         if children_nsec_params[0] == "NSEC":
@@ -450,7 +477,7 @@ def make_one_new_case(
     children_specific_parameters: List[DomainSpecificParameters] = None,
     grand_children_use_case: Domain = None,
     signing_parameters: SigningParameters = SigningParameters(dict()),
-    ds_map:dict= None
+    ds_map: dict = None,
 ):
     if not inception:
         inception = DEFAULT_INCEPTION
@@ -535,7 +562,10 @@ def make_one_new_case(
     if unsigned_children_use_case:
         parent_use_case.add_subdomain(unsigned_children_use_case)
     zone_parent = ZonefileGenerator(
-        parent_use_case, ttl=TTL, nameservers=parent_use_case.NS.get_nameservers(), ds_map=ds_map
+        parent_use_case,
+        ttl=TTL,
+        nameservers=parent_use_case.NS.get_nameservers(),
+        ds_map=ds_map,
     )
 
     # handle errors after parent zone creation
@@ -721,7 +751,6 @@ def make_one_new_case(
             grand_children_use_case=grand_children_use_case,
         )
 
-
     zone_parent.to_file(ZONE_DIR, signed=True)
     zone_children.to_file(ZONE_DIR, signed=True)
     zone_grand_children.to_file(ZONE_DIR, signed=True)
@@ -753,14 +782,18 @@ def make_one_new_case(
         if HAVE_SECONDARY_ZONE:
             if err.error_type == DnssecErrorType.DNSKEY_MISSING_FROM_SERVERS:
                 zone_children = ZonefileGenerator(
-                    children_use_case, ttl=TTL, nameservers=children_use_case.NS.get_nameservers()
+                    children_use_case,
+                    ttl=TTL,
+                    nameservers=children_use_case.NS.get_nameservers(),
                 )
 
                 if children_nsec_option.nsec_version == NsecVersion.NSEC:
                     zone_children.add_nsec_domains(ttl=TTL)
                 elif children_nsec_option.nsec_version == NsecVersion.NSEC3:
                     zone_children.add_nsec3_domains(
-                        salt=children_nsec_option.salt, iterations=children_nsec_option.nsec_iterations, ttl=TTL
+                        salt=children_nsec_option.salt,
+                        iterations=children_nsec_option.nsec_iterations,
+                        ttl=TTL,
                     )
                 elif children_nsec_option.nsec_version == NsecVersion.NO:
                     # Do nothing

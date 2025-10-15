@@ -20,28 +20,33 @@ class StructuredLogger:
             # Console handler with colors
             console_handler = logging.StreamHandler(sys.stdout)
             # console_format = '%(asctime)s - %(name)s - \033[%(color)sm%(levelname)s\033[0m - %(message)s'
-            console_format = '\033[%(color)sm%(levelname)s\033[0m - %(message)s'
+            console_format = "\033[%(color)sm%(levelname)s\033[0m - %(message)s"
             console_handler.setFormatter(ColoredFormatter(console_format))
             self.logger.addHandler(console_handler)
 
             # File handler if specified
             if log_file:
                 file_handler = logging.FileHandler(log_file)
-                file_format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+                file_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
                 file_handler.setFormatter(logging.Formatter(file_format))
                 self.logger.addHandler(file_handler)
 
-    def log_analysis_step(self, analysis_id: str, step: str, status: str,
-                          details: Optional[Dict[str, Any]] = None):
+    def log_analysis_step(
+        self,
+        analysis_id: str,
+        step: str,
+        status: str,
+        details: Optional[Dict[str, Any]] = None,
+    ):
         """Log analysis steps for research tracking."""
         log_data = {
-            'analysis_id': analysis_id,
-            'step': step,
-            'status': status,
-            'timestamp': datetime.utcnow().isoformat()
+            "analysis_id": analysis_id,
+            "step": step,
+            "status": status,
+            "timestamp": datetime.utcnow().isoformat(),
         }
         if details:
-            log_data['details'] = details
+            log_data["details"] = details
 
         if status == "error":
             self.logger.error(f"STEP_FAILED: {json.dumps(log_data)}")
@@ -52,7 +57,9 @@ class StructuredLogger:
 
     def log_error_generation(self, zone_name: str, error_types: list, success: bool):
         """Log error generation for research tracking."""
-        self.logger.info(f"ERROR_GEN: zone={zone_name}, errors={len(error_types)}, success={success}")
+        self.logger.info(
+            f"ERROR_GEN: zone={zone_name}, errors={len(error_types)}, success={success}"
+        )
 
     def log_fix_attempt(self, zone_name: str, error_code: str, success: bool):
         """Log fix attempts."""
@@ -64,15 +71,15 @@ class ColoredFormatter(logging.Formatter):
     """Add colors to console output."""
 
     COLORS = {
-        'DEBUG': '36',  # Cyan
-        'INFO': '32',  # Green
-        'WARNING': '33',  # Yellow
-        'ERROR': '31',  # Red
-        'CRITICAL': '35'  # Magenta
+        "DEBUG": "36",  # Cyan
+        "INFO": "32",  # Green
+        "WARNING": "33",  # Yellow
+        "ERROR": "31",  # Red
+        "CRITICAL": "35",  # Magenta
     }
 
     def format(self, record):
-        record.color = self.COLORS.get(record.levelname, '0')
+        record.color = self.COLORS.get(record.levelname, "0")
         return super().format(record)
 
 

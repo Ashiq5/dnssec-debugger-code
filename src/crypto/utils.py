@@ -99,6 +99,7 @@ def load_private_key_from_bind(file_path: str):
     private_key = rsa_numbers.private_key()
     return private_key
 
+
 def load_ecdsa_p384_private_key_from_bind_file(filename):
     """
     Loads an ECDSA P-256 (algorithm 13) private key from a BIND .private file.
@@ -266,6 +267,7 @@ def private_key_to_public_key_base64(private_key):
     # Convert to Base64
     public_key_base64 = base64.b64encode(public_key_bytes).decode("utf-8")
     return public_key_base64
+
 
 def base64_encode_int(value):
     """Encodes an integer to Base64 in big-endian format."""

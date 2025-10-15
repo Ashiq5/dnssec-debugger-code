@@ -6,7 +6,12 @@ from datetime import datetime, timezone
 
 from publicsuffixlist import PublicSuffixList
 
-from config import GENERATED_GROK_PATH, DNSVIZ_ANALYSIS_CMD, DOMAIN, NSEC3_KEY_NOT_USED_PATH
+from config import (
+    GENERATED_GROK_PATH,
+    DNSVIZ_ANALYSIS_CMD,
+    DOMAIN,
+    NSEC3_KEY_NOT_USED_PATH,
+)
 from crypto.dnssec import NsecOption, NsecVersion
 from utils import DEFAULT_ALGORITHM_NUMBER, CAT
 from utils.logging_utils import logger
@@ -464,8 +469,6 @@ def get_parent_zone(analysis, zone):
         return key
 
 
-
-
 def update_server(case):
     commands = [
         ["rndc", "-k", "/data/bind1/rndc.key", "-p", "953", "reload"],
@@ -474,15 +477,11 @@ def update_server(case):
 
     for cmd in commands:
         try:
-            res_cmd = subprocess.run(
-                cmd, check=True, capture_output=True, text=True
-            )
+            res_cmd = subprocess.run(cmd, check=True, capture_output=True, text=True)
             logger.logger.debug(f"\n[✓] {' '.join(cmd)}\n{res_cmd.stdout}")
         except subprocess.CalledProcessError as e:
             logger.logger.debug(f"[✗] {' '.join(cmd)} failed:\n{e.stderr}")
     return
-
-
 
 
 def pick_topologically_first(codes, ignored_errcodes):
@@ -546,11 +545,11 @@ def pick_topologically_first(codes, ignored_errcodes):
             return
 
 
-def _pretty_print(instructions)->str:
+def _pretty_print(instructions) -> str:
     res = ""
     for ind, instr in enumerate(instructions):
         if ind > 1:
-            res+= (str(ind - 1) + ". " + instr)
+            res += str(ind - 1) + ". " + instr + " "
         else:
-            res += (instr)
+            res += instr + " "
     return res

@@ -5,7 +5,14 @@ from typing import List
 from faker import Faker
 
 from crypto import DnssecKeyInfo, KeyFlags
-from .rrtype_gen import (AAAAContent, AContent, EMPTYContent, NSContent, SOAContent, TXTContent)
+from .rrtype_gen import (
+    AAAAContent,
+    AContent,
+    EMPTYContent,
+    NSContent,
+    SOAContent,
+    TXTContent,
+)
 
 
 class DomainInstruction(IntEnum):

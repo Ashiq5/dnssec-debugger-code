@@ -104,6 +104,7 @@ class DnssecErrorType(Enum):
     )
     RRSIG_LABELS_EXCEED_RRSET_OWNER_LABELS_WC = "signature-invalid-case-2"
 
+
 class DnssecError:
     def __init__(self, error: DnssecErrorType, priority):
         self.error_type = error

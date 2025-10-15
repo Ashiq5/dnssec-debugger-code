@@ -18,12 +18,12 @@ class GrokData(DataPath):
         self.line = line
         self.GrokFqdnInfos: List[GrokFqdnInfo] = []
 
-        '''       
+        """       
        ---
        This is the structure of our specific file measurements.
        However the following for code release we take into consideration the it"s only the dnsviz grok output
        --- 
-       '''
+       """
 
         if homemade_measurement:
             try:
@@ -36,20 +36,13 @@ class GrokData(DataPath):
             except:
                 self.json_data = None
 
-
             self.json_data = self.js[1][1]
-
 
         else:
             try:
                 self.json_data = json.loads(self.line)
-            except :
+            except:
                 self.json_data = None
-
-
-
-
-
 
         for fqdn in self.json_data.keys():
             self.GrokFqdnInfos.append(

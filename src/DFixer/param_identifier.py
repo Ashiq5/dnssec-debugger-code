@@ -4,15 +4,29 @@ from publicsuffixlist import PublicSuffixList
 
 from ZReplicator import DnssecErrors
 from config import PARENT_NS, CASE, DEFAULT_SALT, CHILD_NS, DOMAIN
-from crypto import KeyFlags, KeysOption, KeysOptions, get_random_algo_not_in_list, KeyAlgorithm, NsecVersion
+from crypto import (
+    KeyFlags,
+    KeysOption,
+    KeysOptions,
+    get_random_algo_not_in_list,
+    KeyAlgorithm,
+    NsecVersion,
+)
 from crypto import key_algo_list_usable, key_algo_list_not_usable, NsecOption
 from domaingenerator import DomainSpecificParameters, DomainInstruction
 from grokreader import GrokData
 from utils import get_errcodes
 from utils.logging_utils import logger
 from .errors import *
-from .util import find_out_dnskey_rrsig_key_tags, find_errors_in_analysis, identify_zone_name, get_parent_zone, \
-    populate_ds_map, get_doe_params, populate_key_map
+from .util import (
+    find_out_dnskey_rrsig_key_tags,
+    find_errors_in_analysis,
+    identify_zone_name,
+    get_parent_zone,
+    populate_ds_map,
+    get_doe_params,
+    populate_key_map,
+)
 
 
 def create_key_option(dnskey_map) -> KeysOptions:
@@ -25,7 +39,7 @@ def create_key_option(dnskey_map) -> KeysOptions:
         elif dnskey_map[key][2] == 257 or dnskey_map[key][2] == 385:
             tp = KeyFlags.KSK
         else:
-            logger.logger.error("Wrong key flags" , dnskey_map[key][2])
+            logger.logger.error("Wrong key flags", dnskey_map[key][2])
             raise Exception("Unknown key flags")
         set_algo.add(algorithm)
         key_list.append(KeysOption(algorithm=algorithm, type=tp, origin_id=key))
@@ -44,10 +58,9 @@ def create_key_option(dnskey_map) -> KeysOptions:
         for algo in algo_to_modify:
             map_algo[algo] = algo_left.pop()
 
-    for k in key_list :
+    for k in key_list:
         if k.algorithm in map_algo.keys():
             k.algorithm = map_algo[k.algorithm]
-
 
     return KeysOptions(key_list)
 
@@ -93,7 +106,11 @@ def identify_case_for_missing_sep_for_alg(analysis, zone_name, ds_map, dnskey_ma
 
 
 def identify_meta_parameters(
-    id_, analysis, psl: PublicSuffixList = None, grok_data: GrokData = None, generated_for_artifacts=False
+    id_,
+    analysis,
+    psl: PublicSuffixList = None,
+    grok_data: GrokData = None,
+    generated_for_artifacts=False,
 ):
     """
     Identify meta parameters to pass to main.py for emulating the errors in given analysis
@@ -128,8 +145,11 @@ def identify_meta_parameters(
     if not parent_zone_name or not children_zone_name.endswith(parent_zone_name):
         return "Exception!!!Probably Delegated"
 
-
-    if "delegation" in analysis[parent_zone_name] and analysis[parent_zone_name]["delegation"].get("status", None) == "INSECURE" and not generated_for_artifacts:
+    if (
+        "delegation" in analysis[parent_zone_name]
+        and analysis[parent_zone_name]["delegation"].get("status", None) == "INSECURE"
+        and not generated_for_artifacts
+    ):
         return "Exception!!!Unsigned Parent Zone"
 
     # We can use this to construct DS status for the children zone
@@ -261,7 +281,6 @@ def identify_meta_parameters(
                 # since it does not matter much, we can randomly choose any of the two
                 r = random.uniform(0, 1)
 
-
                 errors_list.append(make_signature_invalid)
 
         elif errcode == "DIGEST_INVALID":
@@ -356,7 +375,11 @@ def identify_meta_parameters(
         elif errcode == "MISSING_RRSIG":
             if len(children_key_list.list) == 0:
                 children_key_list.list.append(
-                    KeysOption(algorithm=KeyAlgorithm.RSASHA256, type=KeyFlags.KSK, origin_id="CHILD_ERROR")
+                    KeysOption(
+                        algorithm=KeyAlgorithm.RSASHA256,
+                        type=KeyFlags.KSK,
+                        origin_id="CHILD_ERROR",
+                    )
                 )
             errors_list.append(remove_all_sub_rrsig)
             qdomains.add("a." + query_domain)
@@ -367,7 +390,9 @@ def identify_meta_parameters(
                 [k.algorithm for k in children_key_list.list]
             )
             children_key_list.list.append(
-                KeysOption(algorithm=new_algo, type=KeyFlags.ZSK,  origin_id="CHILD_ERROR")
+                KeysOption(
+                    algorithm=new_algo, type=KeyFlags.ZSK, origin_id="CHILD_ERROR"
+                )
             )
         elif errcode == "DNSKEY_REVOKED_DS":
             errors_list.append(revoke_a_ksk)
@@ -383,7 +408,9 @@ def identify_meta_parameters(
                 [k.algorithm for k in children_key_list.list]
             )
             children_key_list.list.append(
-                KeysOption(algorithm=new_algo, type=KeyFlags.KSK, origin_id="ERROR_HANDLER")
+                KeysOption(
+                    algorithm=new_algo, type=KeyFlags.KSK, origin_id="ERROR_HANDLER"
+                )
             )
         elif errcode == "NO_SEP":
             pass
@@ -409,5 +436,5 @@ def identify_meta_parameters(
         children_specific_domain_parameters,
         qdomains,
         extra_qtypes,
-        children_ds_map
+        children_ds_map,
     )
