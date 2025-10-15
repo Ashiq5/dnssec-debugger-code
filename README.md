@@ -9,6 +9,8 @@ It contains:
 - The **docker-compose.yaml** file to build and run the container.
 - **main.py** which is a simplified version of our experiment utilities. 
 
+Please run **bash lint.sh** if you make changes to the python files in the repository.
+
 ```text
 .
 ├── main.py
@@ -28,8 +30,6 @@ It contains:
 
 ## Run DFixer / ZReplicator
 
-
-
 ```
 docker compose up --build
 ```
@@ -40,7 +40,7 @@ docker exec -it  ErroneousZoneGeneration /usr/bin/python3 /data/ErroneousZoneGen
 
 ## Containerized Environment
 
-We opted for a single Docker container setup since our experiment requires managing two Authoritative Name Servers. 
+We opted for a single docker container setup since our experiment requires managing two authoritative name servers. 
 The container runs two BIND instances that can be controlled via RNDC on ports 953 and 954.
 All necessary python dependencies are pre-installed in the container for seamless experiment execution.
 

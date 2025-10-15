@@ -17,6 +17,5 @@ tzdata==2025.2
 urllib3==2.3.0
 tqdm
 flask
-requests
 tldextract
 pandas
