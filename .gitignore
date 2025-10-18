@@ -180,3 +180,12 @@ cython_debug/
 .pypirc
 .idea
 venv/*
+
+# env file
+.env
+
+# todos
+todos.txt
+
+# scripts
+scripts/

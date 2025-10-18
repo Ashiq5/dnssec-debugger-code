@@ -1,0 +1,44 @@
+import subprocess
+from redis import Redis
+import os
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.sql import text
+import datetime
+
+# --- Database setup ---
+DB_USER = os.getenv("POSTGRES_USER", "postgres")
+DB_PASS = os.getenv("POSTGRES_PASSWORD", "postgres")
+DB_HOST = os.getenv("POSTGRES_HOST", "localhost")
+DB_PORT = os.getenv("POSTGRES_PORT", "5432")
+DB_NAME = os.getenv("POSTGRES_DB", "dnssec_debugger")
+
+DATABASE_URL = (
+    f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+)
+engine = create_engine(DATABASE_URL)
+SessionLocal = sessionmaker(bind=engine)
+
+
+def run_main(domain: str, record_id: int):
+    # Run your main.py logic
+    result = subprocess.run(
+        ["python", "main.py", "--resolve", domain],
+        capture_output=True,
+        text=True,
+        timeout=300,
+    )
+
+    output_text = result.stdout.strip() or result.stderr.strip()
+
+    # Update database with result
+    db = SessionLocal()
+    db.execute(
+        text(
+            "UPDATE requests SET status='DONE', output=:output, completed_at=:time WHERE id=:id"
+        ),
+        {"output": output_text, "time": datetime.datetime.utcnow(), "id": record_id},
+    )
+    db.commit()
+    db.close()
+    return output_text

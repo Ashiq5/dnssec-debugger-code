@@ -50,6 +50,9 @@ echo "BIND1 PID: $BIND1_PID"
 echo "BIND2 PID: $BIND2_PID"
 echo "SSH PID: $SSH_PID"
 
+# -- run the worker.py which takes job from redis queue
+python3 /data/ErroneousZoneGeneration/worker.py
+
 # Function to cleanup on exit
 cleanup() {
     echo "Shutting down services..."

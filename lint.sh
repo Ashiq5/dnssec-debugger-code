@@ -6,3 +6,7 @@ black src/grokreader/*.py
 black src/utils/*.py
 black src/ZReplicator/*.py
 black src/config.py
+black backend/*.py
+black app.py
+black worker.py
+black worker_tasks.py

@@ -9,8 +9,6 @@ It contains:
 - The **docker-compose.yaml** file to build and run the container.
 - **main.py** which is a simplified version of our experiment utilities. 
 
-Please run **bash lint.sh** if you make changes to the python files in the repository.
-
 ```text
 .
 ├── main.py
@@ -59,3 +57,6 @@ The original DNSViz dataset cannot be publicly shared due to privacy and licensi
 - Sufficient disk space for container images and experimental data
 - Network access for DNS resolution
 
+## Changes
+- This repo is open-source. Please feel free to contribute.
+- Please run **bash lint.sh** before pushing your code if you make changes to the python files in the repository.
