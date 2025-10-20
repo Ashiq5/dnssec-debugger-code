@@ -1,5 +1,4 @@
 import subprocess
-from redis import Redis
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -9,7 +8,7 @@ import datetime
 # --- Database setup ---
 DB_USER = os.getenv("POSTGRES_USER", "postgres")
 DB_PASS = os.getenv("POSTGRES_PASSWORD", "postgres")
-DB_HOST = os.getenv("POSTGRES_HOST", "localhost")
+DB_HOST = os.getenv("POSTGRES_HOST_FROM_DOCKER", "host.docker.internal")
 DB_PORT = os.getenv("POSTGRES_PORT", "5432")
 DB_NAME = os.getenv("POSTGRES_DB", "dnssec_debugger")
 
@@ -23,7 +22,7 @@ SessionLocal = sessionmaker(bind=engine)
 def run_main(domain: str, record_id: int):
     # Run your main.py logic
     result = subprocess.run(
-        ["python", "main.py", "--resolve", domain],
+        ["python3", "/data/ErroneousZoneGeneration/main.py", "--resolve", domain],
         capture_output=True,
         text=True,
         timeout=300,

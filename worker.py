@@ -1,5 +1,8 @@
 from rq import Worker, Queue
 from redis import Redis
+import sys
+
+sys.path.append("/data/ErroneousZoneGeneration")
 
 redis_conn = Redis(host="redis", port=6379)
 q = Queue(connection=redis_conn, name="main_tasks")

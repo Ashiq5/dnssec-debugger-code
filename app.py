@@ -7,12 +7,13 @@ from backend.models import RequestLog
 from redis import Redis
 import os
 import rq
+from worker_tasks import run_main
 
 # Create tables automatically
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="DNSSEC Debugger Web")
-redis_conn = Redis(host="redis", port=6379, decode_responses=True)
+redis_conn = Redis(host="localhost", port=6379, decode_responses=True)
 queue = rq.Queue("main_tasks", connection=redis_conn)
 
 # ---- Correct frontend path setup ----

@@ -29,6 +29,7 @@ RUN apt update && apt install -y \
     nano \
     openssh-server \
     gosu \
+    redis\
  && rm -rf /var/lib/apt/lists/*
 
 # Install Python 3.13 and requirements
