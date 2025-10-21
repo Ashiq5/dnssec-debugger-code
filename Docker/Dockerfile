@@ -30,6 +30,7 @@ RUN apt update && apt install -y \
     openssh-server \
     gosu \
     redis\
+    postgresql-client\
  && rm -rf /var/lib/apt/lists/*
 
 # Install Python 3.13 and requirements
