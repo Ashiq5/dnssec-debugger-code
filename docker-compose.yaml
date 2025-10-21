@@ -13,6 +13,9 @@ services:
     command: ["/usr/local/bin/start.sh"]
     stdin_open: true
     tty: true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    # can't scale bcs of port restrictions right now
     ports:
       - "2222:2222"
     restart: always

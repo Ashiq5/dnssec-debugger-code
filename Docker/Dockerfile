@@ -31,6 +31,7 @@ RUN apt update && apt install -y \
     gosu \
     redis\
     postgresql-client\
+    net-tools\
  && rm -rf /var/lib/apt/lists/*
 
 # Install Python 3.13 and requirements
