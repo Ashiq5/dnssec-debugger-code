@@ -291,7 +291,7 @@ def process_a_grok_file(
                     after_fix_errcodes = []
                     instructions = get_instructions(zone_name)
                     if instructions:
-                        logger.logger.info(_pretty_print(instructions))
+                        logger.logger.debug(_pretty_print(instructions))
                         try:
                             execute_instructions(instructions)
                         except Exception as e:
@@ -304,7 +304,7 @@ def process_a_grok_file(
                         dom2err = find_errors_in_analysis(temp_analysis, psl=psl)
                         zone_name = identify_zone_name(temp_analysis)
 
-                        logger.logger.debug(f"After applying fix {zone_name}")
+                        logger.logger.info(f"After applying fix {zone_name}")
                         if not zone_name:
                             continue
                         temp = get_errcodes(zone_name, dom2err)
@@ -332,7 +332,7 @@ def process_a_grok_file(
                 iteration_fix += 1
 
             result.add("fix_transition_errcodes", list(fix_transition_errcodes))
-            result.add("fix_itterations", iteration_fix)
+            result.add("fix_iterations", iteration_fix)
 
         return result.return_and_write()
 
@@ -360,7 +360,7 @@ def compare_old_and_new_res(res_old, res_new):
         logger.logger.info(f"New code give the same results")
 
 
-def main():
+def main(domain=None):
     """Safe version of your main function."""
 
     # Create logs directory
@@ -398,7 +398,7 @@ def main():
             )
             logger.logger.debug(result)
             line = json.dumps([-1, [200, json.loads(result.stdout)]])
-            process_a_grok_file(
+            return process_a_grok_file(
                 line, OUTPUT_FILE, psl, root_zone_file, primary_zone, secondary_zone
             )
         elif args.ids:
@@ -406,7 +406,7 @@ def main():
             finput = open(BATCH_GROK_PATH)
             for line in finput:
                 if json.loads(line)[0] in ids:
-                    process_a_grok_file(
+                    return process_a_grok_file(
                         line,
                         OUTPUT_FILE,
                         psl,
@@ -414,7 +414,20 @@ def main():
                         primary_zone,
                         secondary_zone,
                     )
+        elif domain:
+            logger.logger.info("Starting DNSSEC analysis with improved error handling")
 
+            logger.logger.info(f"Retrieving grok info for fqdn {domain}")
+            grok_resolve_command = f"dnsviz probe -A {domain} -a . | dnsviz grok"
+            logger.logger.info(f"using grok command : {grok_resolve_command}")
+            result = subprocess.run(
+                grok_resolve_command, shell=True, capture_output=True
+            )
+            logger.logger.debug(result)
+            line = json.dumps([-1, [200, json.loads(result.stdout)]])
+            return process_a_grok_file(
+                line, OUTPUT_FILE, psl, root_zone_file, primary_zone, secondary_zone
+            )
         else:
             print(
                 "This is simplified  version of DNSSEC analysis. Only --resolve option can be used."

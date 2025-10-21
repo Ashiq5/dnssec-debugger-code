@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Job Result</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 2rem;
+        }
+
+        #output {
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+<h2>Job Result</h2>
+<div id="status"></div>
+<pre id="output"></pre>
+<pre id="created_at"></pre>
+
+<script>
+    const statusDiv = document.getElementById("status");
+    const outputPre = document.getElementById("output");
+    const created_at = document.getElementById("created_at");
+
+    const params = new URLSearchParams(window.location.search);
+    const jobId = params.get("job_id");
+
+    async function fetchResult() {
+        const resp = await fetch(`/result/${jobId}`);
+        const data = await resp.json();
+        statusDiv.textContent = `Status: ${data.status}`;
+        // todo: change format
+        created_at.textContent = `Created At: ${data.created_at}`;
+        if (data.status === "Done") {
+            outputPre.textContent = data.output || "No output available.";
+        } else if (data.status === "Queued") {
+            outputPre.textContent = "Job in progress. Please wait.";
+            setTimeout(fetchResult, 5000); // poll every 5s until finished
+        } else {
+            outputPre.textContent = "No such job found.";
+            created_at.textContent = "";
+            statusDiv.textContent = "";
+        }
+    }
+
+    if (!jobId) {
+        statusDiv.textContent = "No job ID specified.";
+    } else {
+        fetchResult();
+    }
+</script>
+</body>
+</html>

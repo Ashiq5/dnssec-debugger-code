@@ -7,7 +7,7 @@ from backend.models import RequestLog
 from redis import Redis
 import os
 import rq
-from worker_tasks import run_main
+import uuid
 
 # Create tables automatically
 Base.metadata.create_all(bind=engine)
@@ -29,13 +29,21 @@ print(current_dir, project_root, frontend_dir)
 # app.mount("/static", StaticFiles(directory=frontend_path), name="static")
 
 
-# Serve index.html at root "/"
+# Serve HTML endpoints "/"
 @app.get("/")
 def serve_index():
     index_path = os.path.join(frontend_dir, "index.html")
     if not os.path.exists(index_path):
         raise HTTPException(status_code=404, detail="index.html not found")
     return FileResponse(index_path)
+
+
+@app.get("/dfixer")
+def serve_dfixer_result():
+    filepath = os.path.join(frontend_dir, "dfixer.html")
+    if not os.path.exists(filepath):
+        raise HTTPException(status_code=404, detail="file not found")
+    return FileResponse(filepath, media_type="text/html")
 
 
 class RunRequest(BaseModel):
@@ -45,19 +53,19 @@ class RunRequest(BaseModel):
 @app.post("/run")
 def run(req: RunRequest, db: Session = Depends(get_db)):
     # Save to database
-    record = RequestLog(domain=req.domain, output="Processing...", status="Queued")
+    job_id = str(uuid.uuid4())
+    record = RequestLog(
+        domain=req.domain, output="Processing...", status="Queued", job_id=job_id
+    )
     db.add(record)
     db.commit()
     db.refresh(record)
 
-    # Fake computation or call to your main.py logic
-    # Replace this block with your actual logic
-    # output = f"Processed domain: {req.domain} at {datetime.utcnow()}"
     # Push job to Redis
-    job = queue.enqueue("worker_tasks.run_main", req.domain, record.id)
-    print("job_id", job.get_id(), "status", "queued", req.domain, record.id)
-    return {"job_id": job.get_id(), "status": "queued"}
-    # return {"id": record.id, "domain": record.domain, "output": record.output, "created_at": record.created_at}
+    job = queue.enqueue("worker_tasks.run_main", req.domain, record.id, job_id=job_id)
+    job_url = f"/dfixer?job_id={job_id}"
+
+    return {"job_id": job.get_id(), "status": "Queued", "result_url": job_url}
 
 
 @app.get("/history")
@@ -76,3 +84,19 @@ def get_history(db: Session = Depends(get_db)):
         }
         for r in records
     ]
+
+
+@app.get("/result/{job_id}")
+def get_result(job_id: str, db: Session = Depends(get_db)):
+    record = db.query(RequestLog).filter(RequestLog.job_id == job_id).first()
+    if record:
+        return {
+            "status": record.status,
+            "domain": record.domain if record else None,
+            "output": record.output if record else None,
+            "created_at": record.created_at,
+        }
+    else:
+        return {
+            "status": "Unavailable",
+        }
