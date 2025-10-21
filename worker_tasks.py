@@ -5,6 +5,7 @@ from sqlalchemy.sql import text
 import datetime
 import main
 import json
+import re
 
 
 # --- Database setup ---
@@ -20,33 +21,35 @@ SessionLocal = sessionmaker(bind=engine)
 
 
 def run_main(domain: str, record_id: int):
-    # Run your main.py logic
-    # result = subprocess.run(
-    #     ["python3", "/data/ErroneousZoneGeneration/main.py", "--resolve", domain],
-    #     capture_output=True,
-    #     text=True,
-    #     timeout=600,
-    # )
-    #
-    # output_text = result.stdout.strip() or result.stderr.strip()
-
-    # todo: need some manipulation in case of empty
-    instructions = []
+    output = ""
     result = json.loads(main.main(domain))
-    for iteration in result["fix_transition_errcodes"]:
-        for fixes in iteration["fixes"]:
-            for fix in fixes["instructions"]:
-                # print(iteration["instructions"], type(iteration["fixes"]))
-                instructions.append(fix)
+    if len(result["intended_errcodes"]) == 0:
+        output = "No DNSSEC errors to fix, congratulations!"
+    else:
+        for ind, iteration in enumerate(result.get("fix_transition_errcodes", [])):
+            output += "Iteration " + str(ind + 1) + ". "
+            fixed_errors_in_this_iteration = list(set(iteration["errors_before_fix"]).difference(set(iteration["errors_after_fix"])))
+            output += "Fixed " + ", ".join(fixed_errors_in_this_iteration) + " errors in this iteration.\n\n"
+            for fixes in iteration.get("fixes", []):
+                find = 0
+                for fix in fixes.get("instructions", []):
+                    if "Parent zone" in fix:
+                        continue
+                    if "erroneouszonegeneration.ovh" in fix:
+                        fix = re.sub(r'\S*erroneouszonegeneration\.ovh\S*', '<ZONE>', fix)
+                    output += str(find + 1) + ". " + fix + "\n"
+                    find = find + 1
+        if not output:
+            output = "Sorry, something went wrong in DFixer. Please try again."
 
     # Update database with result
     db = SessionLocal()
     db.execute(
         text(
-            "UPDATE requests SET status='Done', output=:output, completed_at=:time WHERE id=:id"
+            "UPDATE requests SET status='Completed', output=:output, completed_at=:time WHERE id=:id"
         ),
         {
-            "output": "".join(instructions),
+            "output": output,
             "time": datetime.datetime.utcnow(),
             "id": record_id,
         },

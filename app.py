@@ -8,6 +8,7 @@ from redis import Redis
 import os
 import rq
 import uuid
+from datetime import timezone
 
 # Create tables automatically
 Base.metadata.create_all(bind=engine)
@@ -48,6 +49,20 @@ def serve_dfixer_result():
 
 class RunRequest(BaseModel):
     domain: str
+
+
+def format_timestamp_utc(dt) -> str:
+    """Convert a datetime (naive or offset-aware) to UTC and format as 'YYYY-MM-DD HH:MM:SS UTC'."""
+    if dt is None:
+        return "Invalid date"
+
+    # If naive datetime, assume it's in local time (convert to UTC)
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+
+    # Convert to UTC and format
+    dt_utc = dt.astimezone(timezone.utc)
+    return dt_utc.strftime("%Y-%m-%d %H:%M:%S UTC")
 
 
 @app.post("/run")
@@ -94,7 +109,7 @@ def get_result(job_id: str, db: Session = Depends(get_db)):
             "status": record.status,
             "domain": record.domain if record else None,
             "output": record.output if record else None,
-            "created_at": record.created_at,
+            "created_at": format_timestamp_utc(record.created_at),
         }
     else:
         return {

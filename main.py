@@ -124,7 +124,7 @@ def process_a_grok_file(
 
         result.add("zone_name", zone_name)
 
-        # Compute the errcodes that are on the inputed file
+        # Compute the errcodes that are on the input file
         intended_errcodes = get_errcodes(zone_name, dom2err)
 
         result.add("intended_errcodes", list(intended_errcodes))

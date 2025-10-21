@@ -29,25 +29,33 @@
     const statusDiv = document.getElementById("status");
     const resultBox = document.getElementById("result-box");
 
+    function isValidDomain(domain) {
+        const pattern = /^(?!-)(?:[a-zA-Z0-9-]{0,62}[a-zA-Z0-9]\.)+[a-zA-Z]{2,}$/;
+        return pattern.test(domain.trim());
+    }
+
     // Handle submit
     submitBtn.onclick = async () => {
         const elem = document.getElementById("domain");
-        // todo: add domain validation
         const domain = elem.value.trim();
-        if (!domain) return alert("Enter a domain");
-
+        if (!isValidDomain(domain)) {
+          return alert("Please enter a valid domain name (e.g. example.com)");
+        }
+        if (!domain) {
+            return alert("Enter a domain");
+        }
         statusDiv.textContent = "Submitting...";
         const resp = await fetch("/run", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({domain})
         });
-        // todo: nullify content after load
-        elem.textContent = "";
+        if (!resp.ok) throw new Error("Request failed");
         const data = await resp.json();
+        elem.value = "";
         if (data.job_id) {
             const link = `${window.location.origin}/dfixer?job_id=${data.job_id}`;
-            statusDiv.innerHTML = `Job queued! <a href="${link}">View result</a>`;
+            statusDiv.innerHTML = `Job queued! <a href="${link}">View result</a>. Please save this link for later access.`;
         } else {
             statusDiv.textContent = "Error submitting job.";
         }
