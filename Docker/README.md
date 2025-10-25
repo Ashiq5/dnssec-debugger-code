@@ -1,6 +1,6 @@
-# Docker Environement for the expirement
+# Docker Environment for the experiment
 
-To run a single docker container for the environement launch the following command on the root of this repository : 
+To run a single docker container for the environment launch the following command on the root of this repository : 
 
 ```
 docker compose up
@@ -16,9 +16,9 @@ docker compose up --scale worker=5
 
 ## Bash access to a container for debugging purposes
 
-In comparaison to the previous version we don't expose port 2222 anymore.
+In comparison to the previous version we don't expose port 2222 anymore.
 
-However, sshd is still running and you can connect using the docker container's IP.
+However, sshd is still running, and you can connect using the docker container's IP.
 
 You can list the containers' IPs with 
 
