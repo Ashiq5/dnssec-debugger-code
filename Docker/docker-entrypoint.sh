@@ -48,5 +48,3 @@ echo "=== Starting Services ==="
 
 # Execute the original command
 exec "$@"
-
-EXPOSE 2222
