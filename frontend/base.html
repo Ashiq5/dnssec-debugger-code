@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="generator" content="Hugo 0.89.4"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>DNSSEC Debugger</title>
+{#    <base href="https:/dnssec-debugger.netsecurelab.org/">#}
+    <base href="http://127.0.0.1:8000">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700" rel="stylesheet">
+    <noscript>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='css/noscript.css') }}">
+    </noscript>
+</head>
+
+<body class="container">
+<nav class="container-fluid navbar navbar-default">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"
+                aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar">&nbsp;</span>
+            <span class="icon-bar">&nbsp;</span>
+            <span class="icon-bar">&nbsp;</span>
+        </button>
+        <a class="navbar-brand" href="/">DNSSEC Debugger Web</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/abstract">Abstract</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        </ul>
+    </div>
+</nav>
+
+<script type="text/javascript">
+    var sc_project = 11603023;
+    var sc_invisible = 1;
+    var sc_security = "a906280a";
+    var scJsHost = (("https:" == document.location.protocol) ?
+        "https://secure." : "http://www.");
+    document.write("<script type='text/javascript' src='" +
+        scJsHost +
+        "statcounter.com/counter/counter.js'></" + "script>");
+</script>
+<noscript>
+    <div class="statcounter"><a title="Web Analytics"
+                                href="http://statcounter.com/" target="_blank"><img
+            class="statcounter"
+            src="//c.statcounter.com/11603023/0/a906280a/1/" alt="Web Analytics"></a>
+    </div>
+</noscript>
+<script src="{{ url_for('static', path='js/jquery.1.12.4.min.js') }}"></script>
+<script src="{{ url_for('static', path='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', path='js/script.js') }}"></script>
+<noscript>
+    <div class="alert alert-warning" role="alert">
+        <strong>JavaScript disabled!</strong> This page requires JavaScript, you might not be able to access all content
+        with JavaScript disabled.
+    </div>
+</noscript>
+
+<main class="container-fluid">
+    <script>
+        var clicky_site_ids = clicky_site_ids || [];
+        clicky_site_ids.push(101238267);
+    </script>
+    <script async src="{{ url_for('static', path='js/jquery.1.12.4.min.js') }}"></script>
+    <p>
+        <noscript>
+                <p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101238267ns.gif"/></p>
+        </noscript>
+    </p>
+    <div class="jumbotron">
+        <div class="container">
+            <h3 align='right'><i>ACM Internet Measurement Conference 2025</i></h3>
+            <h2 align='right'><a href="https://taejoong.github.io/files/publications/ashiq-2025-dnssec.pdf" target="_blank">
+                Decoding DNSSEC Errors at Scale: An Automated DNSSEC Error Resolution Framework using Insights from DNSViz Logs</a></h2>
+            <h3 align='right'>
+                <a href="https://ashiq5.github.io/">Md. Ishtiaq Ashiq<sup>†</sup></a>,<br>
+                <a href="https://hureau.com/">Olivier Hureau<sup>‡</sup></a>,<br>
+                <a href="https://casey.byu.edu/">Casey Deccio<sup>*</sup></a>,<br>
+                <a href="https://taejoong.github.io">Taejoong "Tijay" Chung<sup>†</sup></a>,
+            </h3>
+            <h5 align='right'>
+                <sup>†</sup>Virginia Tech,
+                <sup>‡</sup>Univ. Grenoble Alpes,
+                <sup>*</sup>Brigham Young University,
+            </h5>
+        </div>
+    </div>
+    {% block content %}{% endblock %}
+</main>
+<footer class="container-fluid page-footer" style="display: flex; align-items: center">
+{#    This&nbsp;<a href="https://taejoong.github.io/files/publications/ashiq-2025-mtasts.pdf" target="_blank">paper</a> &nbsp;has been accepted at ACM Internet Measurement Conference '25.#}
+</footer>
+</body>
+</html>

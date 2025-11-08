@@ -1,10 +1,12 @@
 from fastapi import FastAPI, Depends, HTTPException, Request
-from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
+from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 from backend.database import Base, engine, get_db
 from backend.models import RequestLog
 from redis import Redis
+from fastapi.responses import HTMLResponse
 import os
 import rq
 import uuid
@@ -26,25 +28,45 @@ project_root = os.path.dirname(current_dir)
 
 # 3️⃣ Build the absolute path to the 'frontend' directory
 frontend_dir = os.path.join(current_dir, "frontend")
+app.mount("/static", StaticFiles(directory=frontend_dir + "/static"), name="static")
 print(current_dir, project_root, frontend_dir)
-# app.mount("/static", StaticFiles(directory=frontend_path), name="static")
+
+
+# Tell FastAPI where to look for templates
+templates = Jinja2Templates(directory=frontend_dir)
 
 
 # Serve HTML endpoints "/"
-@app.get("/")
-def serve_index():
+@app.get("/", response_class=HTMLResponse)
+def serve_index(request: Request):
     index_path = os.path.join(frontend_dir, "index.html")
     if not os.path.exists(index_path):
         raise HTTPException(status_code=404, detail="index.html not found")
-    return FileResponse(index_path)
+    return templates.TemplateResponse("index.html", {"request": request})
 
 
-@app.get("/dfixer")
-def serve_dfixer_result():
-    filepath = os.path.join(frontend_dir, "dfixer.html")
-    if not os.path.exists(filepath):
-        raise HTTPException(status_code=404, detail="file not found")
-    return FileResponse(filepath, media_type="text/html")
+@app.get("/abstract", response_class=HTMLResponse)
+def serve_abstract(request: Request):
+    path = os.path.join(frontend_dir, "abstract.html")
+    if not os.path.exists(path):
+        raise HTTPException(status_code=404, detail="abstract.html not found")
+    return templates.TemplateResponse("abstract.html", {"request": request})
+
+
+@app.get("/contact", response_class=HTMLResponse)
+def serve_contact(request: Request):
+    path = os.path.join(frontend_dir, "contact.html")
+    if not os.path.exists(path):
+        raise HTTPException(status_code=404, detail="contact.html not found")
+    return templates.TemplateResponse("contact.html", {"request": request})
+
+
+@app.get("/dfixer", response_class=HTMLResponse)
+def serve_dfixer(request: Request):
+    path = os.path.join(frontend_dir, "dfixer.html")
+    if not os.path.exists(path):
+        raise HTTPException(status_code=404, detail="dfixer file not found")
+    return templates.TemplateResponse("dfixer.html", {"request": request})
 
 
 class RunRequest(BaseModel):
@@ -83,22 +105,23 @@ def run(req: RunRequest, db: Session = Depends(get_db)):
     return {"job_id": job.get_id(), "status": "Queued", "result_url": job_url}
 
 
-@app.get("/history")
-def get_history(db: Session = Depends(get_db)):
-    records = (
-        db.query(RequestLog).order_by(RequestLog.created_at.desc()).limit(20).all()
-    )
-    return [
-        {
-            "id": r.id,
-            "domain": r.domain,
-            "output": r.output,
-            "status": r.status,
-            "created_at": r.created_at,
-            "complete_at": r.completed_at,
-        }
-        for r in records
-    ]
+# remove the history API so that people do not get access
+# @app.get("/history")
+# def get_history(db: Session = Depends(get_db)):
+#     records = (
+#         db.query(RequestLog).order_by(RequestLog.created_at.desc()).limit(20).all()
+#     )
+#     return [
+#         {
+#             "id": r.id,
+#             "domain": r.domain,
+#             "output": r.output,
+#             "status": r.status,
+#             "created_at": r.created_at,
+#             "complete_at": r.completed_at,
+#         }
+#         for r in records
+#     ]
 
 
 @app.get("/result/{job_id}")

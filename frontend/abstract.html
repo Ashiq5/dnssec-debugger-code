@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 id="about-this-study">About This Study</h1>
+    <p>Low adoption and high misconfiguration rates continue to blunt
+the security benefits of DNSSEC. Drawing on 1.1M historical diagnostic snapshots covering 319K second-level and their subdomains
+between 2020 and 2024 from the DNSViz service, this paper delivers
+the first longitudinal, data-driven taxonomy of real-world DNSSEC
+failures. The study shows that NSEC3 misconfigurations, delegation
+failures and missing/expired signatures account for more than 70%
+of all bogus states, and that 18% of such domains remain broken.
+Guided by these insights, we introduce DFixer: an offline tool
+that (i) groups cascaded error codes into root causes, and (ii) autogenerates high-level instructions and corresponding concrete BIND
+command sequences to repair them. Evaluation with a purposebuilt ZReplicator testbed demonstrates that DFixer remedies 99.99%
+of observed errors in seconds. The curated error-to-command mapping is openly released to foster wider, more reliable DNSSEC
+deployment.</p>
+{% endblock %}

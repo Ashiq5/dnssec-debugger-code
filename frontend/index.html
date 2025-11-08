@@ -1,28 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <title>DNSSEC Debugger Web</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 2rem;
-        }
-
-        #result-box {
-            margin-top: 1rem;
-            white-space: pre-wrap;
-        }
-    </style>
-</head>
-<body>
-<h2>This site is still in progress! Do not wait for the result.</h2>
+{% extends "base.html" %}
+{% block content %}
+<h2>This site is still in progress!</h2>
 <h2>Analyze a domain</h2>
 <input id="domain" type="text" placeholder="Enter domain"/>
 <button id="submit">Run Analysis</button>
 
 <div id="status"></div>
-<pre id="result-box"></pre>
 
 <script>
     // todo: email link or somehow save it for later access
@@ -62,5 +45,4 @@
         }
     };
 </script>
-</body>
-</html>
+{% endblock %}
