@@ -45,12 +45,12 @@ def serve_index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
-@app.get("/abstract", response_class=HTMLResponse)
+@app.get("/about", response_class=HTMLResponse)
 def serve_abstract(request: Request):
-    path = os.path.join(frontend_dir, "abstract.html")
+    path = os.path.join(frontend_dir, "about.html")
     if not os.path.exists(path):
-        raise HTTPException(status_code=404, detail="abstract.html not found")
-    return templates.TemplateResponse("abstract.html", {"request": request})
+        raise HTTPException(status_code=404, detail="about.html not found")
+    return templates.TemplateResponse("about.html", {"request": request})
 
 
 @app.get("/contact", response_class=HTMLResponse)

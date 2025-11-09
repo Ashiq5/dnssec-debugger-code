@@ -1,50 +1,50 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Job Result</h2>
-<div id="status"></div>
-<pre id="output">TBC</pre>
-<pre id="created_at">TBC</pre>
+    <h2>Job Result</h2>
+    <pre id="status"></pre>
+    <pre id="output">TBD</pre>
+    <pre id="created_at">TBD</pre>
 
-<script>
-    const statusDiv = document.getElementById("status");
-    const outputPre = document.getElementById("output");
-    const created_at = document.getElementById("created_at");
+    <script>
+        const statusDiv = document.getElementById("status");
+        const outputPre = document.getElementById("output");
+        const created_at = document.getElementById("created_at");
 
-    const params = new URLSearchParams(window.location.search);
-    const jobId = params.get("job_id");
+        const params = new URLSearchParams(window.location.search);
+        const jobId = params.get("job_id");
 
-    function formatTimestampUTC(isoString) {
-      const date = new Date(isoString);
-      const year = date.getUTCFullYear();
-      const month = String(date.getUTCMonth() + 1).padStart(2, '0');
-      const day = String(date.getUTCDate()).padStart(2, '0');
-      const hours = String(date.getUTCHours()).padStart(2, '0');
-      const minutes = String(date.getUTCMinutes()).padStart(2, '0');
-      const seconds = String(date.getUTCSeconds()).padStart(2, '0');
-      return `${year}-${month}-${day} ${hours}:${minutes}:${seconds} UTC`;
-    }
-
-    async function fetchResult() {
-        const resp = await fetch(`/result/${jobId}`);
-        const data = await resp.json();
-        statusDiv.textContent = `Status: ${data.status}`;
-        created_at.textContent = `Created At: ${data.created_at}`;
-        if (data.status === "Completed") {
-            outputPre.textContent = data.output || "No output available.";
-        } else if (data.status === "Queued") {
-            outputPre.textContent = "Job in progress. Please wait.";
-            setTimeout(fetchResult, 2000); // poll every 2s until finished
-        } else {
-            outputPre.textContent = "No such job found.";
-            created_at.textContent = "";
-            statusDiv.textContent = "";
+        function formatTimestampUTC(isoString) {
+            const date = new Date(isoString);
+            const year = date.getUTCFullYear();
+            const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+            const day = String(date.getUTCDate()).padStart(2, '0');
+            const hours = String(date.getUTCHours()).padStart(2, '0');
+            const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+            const seconds = String(date.getUTCSeconds()).padStart(2, '0');
+            return `${year}-${month}-${day} ${hours}:${minutes}:${seconds} UTC`;
         }
-    }
 
-    if (!jobId) {
-        statusDiv.textContent = "No job ID specified.";
-    } else {
-        fetchResult();
-    }
-</script>
+        async function fetchResult() {
+            const resp = await fetch(`/result/${jobId}`);
+            const data = await resp.json();
+            statusDiv.textContent = `Status: ${data.status}`;
+            created_at.textContent = `Created At: ${data.created_at}`;
+            if (data.status === "Completed") {
+                outputPre.textContent = data.output || "No output available.";
+            } else if (data.status === "Queued") {
+                outputPre.textContent = "Job in progress. Please wait.";
+                setTimeout(fetchResult, 2000); // poll every 2s until finished
+            } else {
+                outputPre.textContent = "No such job found.";
+                created_at.textContent = "";
+                statusDiv.textContent = "";
+            }
+        }
+
+        if (!jobId) {
+            statusDiv.textContent = "No job ID specified.";
+        } else {
+            fetchResult();
+        }
+    </script>
 {% endblock %}
