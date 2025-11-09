@@ -12,7 +12,7 @@ import rq
 import uuid
 from datetime import timezone
 
-LOCAL = os.getenv("ENVIRONMENT", "LOCAL")
+LOCAL = os.getenv("LOCAL", False)
 
 # Create tables automatically
 Base.metadata.create_all(bind=engine)
