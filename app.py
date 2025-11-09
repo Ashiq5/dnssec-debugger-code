@@ -28,7 +28,7 @@ project_root = os.path.dirname(current_dir)
 
 # 3️⃣ Build the absolute path to the 'frontend' directory
 frontend_dir = os.path.join(current_dir, "frontend")
-app.mount("/static", StaticFiles(directory=frontend_dir + "/static"), name="static")
+app.mount("/assets", StaticFiles(directory=frontend_dir + "/assets"), name="static")
 print(current_dir, project_root, frontend_dir)
 
 
