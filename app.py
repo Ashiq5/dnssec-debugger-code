@@ -13,6 +13,7 @@ import uuid
 from datetime import timezone
 
 LOCAL = os.getenv("LOCAL", False)
+print("local", LOCAL)
 
 # Create tables automatically
 Base.metadata.create_all(bind=engine)
@@ -31,7 +32,7 @@ project_root = os.path.dirname(current_dir)
 # 3️⃣ Build the absolute path to the 'frontend' directory
 frontend_dir = os.path.join(current_dir, "frontend")
 app.mount("/assets", StaticFiles(directory=frontend_dir + "/assets"), name="static")
-print(current_dir, project_root, frontend_dir)
+print("directory", current_dir, project_root, frontend_dir)
 
 # Tell FastAPI where to look for templates
 templates = Jinja2Templates(directory=frontend_dir)
