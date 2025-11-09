@@ -3,10 +3,13 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-    <link rel="stylesheet" href="assets/css/main.css"/>
     <title>DFixer</title>
+    {% if local %}
     <base href="http://127.0.0.1:8000">
-    {#    <base href="https:/dnssec-debugger.netsecurelab.org/">#}
+    {% else %}
+    <base href="https:/dnssec-debugger.netsecurelab.org/">
+    {% endif %}
+    <link rel="stylesheet" href="assets/css/main.css"/>
     <link rel="icon" type="image/png" alt="DFixer" href="{{ url_for('static', path='images/logo.png') }}?v=1">
 </head>
 <body class="homepage is-preload">
