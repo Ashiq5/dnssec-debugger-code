@@ -12,6 +12,7 @@ import rq
 import uuid
 from datetime import timezone
 
+# can be used if needed later
 LOCAL = os.getenv("LOCAL", "false").lower() == "true"
 print("local", LOCAL, type(LOCAL))
 
@@ -44,7 +45,7 @@ def serve_index(request: Request):
     index_path = os.path.join(frontend_dir, "index.html")
     if not os.path.exists(index_path):
         raise HTTPException(status_code=404, detail="index.html not found")
-    return templates.TemplateResponse("index.html", {"request": request, "local": LOCAL})
+    return templates.TemplateResponse("index.html", {"request": request})
 
 
 @app.get("/about", response_class=HTMLResponse)
@@ -52,7 +53,7 @@ def serve_abstract(request: Request):
     path = os.path.join(frontend_dir, "about.html")
     if not os.path.exists(path):
         raise HTTPException(status_code=404, detail="about.html not found")
-    return templates.TemplateResponse("about.html", {"request": request, "local": LOCAL})
+    return templates.TemplateResponse("about.html", {"request": request})
 
 
 @app.get("/contact", response_class=HTMLResponse)
@@ -60,7 +61,7 @@ def serve_contact(request: Request):
     path = os.path.join(frontend_dir, "contact.html")
     if not os.path.exists(path):
         raise HTTPException(status_code=404, detail="contact.html not found")
-    return templates.TemplateResponse("contact.html", {"request": request, "local": LOCAL})
+    return templates.TemplateResponse("contact.html", {"request": request})
 
 
 @app.get("/dfixer", response_class=HTMLResponse)
@@ -68,7 +69,7 @@ def serve_dfixer(request: Request):
     path = os.path.join(frontend_dir, "dfixer.html")
     if not os.path.exists(path):
         raise HTTPException(status_code=404, detail="dfixer file not found")
-    return templates.TemplateResponse("dfixer.html", {"request": request, "local": LOCAL})
+    return templates.TemplateResponse("dfixer.html", {"request": request})
 
 
 class RunRequest(BaseModel):
