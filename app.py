@@ -13,7 +13,9 @@ import uuid
 from datetime import timezone
 
 LOCAL = os.getenv("LOCAL", False)
-print("local", LOCAL)
+if LOCAL == "0":
+    LOCAL = False
+print("local", LOCAL, type(LOCAL))
 
 # Create tables automatically
 Base.metadata.create_all(bind=engine)
