@@ -12,9 +12,7 @@ import rq
 import uuid
 from datetime import timezone
 
-LOCAL = os.getenv("LOCAL", False)
-if LOCAL == "0":
-    LOCAL = False
+LOCAL = os.getenv("LOCAL", "false").lower() == "true"
 print("local", LOCAL, type(LOCAL))
 
 # Create tables automatically
