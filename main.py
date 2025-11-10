@@ -109,7 +109,7 @@ def process_a_grok_file(
     try:
 
         dom2err = find_errors_in_analysis(analysis, psl=psl)
-        # The analysis stop here as there is not DNSSEC error
+        # The analysis stops here as there is no DNSSEC error
         if not dom2err:
             logger.logger.error("Cannot parse the grok output to find errors")
             return result.return_and_write()

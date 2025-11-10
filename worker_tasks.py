@@ -17,7 +17,7 @@ SessionLocal = sessionmaker(bind=engine)
 def run_main(domain: str, record_id: int):
     output = ""
     result = json.loads(main.main(domain))
-    if len(result["intended_errcodes"]) == 0:
+    if len(result.get("intended_errcodes", [])) == 0:
         output = "No DNSSEC errors to fix, congratulations!"
     else:
         for ind, iteration in enumerate(result.get("fix_transition_errcodes", [])):
