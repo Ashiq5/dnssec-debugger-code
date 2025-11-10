@@ -3,8 +3,8 @@ from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
-from backend.database import Base, engine, get_db
-from backend.models import RequestLog
+from web.database import Base, engine, get_db
+from web.models import RequestLog
 from redis import Redis
 from fastapi.responses import HTMLResponse
 import os
@@ -20,7 +20,7 @@ print("local", LOCAL, type(LOCAL))
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="DNSSEC Debugger Web")
-redis_conn = Redis(host="localhost", port=6379, decode_responses=True)
+redis_conn = Redis(host="redis", port=6379, decode_responses=True)
 queue = rq.Queue("main_tasks", connection=redis_conn)
 
 # ---- Correct frontend path setup ----
@@ -31,7 +31,7 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.dirname(current_dir)
 
 # 3️⃣ Build the absolute path to the 'frontend' directory
-frontend_dir = os.path.join(current_dir, "frontend")
+frontend_dir = os.path.join(current_dir, "web/frontend")
 app.mount("/assets", StaticFiles(directory=frontend_dir + "/assets"), name="static")
 print("directory", current_dir, project_root, frontend_dir)
 

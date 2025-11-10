@@ -1,9 +1,37 @@
-version: "3.9"
-
 services:
+  db:
+    image: postgres:16
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: dnssec_debugger
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"   # expose Postgres to host
+
+  web:
+    build:
+      context: web/
+      dockerfile: Dockerfile
+    container_name: fastapi_app
+    restart: always
+    depends_on:
+      - db
+    volumes:
+      - ./:/data/ErroneousZoneGeneration
+    environment:
+      # Connect via host port since Postgres is mapped to localhost:5432
+      DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/dnssec_debugger"
+    ports:
+      - "8000:8000"   # expose FastAPI to host
+    command: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+
   worker:
     build:
-      context: Docker/
+      context: worker/
       dockerfile: Dockerfile
     cap_add:
       - NET_ADMIN
@@ -13,11 +41,10 @@ services:
     command: ["/usr/local/bin/start.sh"]
     stdin_open: true
     tty: true
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     restart: always
     depends_on:
       - redis
+
   redis:
     image: redis:7
     container_name: redis
