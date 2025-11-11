@@ -57,6 +57,6 @@ The original DNSViz dataset cannot be publicly shared due to privacy and licensi
 - Sufficient disk space for container images and experimental data
 - Network access for DNS resolution
 
-## Changes
-- This repo is open-source. Please feel free to contribute.
+## Contributions
+- This repo is open-source. Issues and pull requests are welcome
 - Please run **bash lint.sh** before pushing your code if you make changes to the python files in the repository.
