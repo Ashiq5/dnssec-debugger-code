@@ -7,7 +7,6 @@ from web.database import Base, engine, get_db
 from web.models import RequestLog
 from redis import Redis
 from fastapi.responses import HTMLResponse
-from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
 import os
 import rq
 import uuid
@@ -21,8 +20,6 @@ print("local", LOCAL, type(LOCAL))
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="DNSSEC Debugger Web")
-app.add_middleware(HTTPSRedirectMiddleware)
-
 redis_conn = Redis(host="redis", port=6379, decode_responses=True)
 queue = rq.Queue("main_tasks", connection=redis_conn)
 
