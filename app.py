@@ -20,6 +20,7 @@ print("local", LOCAL, type(LOCAL))
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="DNSSEC Debugger Web")
+# Make FastAPI trust proxy headers (e.g., X-Forwarded-Proto)
 redis_conn = Redis(host="redis", port=6379, decode_responses=True)
 queue = rq.Queue("main_tasks", connection=redis_conn)
 
@@ -37,6 +38,18 @@ print("directory", current_dir, project_root, frontend_dir)
 
 # Tell FastAPI where to look for templates
 templates = Jinja2Templates(directory=frontend_dir)
+
+
+@app.middleware("http")
+async def fix_forwarded_proto(request: Request, call_next):
+    """
+    Ensures FastAPI respects the original scheme (https)
+    from behind a reverse proxy like nginx.
+    """
+    proto = request.headers.get("x-forwarded-proto")
+    if proto:
+        request.scope["scheme"] = proto
+    return await call_next(request)
 
 
 # Serve HTML endpoints "/"
