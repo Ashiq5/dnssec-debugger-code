@@ -75,7 +75,7 @@
                 if (!body) return; // Skip empty blocks
 
                 // Create card
-                const card = document.createElement('div');
+                const card = document.createElement('pre');
                 card.className = 'card mb-3 shadow-sm';
 
                 // Header
@@ -108,7 +108,6 @@
                 cardBody.appendChild(list);
                 card.appendChild(cardBody);
                 container.appendChild(card);
-                container.append(document.createElement("br"));
             });
         }
 
