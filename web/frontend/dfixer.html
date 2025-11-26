@@ -3,11 +3,15 @@
     <h2>Job Result</h2>
     <pre id="status">TBD</pre>
     <pre id="created_at">TBD</pre>
-
+    <br>
     <h3>High Level Instructions</h3>
     <pre id="iterations-container-wo-zrep"></pre>
     <br>
-    <h3>Low level instructions after we replicated your erroneous zone on two BIND servers (with ZReplicator) and applied a fix with DFixer.</h3>
+    <h3>Instructions with BIND commands</h3>
+    <p>To generate these instructions, we replicated your erroneous zone on a couple of BIND instances with ZReplicator, and applied DFixer to remediate the errors.
+        Therefore, suggested commands are only applicable if you are using BIND as your authoritative server software. However, they should be easily extensible to other software as well.</p>
+    <p>To follow the instructions, please replace the variables in angle brackets with values of your own environment
+        and disregard the specific values (e.g. key tags) as they belong to our replicated zone.</p>
     <pre id="iterations-container-w-zrep"></pre>
 
     <script>

@@ -30,19 +30,21 @@ def run_main(domain: str, record_id: int):
         for ind, iteration in enumerate(result.get("fix_transition_errcodes", [])):
             # instr_w_zrep += "Iteration " + str(ind + 1) + ". "
             instr_w_zrep += "--------------------\n"
-            # fixed_errors_in_this_iteration = list(
-            #     set(iteration["errors_before_fix"]).difference(
-            #         set(iteration["errors_after_fix"])
-            #     )
-            # )
-            # instr_w_zrep += (
-            #     "Fixed "
-            #     + ", ".join(fixed_errors_in_this_iteration)
-            #     + " errors in this iteration.\n\n"
-            # )
+            fixed_errors_in_this_iteration = list(
+                set(iteration["errors_before_fix"]).difference(
+                    set(iteration["errors_after_fix"])
+                )
+            )
+            instr_w_zrep += (
+                "Fixed "
+                + ", ".join(fixed_errors_in_this_iteration)
+                + " errors in this iteration.\n\n"
+            )
             for fixes in iteration.get("fixes", []):
                 find = 0
                 for fix in fixes.get("instructions", []):
+                    if "Suggested" in fix:
+                        continue
                     if "Parent zone" in fix:
                         continue
                     if "erroneouszonegeneration.ovh" in fix:
