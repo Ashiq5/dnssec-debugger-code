@@ -657,18 +657,21 @@ def get_error_explanation(errcodes):
     }
     res = []
     ordered_errcodes = get_topological_ordering(errcodes, set())
-    for errcode in ordered_errcodes:
-        if errcode in err2expl:
-            res.append(err2expl[errcode])
-        elif errcode in dependent_errors:
-            continue
-        else:
-            res.append(
-                "Explanation for errcode "
-                + errcode
-                + " is not available in our setup. Please refer to DNSViz "
-                "for details regarding this."
-            )
+    if ordered_errcodes:
+        for errcode in ordered_errcodes:
+            if errcode in err2expl:
+                res.append(err2expl[errcode])
+            elif errcode in dependent_errors:
+                continue
+            else:
+                res.append(
+                    "Explanation for errcode "
+                    + errcode
+                    + " is not available in our setup. Please refer to DNSViz "
+                    "for details regarding this."
+                )
+    else:
+        return "No errors found"
     return res
 
 
