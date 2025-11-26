@@ -15,23 +15,31 @@ SessionLocal = sessionmaker(bind=engine)
 
 
 def run_main(domain: str, record_id: int):
-    output = ""
+    instr_w_zrep = ""
+    instr_wo_zrep = ""
     result = json.loads(main.main(domain))
     if len(result.get("intended_errcodes", [])) == 0:
-        output = "No DNSSEC errors to fix, congratulations!"
+        instr_wo_zrep = "No DNSSEC errors to fix, congratulations!"
+        instr_w_zrep = ""
     else:
+        for hind, iter in enumerate(result.get("instructions_wo_zrep", [])):
+            # instr_wo_zrep += "Iteration " + str(hind + 1) + ". "
+            instr_wo_zrep += "--------------------\n"
+            for h2ind, instr in enumerate(iter):
+                instr_wo_zrep += str(h2ind + 1) + ". " + instr + "\n"
         for ind, iteration in enumerate(result.get("fix_transition_errcodes", [])):
-            output += "Iteration " + str(ind + 1) + ". "
-            fixed_errors_in_this_iteration = list(
-                set(iteration["errors_before_fix"]).difference(
-                    set(iteration["errors_after_fix"])
-                )
-            )
-            output += (
-                "Fixed "
-                + ", ".join(fixed_errors_in_this_iteration)
-                + " errors in this iteration.\n\n"
-            )
+            # instr_w_zrep += "Iteration " + str(ind + 1) + ". "
+            instr_w_zrep += "--------------------\n"
+            # fixed_errors_in_this_iteration = list(
+            #     set(iteration["errors_before_fix"]).difference(
+            #         set(iteration["errors_after_fix"])
+            #     )
+            # )
+            # instr_w_zrep += (
+            #     "Fixed "
+            #     + ", ".join(fixed_errors_in_this_iteration)
+            #     + " errors in this iteration.\n\n"
+            # )
             for fixes in iteration.get("fixes", []):
                 find = 0
                 for fix in fixes.get("instructions", []):
@@ -41,19 +49,20 @@ def run_main(domain: str, record_id: int):
                         fix = re.sub(
                             r"\S*erroneouszonegeneration\.ovh\S*", "<ZONE>", fix
                         )
-                    output += str(find + 1) + ". " + fix + "\n"
+                    instr_w_zrep += str(find + 1) + ". " + fix + "\n"
                     find = find + 1
-        if not output:
-            output = "Sorry, something went wrong in DFixer. Please try again."
+        if not instr_w_zrep:
+            instr_w_zrep = "Sorry, something went wrong in DFixer. Please try again."
 
     # Update database with result
     db = SessionLocal()
     db.execute(
         text(
-            "UPDATE requests SET status='Completed', output=:output, completed_at=:time WHERE id=:id"
+            "UPDATE requests SET status='Completed', instr_wo_zrep=:instr_wo_zrep, instr_w_zrep=:instr_w_zrep, completed_at=:time WHERE id=:id"
         ),
         {
-            "output": output,
+            "instr_w_zrep": instr_w_zrep,
+            "instr_wo_zrep": instr_wo_zrep,
             "time": datetime.datetime.utcnow(),
             "id": record_id,
         },

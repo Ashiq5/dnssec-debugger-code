@@ -32,8 +32,8 @@ def run_dnsviz_validation(cmd):
         raise Exception("Error in executing command: " + str(result.stderr))
 
 
-def load_grok():
-    return json.load(open(GENERATED_GROK_PATH))
+def load_grok(PATH=GENERATED_GROK_PATH):
+    return json.load(open(PATH))
 
 
 def parse_dict_for_errors(d, parent_keys=None, path2error=None):
@@ -484,8 +484,7 @@ def update_server(case):
     return
 
 
-def pick_topologically_first(codes, ignored_errcodes):
-    independent_errors = (
+independent_errors = (
         [
             "DNSKEY_MISSING_FROM_SERVERS",
             "DNSKEY_REVOKED_DS",
@@ -512,8 +511,11 @@ def pick_topologically_first(codes, ignored_errcodes):
             "ORIGINAL_TTL_EXCEEDED_RRSIG",
         ]
         + list(CAT["DoE"])
-    )
-    dependent_errors = {"MISSING_RRSIG_FOR_ALG_DS", "NO_SEP", "REVOKED_NOT_SIGNING"}
+)
+dependent_errors = {"MISSING_RRSIG_FOR_ALG_DS", "NO_SEP", "REVOKED_NOT_SIGNING"}
+
+
+def pick_topologically_first(codes, ignored_errcodes):
     subset_of_independent_errors = codes.difference(dependent_errors)
     subset_of_independent_errors = [
         err for err in subset_of_independent_errors if err in independent_errors
@@ -524,6 +526,38 @@ def pick_topologically_first(codes, ignored_errcodes):
     ordered_subset = sorted(subset_of_independent_errors, key=lambda x: index_map[x])
     if ordered_subset:
         return ordered_subset[0]
+    else:
+        if not codes:
+            if ignored_errcodes:
+                logger.logger.info(
+                    "Your zone is configured properly :) although few misconfigurations exist in your zone ancestors. Please contact the administrator of the respective ancestor zones to resolve their issues."
+                )
+                return
+            else:
+                logger.logger.info(
+                    "No misconfigurations to resolve. Your zone is configured properly :)"
+                )
+                return
+        else:
+            logger.logger.info(
+                "You have some misconfiguration(s): "
+                + ",".join(codes)
+                + " in your DNSSEC setup. Unfortunately, our pipeline does not yet cover them. Please contact the developer for updates regarding these."
+            )
+            return
+
+
+def get_topological_ordering(codes, ignored_errcodes):
+    subset_of_independent_errors = codes.difference(dependent_errors)
+    subset_of_independent_errors = [
+        err for err in subset_of_independent_errors if err in independent_errors
+    ]
+    # Build a lookup dict that maps each item to its position in master_list
+    index_map = {item: i for i, item in enumerate(independent_errors)}
+    # Sort subset using the order defined in master_list
+    ordered_subset = sorted(subset_of_independent_errors, key=lambda x: index_map[x])
+    if ordered_subset:
+        return ordered_subset
     else:
         if not codes:
             if ignored_errcodes:

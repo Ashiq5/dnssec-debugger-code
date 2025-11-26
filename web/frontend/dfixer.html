@@ -2,12 +2,18 @@
 {% block content %}
     <h2>Job Result</h2>
     <pre id="status">TBD</pre>
-    <pre id="output">TBD</pre>
     <pre id="created_at">TBD</pre>
+
+    <h3>High Level Instructions</h3>
+    <pre id="iterations-container-wo-zrep"></pre>
+    <br>
+    <h3>Low level instructions after we replicated your erroneous zone on two BIND servers (with ZReplicator) and applied a fix with DFixer.</h3>
+    <pre id="iterations-container-w-zrep"></pre>
 
     <script>
         const statusDiv = document.getElementById("status");
-        const outputPre = document.getElementById("output");
+        const instrWoZrep = document.getElementById("iterations-container-wo-zrep");
+        const instrWZrep = document.getElementById("iterations-container-w-zrep");
         const created_at = document.getElementById("created_at");
 
         const params = new URLSearchParams(window.location.search);
@@ -24,18 +30,73 @@
             return `${year}-${month}-${day} ${hours}:${minutes}:${seconds} UTC`;
         }
 
+        function createCard(raw, container) {
+            // Split the raw string by the delimiter "--------------------\n"
+            const iterations = raw.split('--------------------\n');
+
+            // Loop through each iteration block
+            iterations.forEach((iterationText, index) => {
+                const body = iterationText.trim();
+
+                if (!body) return; // Skip empty blocks
+
+                // Create card
+                const card = document.createElement('div');
+                card.className = 'card mb-3 shadow-sm';
+
+                // Header
+                const header = document.createElement('div');
+                header.className = 'card-header';
+                header.textContent = 'Iteration ' + index;
+                card.appendChild(header);
+
+                // Body
+                const cardBody = document.createElement('div');
+                cardBody.className = 'card-body';
+
+                const list = document.createElement('ol');
+
+                // Split body into lines and turn "1. blah" into <li>blah</li>
+                body.split(/\r?\n/).forEach(line => {
+                    const trimmed = line.trim();
+                    if (!trimmed) return;
+
+                    // Remove leading "1. ", "2. ", etc.
+                    const cleaned = trimmed.replace(/^\d+\.\s*/, '');
+                    const li = document.createElement('li');
+                    li.textContent = cleaned;
+                    list.appendChild(li);
+                });
+
+                cardBody.appendChild(list);
+                card.appendChild(cardBody);
+                container.appendChild(card);
+            });
+        }
+
         async function fetchResult() {
             const resp = await fetch(`/result/${jobId}`);
             const data = await resp.json();
             statusDiv.textContent = `Status: ${data.status}`;
             created_at.textContent = `Created At: ${data.created_at}`;
             if (data.status === "Completed") {
-                outputPre.textContent = data.output || "No output available.";
+                // outputPre.textContent = data.output || "No output available.
+                const wo_zrep_container = document.getElementById('iterations-container-wo-zrep');
+                const w_zrep_container = document.getElementById('iterations-container-w-zrep');
+
+                const wo_zrep = `${data.instr_wo_zrep}`;
+                const w_zrep = `${data.instr_w_zrep}`;
+
+                createCard(wo_zrep, wo_zrep_container);
+                createCard(w_zrep, w_zrep_container);
+
             } else if (data.status === "Queued") {
-                outputPre.textContent = "Job in progress. Please wait.";
+                instrWoZrep.textContent = "Job in progress. Please wait.";
+                instrWZrep.textContent = "Job in progress. Please wait.";
                 setTimeout(fetchResult, 2000); // poll every 2s until finished
             } else {
-                outputPre.textContent = "No such job found.";
+                instrWoZrep.textContent = "No such job found.";
+                instrWZrep.textContent = "No such job found.";
                 created_at.textContent = "";
                 statusDiv.textContent = "";
             }

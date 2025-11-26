@@ -32,15 +32,13 @@ from ZReplicator import (
     update_root,
     prepare_root,
 )
-from DFixer import get_high_level_instructions, get_instructions
+from DFixer import get_instructions
 from DFixer import execute_instructions
 
 
 # Import new utilities
 from utils.logging_utils import logger
 from config import *
-
-output_file_name = "stdout"  # "tmp/test-results/main.txt"
 
 
 class Result:
@@ -81,20 +79,10 @@ class Result:
                 print(self.to_json())  # Fallback to stdout
 
 
-def process_a_grok_file(domain=None, input_line=None):
-    psl = PublicSuffixList()
-
-    # Create logs directory
-    Path("logs").mkdir(exist_ok=True)
-
-    # Get the preliminary grok analysis if not available
-    if domain:
-        logger.logger.info(f"Retrieving grok info for fqdn {domain}")
-        grok_resolve_command = f"dnsviz probe -A {domain} -a . | dnsviz grok"
-        logger.logger.info(f"using grok command : {grok_resolve_command}")
-        result = subprocess.run(grok_resolve_command, shell=True, capture_output=True)
-        logger.logger.debug(result)
-        input_line = json.dumps([-1, [200, json.loads(result.stdout)]])
+def process_a_grok_file(
+    input_line, output, psl, root_zone_file, primary_zone, secondary_zone
+):
+    delete_old_keys()
 
     # Load the input
     try:
@@ -108,58 +96,45 @@ def process_a_grok_file(domain=None, input_line=None):
 
     # We will need the data in a specific file later
     # This is the grok data that we are currently handling
-    json.dump(analysis, open(INPUT_GROK_PATH, "w"), indent=4)
+    json.dump(line[1][1], open(INPUT_GROK_PATH, "w"), indent=4)
 
-    result = Result(filename=output_file_name)
+    result = Result(filename=output)
     result.add("id", id_)
 
     if line[1][0] not in ["200", 200]:
         result.add("status", line[1][0])
+
         return result.return_and_write()
 
     try:
+
         dom2err = find_errors_in_analysis(analysis, psl=psl)
         # The analysis stops here as there is no DNSSEC error
-        # This part should be unnecessary
-        # if not dom2err:
-        #     logger.logger.error("Cannot parse the grok output to find errors")
-        #     return result.return_and_write()
+        if not dom2err:
+            logger.logger.error("Cannot parse the grok output to find errors")
+            return result.return_and_write()
 
         zone_name = identify_zone_name(analysis)
-        # The analysis stops here as we can not identify the zone name
+
+        # The analysis stop here as we can not identify the zone name
         if not zone_name:
             logger.logger.error("Failed to identify zone name")
             logger.logger.error(zone_name)
             return result.return_and_write()
+
         result.add("zone_name", zone_name)
 
-        # Compute the error codes that are on the input file
+        # Compute the errcodes that are on the input file
         intended_errcodes = get_errcodes(zone_name, dom2err)
+
         result.add("intended_errcodes", list(intended_errcodes))
 
-        # If there is no errcode related to dnssec information (e.g. network issue) stop here
+        # If there is no errcode related to dnssec information (e.g network issue) stop here
         if not [i for i in intended_errcodes if i in DNSSECRelatedErrors]:
             logger.logger.error("Cannot find paper-related DNSSEC errors")
             return result.return_and_write()
+        # Identifying meta paramaters if tge domain
 
-        if APPLY_FIX:
-            logger.logger.info("Applying fixes")
-            # Applying fix
-            logger.logger.info("Get high level instructions")
-            instructions_2d = get_high_level_instructions(zone_name)
-            result.add("instructions_wo_zrep", instructions_2d if instructions_2d is not None else [])
-            result.add("fix_iterations_wo_zrep", len(instructions_2d))
-
-        # return result.return_and_write()
-        # This is where ZReplicator starts
-        # First, we create a base zone
-        root_domain_class, root_zone_file = prepare_root()
-        primary_zone, secondary_zone = [root_domain_class], [root_domain_class]
-
-        # Remove old keys
-        delete_old_keys()
-
-        # Identifying meta parameters of the zone to emulate
         params = identify_meta_parameters(id_, analysis, psl=psl, grok_data=grok_data)
         logger.logger.debug(f"Params: {params}")
 
@@ -182,6 +157,8 @@ def process_a_grok_file(domain=None, input_line=None):
         )
         logger.logger.debug(f"parent_nsec_option: {params[5].__dict__}")
         logger.logger.debug(f"children_nsec_option: {params[6].__dict__}")
+
+        # Remove old DNSSEC key from previous configuration
 
         signing_parameters = SigningParameters(grok_data.get_signing_information())
         case = params[0]
@@ -270,7 +247,6 @@ def process_a_grok_file(domain=None, input_line=None):
             f'Missing Errorcodes : { set(result.val["intended_errcodes"]) - set(result.val["generated_errcodes"])}'
         )
 
-        # Start of DFixer on replicated zones
         if APPLY_FIX:
             logger.logger.info("Applying fixes")
             # Applying fix
@@ -367,19 +343,95 @@ def process_a_grok_file(domain=None, input_line=None):
         return result.return_and_write()
 
 
-def main(domain=None, ids_=None):
+def compare_old_and_new_res(res_old, res_new):
+    if res_old != res_new:
+        logger.logger.error(f"Different results from old code to new code")
+        logger.logger.error(f"old {res_old}")
+        logger.logger.error(f"new {res_new}")
+        diff = list(set(res_old.split()).symmetric_difference(set(res_new.split())))
+        if diff[0].startswith("(key_tag="):
+            logger.logger.info(f"diff issue was just key tag number")
+            return
+
+        logger.logger.error(f"diff {diff} ")
+        raise Exception("Stop")
+
+    else:
+        logger.logger.info(f"New code give the same results")
+
+
+def main(domain=None):
+    """Safe version of your main function."""
+
+    # Create logs directory
+    Path("logs").mkdir(exist_ok=True)
+
+    # Use your existing argument parsing
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("--resolve", help="Proceed to grok analysis of the domain name")
+    parser.add_argument("--ids", help="Test with a group of specific analysis IDs")
+    parser.add_argument("--out", help="Path to the output file")
+
+    args = parser.parse_args()
+
+    if args.out:
+        global OUTPUT_FILE
+        OUTPUT_FILE = args.out
+
+    psl = PublicSuffixList()
+    root_domain_class, root_zone_file = prepare_root()
+    primary_zone, secondary_zone = [root_domain_class], [root_domain_class]
+
     try:
-        if ids_ and isinstance(ids_, list):
+
+        Path("logs").mkdir(exist_ok=True)
+
+        if args.resolve:
+            logger.logger.info("Starting DNSSEC analysis with improved error handling")
+
+            logger.logger.info(f"Retrieving grok info for fqdn {args.resolve}")
+            grok_resolve_command = f"dnsviz probe -A {args.resolve} -a . | dnsviz grok"
+            logger.logger.info(f"using grok command : {grok_resolve_command}")
+            result = subprocess.run(
+                grok_resolve_command, shell=True, capture_output=True
+            )
+            logger.logger.debug(result)
+            line = json.dumps([-1, [200, json.loads(result.stdout)]])
+            return process_a_grok_file(
+                line, OUTPUT_FILE, psl, root_zone_file, primary_zone, secondary_zone
+            )
+        elif args.ids:
             ids = args.ids.split(",")
             finput = open(BATCH_GROK_PATH)
             for line in finput:
                 if json.loads(line)[0] in ids:
-                    return process_a_grok_file(None, line)
+                    return process_a_grok_file(
+                        line,
+                        OUTPUT_FILE,
+                        psl,
+                        root_zone_file,
+                        primary_zone,
+                        secondary_zone,
+                    )
         elif domain:
-            logger.logger.info("Starting DFixer + ZRep analysis")
-            return process_a_grok_file(domain, None)
+            logger.logger.info("Starting DNSSEC analysis with improved error handling")
+
+            logger.logger.info(f"Retrieving grok info for fqdn {domain}")
+            grok_resolve_command = f"dnsviz probe -A {domain} -a . | dnsviz grok"
+            logger.logger.info(f"using grok command : {grok_resolve_command}")
+            result = subprocess.run(
+                grok_resolve_command, shell=True, capture_output=True
+            )
+            logger.logger.debug(result)
+            line = json.dumps([-1, [200, json.loads(result.stdout)]])
+            return process_a_grok_file(
+                line, OUTPUT_FILE, psl, root_zone_file, primary_zone, secondary_zone
+            )
         else:
-            print("Please pass an argument")
+            print(
+                "This is simplified  version of DNSSEC analysis. Only --resolve option can be used."
+            )
             return
 
     except KeyboardInterrupt:
@@ -393,4 +445,4 @@ def main(domain=None, ids_=None):
 
 
 if __name__ == "__main__":
-    main(domain="dnssec-failed.org")
+    main()
