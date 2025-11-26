@@ -108,8 +108,11 @@ def run(req: RunRequest, db: Session = Depends(get_db)):
     # Save to database
     job_id = str(uuid.uuid4())
     record = RequestLog(
-        domain=req.domain, instr_wo_zrep="Processing...",
-        instr_w_zrep="Processing...", status="Queued", job_id=job_id
+        domain=req.domain,
+        instr_wo_zrep="Processing...",
+        instr_w_zrep="Processing...",
+        status="Queued",
+        job_id=job_id,
     )
     db.add(record)
     db.commit()

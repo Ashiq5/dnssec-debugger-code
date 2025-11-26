@@ -150,7 +150,10 @@ def process_a_grok_file(domain=None, input_line=None):
             # Applying fix
             logger.logger.info("Get high level instructions")
             instructions_2d = get_high_level_instructions(zone_name)
-            result.add("instructions_wo_zrep", instructions_2d if instructions_2d is not None else [])
+            result.add(
+                "instructions_wo_zrep",
+                instructions_2d if instructions_2d is not None else [],
+            )
             result.add("fix_iterations_wo_zrep", len(instructions_2d))
 
         # return result.return_and_write()

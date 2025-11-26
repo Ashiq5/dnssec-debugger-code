@@ -31,6 +31,7 @@ from .util import (
     identify_missing_algorithm,
 )
 
+
 def _dump_and_replace_instr_for_study(instructions):
     # rndc -k /data/bind1/rndc.key -p 953 reload
     # rndc -k /data/bind2/rndc.key -p 954 reload
@@ -60,7 +61,9 @@ def _dump_and_replace_instr_for_study(instructions):
     # print(str(len(instructions)) + " Reload the bind9 server. BIND command: rndc -k /data/bind2/rndc.key -p 954 reload")
 
 
-def get_high_level_instructions(zone_name: str = None, name: str = None, extra_qtypes: str = None):
+def get_high_level_instructions(
+    zone_name: str = None, name: str = None, extra_qtypes: str = None
+):
     try:
         # Step 1: Load validation data from file
         analysis = load_grok(PATH=INPUT_GROK_PATH)
@@ -169,9 +172,7 @@ def get_high_level_instructions(zone_name: str = None, name: str = None, extra_q
                     instructions.append(
                         "Configure the erroneous servers to pull from the master."
                     )
-                    instructions.append(
-                        "Manually Trigger a Full Zone Transfer."
-                    )
+                    instructions.append("Manually Trigger a Full Zone Transfer.")
                 else:  # none of the auth servers are working fine.
                     # case 2: all have working dnskeys. pick anyone as a primary auth and resolve (example: expt)
                     primary_auth_server = auth_servers[0][0]  # picked first one
@@ -187,9 +188,7 @@ def get_high_level_instructions(zone_name: str = None, name: str = None, extra_q
                     instructions.append(
                         "Configure the erroneous servers to pull from the master."
                     )
-                    instructions.append(
-                        "Manually Trigger a Full Zone Transfer."
-                    )
+                    instructions.append("Manually Trigger a Full Zone Transfer.")
                     # case 3: none have working dnskeys. this case won't happen for this errcode since no "dnskeys" key will be there if none of the servers have any working dnskey
             elif top_errcode == "DNSKEY_REVOKED_DS":
                 revoked_ksk_keys = identify_revoked_zone_sep_keys(dnskey_map)
@@ -222,15 +221,11 @@ def get_high_level_instructions(zone_name: str = None, name: str = None, extra_q
                         digest_algorithm = list(digest_algorithm)[0]
                     else:
                         digest_algorithm = "2"
-                    instructions.append(
-                        "Generate a new KSK key pair."
-                    )
+                    instructions.append("Generate a new KSK key pair.")
                     # instructions.append(
                     #     "Add the public key to the DNSKEY RRset. BIND instruction: add the `$INCLUDE <key_file>` line in the unsigned version of the zone file."
                     # )
-                    instructions.append(
-                        "Generate the corresponding DS record."
-                    )
+                    instructions.append("Generate the corresponding DS record.")
                     instructions.append("Upload DS record in the parent zone.")
                 # todo: ttl extraction not yet done
                 instructions.append(
@@ -245,9 +240,7 @@ def get_high_level_instructions(zone_name: str = None, name: str = None, extra_q
                     + ",".join(pre_revoked_ksk_tags)
                     + ")"
                 )
-                instructions.append(
-                    "Resign the zone."
-                )
+                instructions.append("Resign the zone.")
             elif top_errcode == "DNSKEY_REVOKED_RRSIG":
                 revoked_zsk_keys = identify_revoked_zone_keys(dnskey_map)
                 revoked_zsk_tags = [
@@ -264,9 +257,7 @@ def get_high_level_instructions(zone_name: str = None, name: str = None, extra_q
                         key_algorithm = KEY2ALGO_MAPPING[dnskey_map[zsk_id][1]]
                         if key_algorithm in keysize_required_algorithms:
                             keysize = dnskey_map[zsk_id][3]
-                    instructions.append(
-                        "Generate a new ZSK key pair."
-                    )
+                    instructions.append("Generate a new ZSK key pair.")
                     # instructions.append(
                     #     "Add the public key to the DNSKEY RRset. BIND instruction: add the `$INCLUDE <key_file>` line in the unsigned version of the zone file."
                     # )
@@ -277,11 +268,10 @@ def get_high_level_instructions(zone_name: str = None, name: str = None, extra_q
                     + ",".join(pre_revoked_zsk_tags)
                     + ")"
                 )
-                instructions.append(
-                    "Resign the zone."
-                )
+                instructions.append("Resign the zone.")
             elif (
-                "DNSKEY_BAD_LENGTH" in top_errcode or "DNSKEY_ZERO_LENGTH" in top_errcode
+                "DNSKEY_BAD_LENGTH" in top_errcode
+                or "DNSKEY_ZERO_LENGTH" in top_errcode
             ):  # untested
                 # case 2: you need to replace the invalid dnskey with a new key. you can make perhaps make things a bit more complex by checking whether other valid keys and delegation exists and then removing the invalid key will suffice.
                 erroneous_keys = identify_invalid_keys(analysis)
@@ -297,16 +287,10 @@ def get_high_level_instructions(zone_name: str = None, name: str = None, extra_q
                         + str(dnskey_map[key_id][2])
                         + ") of the invalid key."
                     )
-                    instructions.append(
-                        "Add the public key to the DNSKEY RRset."
-                    )
+                    instructions.append("Add the public key to the DNSKEY RRset.")
                     if dsgen_cmd:
-                        instructions.append(
-                            "Generate the corresponding DS record."
-                        )
-                instructions.append(
-                    "Sign the zone using the newly generated keys."
-                )
+                        instructions.append("Generate the corresponding DS record.")
+                instructions.append("Sign the zone using the newly generated keys.")
                 instructions.append("Upload the DS record(s) in the parent zone.")
             elif top_errcode == "DIGEST_INVALID":
                 mismatched_key_tags = []
@@ -331,7 +315,9 @@ def get_high_level_instructions(zone_name: str = None, name: str = None, extra_q
                     + ",".join(mismatched_key_tags)
                     + ")."
                 )
-                instructions.append("Upload the correct DS record(s) to the parent zone.")
+                instructions.append(
+                    "Upload the correct DS record(s) to the parent zone."
+                )
             elif top_errcode == "MISSING_SEP_FOR_ALG":
                 # case 1: extraneous DS, 1 KSK, no ZSK
                 # case 2: extraneous DS, 1 KSK, 1 ZSK
@@ -381,33 +367,29 @@ def get_high_level_instructions(zone_name: str = None, name: str = None, extra_q
                                     )
                         if not keygen_cmd:
                             # only happens when there are no ZSKs as well.
-                            instructions.append(
-                                "Generate a new ZSK key pair."
-                            )
-                        instructions.append(
-                            "Generate a new KSK key pair."
-                        )
+                            instructions.append("Generate a new ZSK key pair.")
+                        instructions.append("Generate a new KSK key pair.")
                         # instructions.append(
                         #     "Add the public key to the DNSKEY RRset. BIND instruction: add the `$INCLUDE <key_file>` line in the unsigned version of the zone file."
                         # )
-                        digest_algorithm = set([str(ds_map[ds_id][2]) for ds_id in ds_map])
+                        digest_algorithm = set(
+                            [str(ds_map[ds_id][2]) for ds_id in ds_map]
+                        )
                         if len(digest_algorithm) == 1:
                             digest_algorithm = list(digest_algorithm)[0]
                         else:
                             digest_algorithm = "2"
-                        instructions.append(
-                            "Generate the corresponding DS record."
-                        )
+                        instructions.append("Generate the corresponding DS record.")
                         instructions.append("Upload DS record in the parent zone.")
-                        instructions.append(
-                            "Resign the zone."
-                        )
+                        instructions.append("Resign the zone.")
                     instructions.append(
                         "You have DS record(s) with (key_tag="
                         + ",".join(extraneous_ds_tags)
                         + ") where there are no corresponding DNSKEY(s). Remove these extraneous DS record(s) from the parent zone."
                     )
-                dnskey_rrsig_key_tags = find_out_dnskey_rrsig_key_tags(analysis, zone_name)
+                dnskey_rrsig_key_tags = find_out_dnskey_rrsig_key_tags(
+                    analysis, zone_name
+                )
                 absent_ksk_rrsig_tags = []
                 for key in dnskey_map:
                     if (
@@ -435,9 +417,7 @@ def get_high_level_instructions(zone_name: str = None, name: str = None, extra_q
                         "No DNSKEY is present but there are error(s) which means the zone is not insecure. So, it has DS records; which means the error should be MISSING_SEP_FOR_ALG and resolving that should automatically resolve this and code should never reach here. Please contact the developer with the grok file if this comes up."
                     )
                     return
-                instructions.append(
-                    "Resign the zone."
-                )
+                instructions.append("Resign the zone.")
             elif top_errcode == "MISSING_RRSIG_FOR_ALG_DNSKEY":
                 # case 1: zsk with a unique algo did not sign the dnskey rrset; example: mra
                 # case 2: ksk with a unique algo did not sign the other rrsets; example: mka
@@ -455,43 +435,27 @@ def get_high_level_instructions(zone_name: str = None, name: str = None, extra_q
                 resign_command = generate_resign_command(
                     zone_name, doe_params, ignore_ksk=True
                 )
-                instructions.append(
-                    "Resign the zone."
-                )
+                instructions.append("Resign the zone.")
             elif top_errcode == "SIGNATURE_INVALID":
-                instructions.append(
-                    "Resign the zone."
-                )
+                instructions.append("Resign the zone.")
             elif top_errcode == "SIGNER_NOT_ZONE":
-                instructions.append(
-                    "Resign the zone."
-                )
+                instructions.append("Resign the zone.")
             elif (
                 top_errcode == "RRSIG_LABELS_EXCEED_RRSET_OWNER_LABELS"
             ):  # untested: does not appear with dnsviz CLI
-                instructions.append(
-                    "Resign the zone."
-                )
+                instructions.append("Resign the zone.")
             elif "RRSIG_BAD_LENGTH" in top_errcode:  # untested
-                instructions.append(
-                    "Resign the zone."
-                )
+                instructions.append("Resign the zone.")
             elif top_errcode == "INCEPTION_IN_FUTURE":
-                instructions.append(
-                    "Resign the zone."
-                )
+                instructions.append("Resign the zone.")
             elif top_errcode == "EXPIRATION_IN_PAST":
-                instructions.append(
-                    "Resign the zone."
-                )
+                instructions.append("Resign the zone.")
             elif top_errcode == "TTL_BEYOND_EXPIRATION":
                 record_ttl, rrsig_ttl, rrsig_validity = get_ttl_and_signature_validity(
                     analysis
                 )
                 if not record_ttl or not rrsig_ttl or not rrsig_validity:
-                    instructions.append(
-                        "Resign the zone."
-                    )
+                    instructions.append("Resign the zone.")
                 resign_command = generate_resign_command(
                     zone_name, doe_params, expiration=True
                 )
@@ -520,9 +484,7 @@ def get_high_level_instructions(zone_name: str = None, name: str = None, extra_q
             elif (
                 "ORIGINAL_TTL_EXCEEDED" in top_errcode
             ):  # untested: ORIGINAL_TTL_EXCEEDED_RRSIG
-                instructions.append(
-                    "Resign the zone."
-                )
+                instructions.append("Resign the zone.")
             elif top_errcode in {
                 "NO_NSEC_MATCHING_SNAME",
                 "LAST_NSEC_NEXT_NOT_ZONE",
@@ -611,7 +573,9 @@ def get_high_level_instructions(zone_name: str = None, name: str = None, extra_q
                     "Or, resign the parent zone which should typically resolve the issue automatically."
                 )
             elif top_errcode == "REFERRAL_WITHOUT_NS":
-                delegated_names = identify_delegated_names(dom2err, "REFERRAL_WITHOUT_NS")
+                delegated_names = identify_delegated_names(
+                    dom2err, "REFERRAL_WITHOUT_NS"
+                )
                 resign_command = generate_resign_command(
                     parent_zone_name, parent_zone_doe_params
                 )
@@ -668,4 +632,5 @@ def get_high_level_instructions(zone_name: str = None, name: str = None, extra_q
         return instructions_2d
     except Exception as e:
         import traceback
+
         traceback.print_exc()

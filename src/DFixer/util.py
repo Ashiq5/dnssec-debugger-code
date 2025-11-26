@@ -485,32 +485,32 @@ def update_server(case):
 
 
 independent_errors = (
-        [
-            "DNSKEY_MISSING_FROM_SERVERS",
-            "DNSKEY_REVOKED_DS",
-            "DNSKEY_REVOKED_RRSIG",
-            "DNSKEY_BAD_LENGTH_ECDSA256",
-            "DNSKEY_BAD_LENGTH_ECDSA384",
-            "DNSKEY_ZERO_LENGTH",
-        ]
-        + ["MISSING_RRSIG_FOR_ALG_DNSKEY"]  # ?
-        + ["DIGEST_INVALID", "MISSING_SEP_FOR_ALG"]
-        + [
-            "MISSING_RRSIG",
-            "SIGNATURE_INVALID",
-            "RRSIG_BAD_LENGTH_ECDSA256",
-            "RRSIG_BAD_LENGTH_ECDSA384",
-            "SIGNER_NOT_ZONE",
-            "RRSIG_LABELS_EXCEED_RRSET_OWNER_LABELS",
-        ]
-        + ["INCEPTION_IN_FUTURE", "EXPIRATION_IN_PAST"]
-        + [
-            "TTL_BEYOND_EXPIRATION",
-            "ORIGINAL_TTL_EXCEEDED",
-            "ORIGINAL_TTL_EXCEEDED_RRSET",
-            "ORIGINAL_TTL_EXCEEDED_RRSIG",
-        ]
-        + list(CAT["DoE"])
+    [
+        "DNSKEY_MISSING_FROM_SERVERS",
+        "DNSKEY_REVOKED_DS",
+        "DNSKEY_REVOKED_RRSIG",
+        "DNSKEY_BAD_LENGTH_ECDSA256",
+        "DNSKEY_BAD_LENGTH_ECDSA384",
+        "DNSKEY_ZERO_LENGTH",
+    ]
+    + ["MISSING_RRSIG_FOR_ALG_DNSKEY"]  # ?
+    + ["DIGEST_INVALID", "MISSING_SEP_FOR_ALG"]
+    + [
+        "MISSING_RRSIG",
+        "SIGNATURE_INVALID",
+        "RRSIG_BAD_LENGTH_ECDSA256",
+        "RRSIG_BAD_LENGTH_ECDSA384",
+        "SIGNER_NOT_ZONE",
+        "RRSIG_LABELS_EXCEED_RRSET_OWNER_LABELS",
+    ]
+    + ["INCEPTION_IN_FUTURE", "EXPIRATION_IN_PAST"]
+    + [
+        "TTL_BEYOND_EXPIRATION",
+        "ORIGINAL_TTL_EXCEEDED",
+        "ORIGINAL_TTL_EXCEEDED_RRSET",
+        "ORIGINAL_TTL_EXCEEDED_RRSIG",
+    ]
+    + list(CAT["DoE"])
 )
 dependent_errors = {"MISSING_RRSIG_FOR_ALG_DS", "NO_SEP", "REVOKED_NOT_SIGNING"}
 
@@ -600,14 +600,14 @@ def get_error_explanation(errcodes):
         "Your zone has signature(s) with incorrect signer that does not belong to your zone.",
         "Your zone has incomplete algorithm setup. This means a DNSKEY algorithm used by your zone is not consistently present in all signature(s) or does not align with the parent zone’s DS record(s).",
         "Your zone has incorrect/mismatched original TTL value.",
-        "Your zone has record(s) with TTL that goes beyond it's corresponding signature expiration. This means an expired signature may exist in the resolver's cache if the record is not evicted.",\
+        "Your zone has record(s) with TTL that goes beyond it's corresponding signature expiration. This means an expired signature may exist in the resolver's cache if the record is not evicted.",
         "Your zone has DNSKEY(s) with REVOKED bit set.",
         "Your zone has DNSKEY(s) with bad length.",
         "Authoritative servers for your zone serve inconsistent DNSKEY records.",
         "Your zone has expired signature(s).",
         "Your zone has signature(s) with inception time in future.",
         "Your zone has an invalid digest for the associated DNSKEY.",
-        "Your zone has DS record(s) referencing a key algorithm not actually present in the zone."
+        "Your zone has DS record(s) referencing a key algorithm not actually present in the zone.",
     ]
     err2expl = {
         "MISSING_NSEC_FOR_NODATA": explanations[0],
@@ -663,8 +663,12 @@ def get_error_explanation(errcodes):
         elif errcode in dependent_errors:
             continue
         else:
-            res.append("Explanation for errcode " + errcode + " is not available in our setup. Please refer to DNSViz "
-                                                              "for details regarding this.")
+            res.append(
+                "Explanation for errcode "
+                + errcode
+                + " is not available in our setup. Please refer to DNSViz "
+                "for details regarding this."
+            )
     return res
 
 
