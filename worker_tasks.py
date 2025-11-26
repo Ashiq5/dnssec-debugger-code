@@ -21,7 +21,9 @@ def run_main(domain: str, record_id: int):
     if len(result.get("intended_errcodes", [])) == 0:
         instr_wo_zrep = "Your zone does not have any misconfigurations in your DNSSEC setup!"
         instr_w_zrep = "N/A"
+        explanations = "N/A"
     else:
+        explanations = "\n".join(result.get("explanations", []))
         for hind, iter in enumerate(result.get("instructions_wo_zrep", [])):
             # instr_wo_zrep += "Iteration " + str(hind + 1) + ". "
             instr_wo_zrep += "--------------------\n"
@@ -47,10 +49,14 @@ def run_main(domain: str, record_id: int):
                         continue
                     if "Parent zone" in fix:
                         continue
-                    if "erroneouszonegeneration.ovh" in fix:
+                    if "erroneouszonegeneration.ovh." in fix:
                         fix = re.sub(
-                            r"\S*erroneouszonegeneration\.ovh\S*", "<ZONE>", fix
+                            r"\S*erroneouszonegeneration\.ovh\.", "<ZONE>", fix
                         )
+                    # elif "erroneouszonegeneration.ovh" in fix:
+                    #     fix = re.sub(
+                    #         r"\S*erroneouszonegeneration\.ovh*", "<ZONE>", fix
+                    #     )
                     instr_w_zrep += str(find + 1) + ". " + fix + "\n"
                     find = find + 1
         if not instr_w_zrep:
@@ -60,11 +66,13 @@ def run_main(domain: str, record_id: int):
     db = SessionLocal()
     db.execute(
         text(
-            "UPDATE requests SET status='Completed', instr_wo_zrep=:instr_wo_zrep, instr_w_zrep=:instr_w_zrep, completed_at=:time WHERE id=:id"
+            "UPDATE requests SET status='Completed', instr_wo_zrep=:instr_wo_zrep, instr_w_zrep=:instr_w_zrep,\
+            explanations=:explanations, completed_at=:time WHERE id=:id"
         ),
         {
             "instr_w_zrep": instr_w_zrep,
             "instr_wo_zrep": instr_wo_zrep,
+            "explanations": explanations,
             "time": datetime.datetime.utcnow(),
             "id": record_id,
         },

@@ -12,6 +12,7 @@ class RequestLog(Base):
     domain = Column(String(255), nullable=False)
     instr_w_zrep = Column(Text, nullable=True)
     instr_wo_zrep = Column(Text, nullable=True)
+    explanations = Column(Text, nullable=True)
     status = Column(String(100))
     job_id = Column(UUID(as_uuid=True), unique=True, nullable=True, default=uuid.uuid4)
     created_at = Column(DateTime(timezone=True), server_default=func.now())

@@ -579,6 +579,95 @@ def get_topological_ordering(codes, ignored_errcodes):
             return
 
 
+def get_error_explanation(errcodes):
+    explanations = [
+        "Your zone is missing non-existence proof for certain record(s).",
+        "Your zone has bad non-existence proof for certain record(s).",
+        "Your zone has inconsistent ancestry setup for non-existent domain. This means query for a parent domain "
+        "returns NXDOMAIN while query for a corresponding subdomain returns NOERROR which is contradictory.",
+        "Your zone has incorrect closest encloser proof.",
+        "Your zone has incorrect type bitmap in NSEC/NSEC3 record(s).",
+        "Your zone has incorrect opt-out flag.",
+        "Your zone has invalid NSEC3 hash.",
+        "Your zone has invalid NSEC3 owner name.",
+        "Last NSEC record in your zone does not point to the zone apex.",
+        "Your zone has nonzero NSEC3 iteration count.",
+        "Your zone has unsupported NSEC3 algorithm.",
+        "Your zone has signature(s) with incorrect length.",
+        "Your zone has signature(s) with labels field that exceed the number of labels in the RRset owner name.",
+        "Your zone has invalid signature(s).",
+        "Your zone has missing signature(s) for certain record(s).",
+        "Your zone has signature(s) with incorrect signer that does not belong to your zone.",
+        "Your zone has incomplete algorithm setup. This means a DNSKEY algorithm used by your zone is not consistently present in all signature(s) or does not align with the parent zone’s DS record(s).",
+        "Your zone has incorrect/mismatched original TTL value.",
+        "Your zone has record(s) with TTL that goes beyond it's corresponding signature expiration. This means an expired signature may exist in the resolver's cache if the record is not evicted.",\
+        "Your zone has DNSKEY(s) with REVOKED bit set.",
+        "Your zone has DNSKEY(s) with bad length.",
+        "Authoritative servers for your zone serve inconsistent DNSKEY records.",
+        "Your zone has expired signature(s).",
+        "Your zone has signature(s) with inception time in future.",
+        "Your zone has an invalid digest for the associated DNSKEY.",
+        "Your zone has DS record(s) referencing a key algorithm not actually present in the zone."
+    ]
+    err2expl = {
+        "MISSING_NSEC_FOR_NODATA": explanations[0],
+        "MISSING_NSEC_FOR_NXDOMAIN": explanations[0],
+        "MISSING_NSEC_FOR_WILDCARD": explanations[0],
+        "NO_NSEC_MATCHING_SNAME": explanations[1],
+        "NO_NSEC3_MATCHING_SNAME": explanations[1],
+        "SNAME_COVERED": explanations[1],
+        "SNAME_NOT_COVERED": explanations[1],
+        "WILDCARD_COVERED": explanations[1],
+        "WILDCARD_NOT_COVERED": explanations[1],
+        "EXISTING_NAME_COVERED": explanations[1],
+        "INCONSISTENT_NXDOMAIN_ANCESTOR": explanations[2],
+        "NO_CLOSEST_ENCLOSER": explanations[3],
+        "NEXT_CLOSEST_ENCLOSER_NOT_COVERED": explanations[3],
+        "EXISTING_TYPE_NOT_IN_BITMAP": explanations[4],
+        "REFERRAL_WITHOUT_NS": explanations[4],
+        "REFERRAL_WITH_DS": explanations[4],
+        "REFERRAL_WITH_SOA": explanations[4],
+        "STYPE_IN_BITMAP": explanations[4],
+        "OPT_OUT_FLAG_NOT_SET": explanations[5],
+        "INVALID_NSEC3_HASH": explanations[6],
+        "INVALID_NSEC3_OWNER_NAME": explanations[7],
+        "LAST_NSEC_NEXT_NOT_ZONE": explanations[8],
+        "NONZERO_NSEC3_ITERATION_COUNT": explanations[9],
+        "UNSUPPORTED_NSEC3_ALGORITHM": explanations[10],
+        "RRSIG_BAD_LENGTH_ECDSA256": explanations[11],
+        "RRSIG_BAD_LENGTH_ECDSA384": explanations[11],
+        "RRSIG_LABELS_EXCEED_RRSET_OWNER_LABELS": explanations[12],
+        "SIGNATURE_INVALID": explanations[13],
+        "MISSING_RRSIG": explanations[14],
+        "SIGNER_NOT_ZONE": explanations[15],
+        "MISSING_RRSIG_FOR_ALG_DNSKEY": explanations[16],
+        "ORIGINAL_TTL_EXCEEDED_RRSET": explanations[17],
+        "ORIGINAL_TTL_EXCEEDED_RRSIG": explanations[17],
+        "TTL_BEYOND_EXPIRATION": explanations[18],
+        "DNSKEY_REVOKED_RRSIG": explanations[19],
+        "DNSKEY_REVOKED_DS": explanations[19],
+        "DNSKEY_BAD_LENGTH_ECDSA256": explanations[20],
+        "DNSKEY_BAD_LENGTH_ECDSA384": explanations[20],
+        "DNSKEY_ZERO_LENGTH": explanations[20],
+        "DNSKEY_MISSING_FROM_SERVERS": explanations[21],
+        "EXPIRATION_IN_PAST": explanations[22],
+        "INCEPTION_IN_FUTURE": explanations[23],
+        "DIGEST_INVALID": explanations[24],
+        "MISSING_SEP_FOR_ALG": explanations[25],
+    }
+    res = []
+    ordered_errcodes = get_topological_ordering(errcodes, set())
+    for errcode in ordered_errcodes:
+        if errcode in err2expl:
+            res.append(err2expl[errcode])
+        elif errcode in dependent_errors:
+            continue
+        else:
+            res.append("Explanation for errcode " + errcode + " is not available in our setup. Please refer to DNSViz "
+                                                              "for details regarding this.")
+    return res
+
+
 def _pretty_print(instructions) -> str:
     res = ""
     for ind, instr in enumerate(instructions):

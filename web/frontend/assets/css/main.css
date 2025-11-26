@@ -197,7 +197,7 @@ p {
 }
 
 ul, ol, dl, table, blockquote {
-    margin-bottom: 2em;
+    margin-bottom: 0;
 }
 
 br.clear {
@@ -1537,7 +1537,12 @@ ul {
 
 ul li {
     padding-left: 0.5em;
-    margin: 0.75em 0 0.75em 0;
+    margin: 0 0 0 0;
+}
+
+.quoted-text {
+    font-family: "Courier New", monospace;  /* or any font you like */
+    font-weight: 600;
 }
 
 ul li:first-child {

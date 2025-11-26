@@ -1,4 +1,4 @@
-from .util import _pretty_print
+from .util import _pretty_print, get_error_explanation
 from .param_identifier import identify_meta_parameters
 from .execute_instructions import execute_instructions
 from .get_instructions import get_instructions

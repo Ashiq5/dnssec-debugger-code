@@ -4,19 +4,29 @@
     <pre id="status">TBD</pre>
     <pre id="created_at">TBD</pre>
     <br>
+    <h3>Probable Root Cause(s)</h3>
+    <pre id="expl"></pre>
+    <br>
     <h3>High Level Instructions</h3>
     <pre id="iterations-container-wo-zrep"></pre>
     <br>
     <h3>Instructions with BIND commands</h3>
-    <p>To generate these instructions, we replicated your erroneous zone with ZReplicator on a BIND instance, and applied DFixer suggested commands to remediate the errors.
+    <p>To generate these instructions, we replicated your erroneous zone with ZReplicator on a BIND instance, and
+        applied DFixer suggested commands to remediate the errors.
         Therefore, suggested commands are only applicable if you are using BIND as your authoritative server software.
         However, they should be easily extensible to other software as well.</p>
     <p>To follow the instructions, please replace the variables in angle brackets with values of your own environment
         and disregard the specific values (e.g. key tags) as they belong to our replicated zone.</p>
     <pre id="iterations-container-w-zrep"></pre>
+    <br>
+    <h3>Warning</h3>
+    <p>Please note that the instructions and commands provided here were tested in our own environment and are not
+        expected to cause harm. However, you should exercise caution and make sure you understand them when running these
+        commands.</p>
 
     <script>
         const statusDiv = document.getElementById("status");
+        const expl = document.getElementById("expl")
         const instrWoZrep = document.getElementById("iterations-container-wo-zrep");
         const instrWZrep = document.getElementById("iterations-container-w-zrep");
         const created_at = document.getElementById("created_at");
@@ -33,6 +43,25 @@
             const minutes = String(date.getUTCMinutes()).padStart(2, '0');
             const seconds = String(date.getUTCSeconds()).padStart(2, '0');
             return `${year}-${month}-${day} ${hours}:${minutes}:${seconds} UTC`;
+        }
+
+        function appendWithQuotedStyling(parent, text) {
+            // Split into: normal, "quoted", normal, "quoted", ...
+            const parts = text.split(/`([^`]*)`/);
+
+            parts.forEach((part, index) => {
+                if (index % 2 === 0) {
+                    // Even index → outside quotes
+                    if (part) parent.appendChild(document.createTextNode(part));
+                } else {
+                    // Odd index → inside quotes
+                    const span = document.createElement('span');
+                    span.className = 'quoted-text';
+                    // Re-add the quotes visually
+                    span.textContent = `"${part}"`;
+                    parent.appendChild(span);
+                }
+            });
         }
 
         function createCard(raw, container) {
@@ -69,7 +98,10 @@
                     // Remove leading "1. ", "2. ", etc.
                     const cleaned = trimmed.replace(/^\d+\.\s*/, '');
                     const li = document.createElement('li');
-                    li.textContent = cleaned;
+
+                    // ⬇️ instead of `li.textContent = cleaned;`
+                    appendWithQuotedStyling(li, cleaned);
+
                     list.appendChild(li);
                 });
 
@@ -84,6 +116,7 @@
             const data = await resp.json();
             statusDiv.textContent = `Status: ${data.status}`;
             created_at.textContent = `Created At: ${data.created_at}`;
+            expl.textContent = `${data.explanations}`;
             if (data.status === "Completed") {
                 // outputPre.textContent = data.output || "No output available.
                 const wo_zrep_container = document.getElementById('iterations-container-wo-zrep');
@@ -101,12 +134,14 @@
             } else if (data.status === "Queued") {
                 instrWoZrep.textContent = "Job in progress. Please wait.";
                 instrWZrep.textContent = "Job in progress. Please wait.";
+                expl.textContent = "Job in progress. Please wait.";
                 setTimeout(fetchResult, 2000); // poll every 2s until finished
             } else {
-                instrWoZrep.textContent = "No such job found.";
-                instrWZrep.textContent = "No such job found.";
-                created_at.textContent = "";
-                statusDiv.textContent = "";
+                instrWoZrep.textContent = "No such job found";
+                instrWZrep.textContent = "No such job found";
+                created_at.textContent = "No such job found";
+                statusDiv.textContent = "No such job found";
+                expl.textContent = "No such job found";
             }
         }
 

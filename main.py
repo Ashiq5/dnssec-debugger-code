@@ -32,7 +32,7 @@ from ZReplicator import (
     update_root,
     prepare_root,
 )
-from DFixer import get_high_level_instructions, get_instructions
+from DFixer import get_high_level_instructions, get_instructions, get_error_explanation
 from DFixer import execute_instructions
 
 
@@ -136,6 +136,9 @@ def process_a_grok_file(domain=None, input_line=None):
         # Compute the error codes that are on the input file
         intended_errcodes = get_errcodes(zone_name, dom2err)
         result.add("intended_errcodes", list(intended_errcodes))
+
+        explanations = get_error_explanation(intended_errcodes)
+        result.add("explanations", explanations)
 
         # If there is no errcode related to dnssec information (e.g. network issue) stop here
         if not [i for i in intended_errcodes if i in DNSSECRelatedErrors]:
