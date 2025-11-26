@@ -35,11 +35,11 @@ def run_main(domain: str, record_id: int):
                     set(iteration["errors_after_fix"])
                 )
             )
-            instr_w_zrep += (
-                "Fixed "
-                + ", ".join(fixed_errors_in_this_iteration)
-                + " errors in this iteration.\n\n"
-            )
+            # instr_w_zrep += (
+            #     "Fixed "
+            #     + ", ".join(fixed_errors_in_this_iteration)
+            #     + " errors in this iteration.\n\n"
+            # )
             for fixes in iteration.get("fixes", []):
                 find = 0
                 for fix in fixes.get("instructions", []):
