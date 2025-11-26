@@ -19,7 +19,7 @@ def run_main(domain: str, record_id: int):
     instr_wo_zrep = ""
     result = json.loads(main.main(domain))
     if len(result.get("intended_errcodes", [])) == 0:
-        instr_wo_zrep = "Your zone does not have any misconfigurations in your DNSSEC setup!"
+        instr_wo_zrep = "There is no misconfigurations in your DNSSEC configuration!"
         instr_w_zrep = "N/A"
         explanations = "N/A"
     else:
