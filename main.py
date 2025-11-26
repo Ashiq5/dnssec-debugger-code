@@ -360,6 +360,7 @@ def process_a_grok_file(domain=None, input_line=None):
 
             result.add("fix_transition_errcodes", list(fix_transition_errcodes))
             result.add("fix_iterations", iteration_fix)
+            # result.add("after_fix_errcodes", list(after_fix_errcodes))
 
         return result.return_and_write()
 

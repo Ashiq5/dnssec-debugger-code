@@ -59,6 +59,8 @@ def run_main(domain: str, record_id: int):
                     #     )
                     instr_w_zrep += str(find + 1) + ". " + fix + "\n"
                     find = find + 1
+        # if len(result.get("after_fix_errcodes", [])) > 0:
+        #     instr_w_zrep += "Note that DFixer could not resolve all the error codes"
         if not instr_w_zrep:
             instr_w_zrep = "Sorry, something went wrong in DFixer. Please try again."
 
