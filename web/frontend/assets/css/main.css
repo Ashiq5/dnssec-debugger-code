@@ -2468,6 +2468,12 @@ button.alt:active,
         margin: 0 0 1em 0;
     }
 
+    .spinner-responsive {
+          /* min: 12px, preferred: 4vw, max: 32px */
+          width: clamp(12px, 4vw, 24px);
+          height: auto; /* keep aspect ratio */
+    }
+
     h2 br, h3 br, h4 br, h5 br, h6 br {
         display: none;
     }

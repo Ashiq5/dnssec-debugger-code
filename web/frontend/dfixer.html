@@ -6,9 +6,13 @@
     <br>
     <h3>Probable Root Cause(s)</h3>
     <pre id="expl"></pre>
+    <img id="job-spinner1" src={{ url_for('static', path='css/rajinikanth.webp') }} alt="Loading..."
+         class="d-none spinner-responsive">
     <br>
     <h3>High Level Instructions</h3>
     <pre id="iterations-container-wo-zrep"></pre>
+    <img id="job-spinner2" src={{ url_for('static', path='css/rajinikanth.webp') }} alt="Loading..."
+         class="d-none spinner-responsive">
     <br>
     <h3>Instructions with BIND commands</h3>
     <p>To generate these instructions, we replicated your erroneous zone with ZReplicator on a BIND instance, and
@@ -18,10 +22,13 @@
     <p>To follow the instructions, please replace the variables in angle brackets with values of your own environment
         and disregard the specific values (e.g. key tags) as they belong to our replicated zone.</p>
     <pre id="iterations-container-w-zrep"></pre>
+    <img id="job-spinner3" src={{ url_for('static', path='css/rajinikanth.webp') }} alt="Loading..."
+         class="d-none spinner-responsive">
     <br>
     <h3>Warning</h3>
     <p>Please note that the instructions and commands provided here were tested in our own environment and are not
-        expected to cause harm. However, you should exercise caution and make sure you understand them when running these
+        expected to cause harm. However, you should exercise caution and make sure you understand them when running
+        these
         commands.</p>
 
     <script>
@@ -118,6 +125,9 @@
             created_at.textContent = `Created At: ${data.created_at}`;
             expl.textContent = `${data.explanations}`;
             if (data.status === "Completed") {
+                document.querySelectorAll('.spinner-responsive').forEach(spinner => {
+                  spinner.style.display = 'none';
+                });
                 // outputPre.textContent = data.output || "No output available.
                 const wo_zrep_container = document.getElementById('iterations-container-wo-zrep');
                 const w_zrep_container = document.getElementById('iterations-container-w-zrep');
@@ -132,6 +142,9 @@
                 createCard(w_zrep, w_zrep_container);
 
             } else if (data.status === "Queued") {
+                document.querySelectorAll('.spinner-responsive').forEach(spinner => {
+                  spinner.style.display = 'inline';
+                });
                 instrWoZrep.textContent = "Job in progress. Please wait.";
                 instrWZrep.textContent = "Job in progress. Please wait.";
                 expl.textContent = "Job in progress. Please wait.";
@@ -142,6 +155,9 @@
                 created_at.textContent = "No such job found";
                 statusDiv.textContent = "No such job found";
                 expl.textContent = "No such job found";
+                document.querySelectorAll('.spinner-responsive').forEach(spinner => {
+                  spinner.style.display = 'none';
+                });
             }
         }
 
