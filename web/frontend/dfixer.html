@@ -52,14 +52,14 @@
                 // Header
                 const header = document.createElement('div');
                 header.className = 'card-header';
-                header.textContent = 'Iteration ' + index;
+                if (index !== 0) header.textContent = 'Iteration ' + index;
                 card.appendChild(header);
 
                 // Body
                 const cardBody = document.createElement('div');
                 cardBody.className = 'card-body';
 
-                const list = document.createElement('ol');
+                const list = document.createElement('ul');
 
                 // Split body into lines and turn "1. blah" into <li>blah</li>
                 body.split(/\r?\n/).forEach(line => {

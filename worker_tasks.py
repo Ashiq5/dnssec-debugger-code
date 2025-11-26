@@ -19,8 +19,8 @@ def run_main(domain: str, record_id: int):
     instr_wo_zrep = ""
     result = json.loads(main.main(domain))
     if len(result.get("intended_errcodes", [])) == 0:
-        instr_wo_zrep = "No DNSSEC errors to fix, congratulations!"
-        instr_w_zrep = ""
+        instr_wo_zrep = "Your zone does not have any misconfigurations in your DNSSEC setup!"
+        instr_w_zrep = "N/A"
     else:
         for hind, iter in enumerate(result.get("instructions_wo_zrep", [])):
             # instr_wo_zrep += "Iteration " + str(hind + 1) + ". "
