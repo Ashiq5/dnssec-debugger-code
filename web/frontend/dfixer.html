@@ -8,8 +8,9 @@
     <pre id="iterations-container-wo-zrep"></pre>
     <br>
     <h3>Instructions with BIND commands</h3>
-    <p>To generate these instructions, we replicated your erroneous zone on a couple of BIND instances with ZReplicator, and applied DFixer to remediate the errors.
-        Therefore, suggested commands are only applicable if you are using BIND as your authoritative server software. However, they should be easily extensible to other software as well.</p>
+    <p>To generate these instructions, we replicated your erroneous zone with ZReplicator, and applied DFixer to remediate the errors.
+        Therefore, suggested commands are only applicable if you are using BIND as your authoritative server software.
+        However, they should be easily extensible to other software as well.</p>
     <p>To follow the instructions, please replace the variables in angle brackets with values of your own environment
         and disregard the specific values (e.g. key tags) as they belong to our replicated zone.</p>
     <pre id="iterations-container-w-zrep"></pre>
@@ -90,6 +91,9 @@
 
                 const wo_zrep = `${data.instr_wo_zrep}`;
                 const w_zrep = `${data.instr_w_zrep}`;
+
+                instrWoZrep.textContent = "";
+                instrWZrep.textContent = "";
 
                 createCard(wo_zrep, wo_zrep_container);
                 createCard(w_zrep, w_zrep_container);
