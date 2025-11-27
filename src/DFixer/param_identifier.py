@@ -415,7 +415,8 @@ def identify_meta_parameters(
         elif errcode == "NO_SEP":
             pass
         else:
-            logger.logger.error(f"The error '{errcode}' is not in handled by DFixer")
+            logger.logger.info(f"Error '{errcode}' is not handled by DFixer")
+            pass
 
     return (
         case,
