@@ -22,6 +22,11 @@ def run_main(domain: str, record_id: int):
         instr_wo_zrep = "There exists no misconfiguration in your DNSSEC configuration!"
         instr_w_zrep = "N/A"
         explanations = "N/A"
+    elif "message" in result:
+        val = result.get("message", "Sorry, something went wrong. Please reach out to the developers with your domain name")
+        instr_w_zrep = val
+        instr_wo_zrep = val
+        explanations = "N/A"
     else:
         explanations = "\n".join(result.get("explanations", []))
         for hind, iter in enumerate(result.get("instructions_wo_zrep", [])):

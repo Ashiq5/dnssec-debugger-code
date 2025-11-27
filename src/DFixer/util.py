@@ -561,22 +561,29 @@ def get_topological_ordering(codes, ignored_errcodes):
     else:
         if not codes:
             if ignored_errcodes:
-                logger.logger.info(
+                msg = (
                     "Your zone is configured properly :) although few misconfigurations exist in your zone ancestors. Please contact the administrator of the respective ancestor zones to resolve their issues."
                 )
-                return
+                logger.logger.info(msg)
+                return None, msg
             else:
-                logger.logger.info(
+                msg = (
                     "No misconfigurations to resolve. Your zone is configured properly :)"
                 )
-                return
+                logger.logger.info(msg)
+                return None, msg
         else:
-            logger.logger.info(
-                "You have some misconfiguration(s): "
-                + ",".join(codes)
+            # logger.logger.info(
+            #     "You have some misconfiguration(s): "
+            #     + ",".join(codes)
+            #     + " in your DNSSEC setup. Unfortunately, our pipeline does not yet cover them. Please contact the developer for updates regarding these."
+            # )
+            msg = (
+                "You have some misconfiguration(s)"
                 + " in your DNSSEC setup. Unfortunately, our pipeline does not yet cover them. Please contact the developer for updates regarding these."
             )
-            return
+            logger.logger.info(msg)
+            return None, msg
 
 
 def get_error_explanation(errcodes):
@@ -656,7 +663,7 @@ def get_error_explanation(errcodes):
         "MISSING_SEP_FOR_ALG": explanations[25],
     }
     res = []
-    ordered_errcodes = get_topological_ordering(errcodes, set())
+    ordered_errcodes, msg = get_topological_ordering(errcodes, set())
     if ordered_errcodes:
         for errcode in ordered_errcodes:
             if errcode in err2expl:
@@ -671,7 +678,7 @@ def get_error_explanation(errcodes):
                     "for details regarding this."
                 )
     else:
-        return "No errors found"
+        res.append(msg)
     return res
 
 
