@@ -142,7 +142,10 @@ def identify_meta_parameters(
     parent_zone_name = get_parent_zone(analysis, children_zone_name)
     logger.logger.debug("zone name", children_zone_name, parent_zone_name)
 
-    if not parent_zone_name or not children_zone_name.endswith(parent_zone_name):
+    if not parent_zone_name:
+        return "Exception!!!No Parent Zone"
+
+    if not children_zone_name.endswith(parent_zone_name):
         return "Exception!!!Probably Delegated"
 
     if (

@@ -175,9 +175,19 @@ def process_a_grok_file(domain=None, input_line=None):
         if (
             params == "Exception!!!Probably Delegated"
             or params == "Exception!!!Unsigned Parent Zone"
+            or params == "Exception!!!No Parent Zone"
         ):
             logger.logger.error(params)
             result.add("params", params)
+
+        if params == "Exception!!!Probably Delegated":
+            result.add("zrep_failure", "At the moment, ZReplicator does not handle CNAME or DNAME delegations, which is probably the case here. Please pass the developer your analyzed domain if this is not the case.")
+            return result.return_and_write()
+        elif params == "Exception!!!Unsigned Parent Zone":
+            result.add("zrep_failure", "At the moment, ZReplicator does not reproduce zones whose parent zone is unsigned, which is probably the case here. Please pass the developer your analyzed domain if this is not the case.")
+            return result.return_and_write()
+        elif params == "Exception!!!No Parent Zone":
+            result.add("zrep_failure", "At the moment, ZReplicator does not reproduce zones with no parent zone, which is probably the case here. Please pass the developer your analyzed domain if this is not the case.")
             return result.return_and_write()
 
         error_list = [err.error_type for err in params[2].errors]
