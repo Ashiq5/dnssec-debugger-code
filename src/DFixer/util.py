@@ -557,7 +557,7 @@ def get_topological_ordering(codes, ignored_errcodes):
     # Sort subset using the order defined in master_list
     ordered_subset = sorted(subset_of_independent_errors, key=lambda x: index_map[x])
     if ordered_subset:
-        return ordered_subset
+        return ordered_subset, ""
     else:
         if not codes:
             if ignored_errcodes:
