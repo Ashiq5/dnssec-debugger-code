@@ -641,7 +641,18 @@ def get_high_level_instructions(
             #     )
             instructions_2d.append(instructions)
             # print(instructions)
-        return instructions_2d, ""
+
+        # since wo zrep instructions actually do not remove errors, there might be duplicate
+        # instructions; so, we need to filter them out
+        # example scenario: imagine a domain having two errcodes: "missing_nsec_for_nodata", "existing_type_not_in_bitmap"
+        unique_instr_wo_zrep = []
+        seen = set()
+        for lst in instructions_2d:
+            key = tuple(lst)  # make it hashable
+            if key not in seen:
+                seen.add(key)
+                unique_instr_wo_zrep.append(lst)  # keep original list
+        return unique_instr_wo_zrep, ""
     except Exception as e:
         import traceback
 
