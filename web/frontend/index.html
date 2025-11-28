@@ -23,7 +23,7 @@
             const elem = document.getElementById("domain");
             const domain = elem.value.trim();
             if (!isValidDomain(domain)) {
-                return alert("Please enter a valid domain name (e.g. example.com)");
+                return alert("Please enter a valid domain name (e.g. example.com). Domain has to have at least two labels and no trailing dot should be there.");
             }
             if (!domain) {
                 return alert("Enter a domain");
