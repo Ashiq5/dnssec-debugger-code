@@ -561,15 +561,11 @@ def get_topological_ordering(codes, ignored_errcodes):
     else:
         if not codes:
             if ignored_errcodes:
-                msg = (
-                    "Your zone is configured properly :) although few misconfigurations exist in your zone ancestors. Please contact the administrator of the respective ancestor zones to resolve their issues."
-                )
+                msg = "Your zone is configured properly :) although few misconfigurations exist in your zone ancestors. Please contact the administrator of the respective ancestor zones to resolve their issues."
                 logger.logger.info(msg)
                 return None, msg
             else:
-                msg = (
-                    "No misconfigurations to resolve. Your zone is configured properly :)"
-                )
+                msg = "No misconfigurations to resolve. Your zone is configured properly :)"
                 logger.logger.info(msg)
                 return None, msg
         else:

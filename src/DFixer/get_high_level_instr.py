@@ -76,9 +76,7 @@ def get_high_level_instructions(
             zone_name = identify_zone_name(analysis)
         logger.logger.debug("In get instructions, zone: ", zone_name)
         if not zone_name:
-            msg = (
-                "Can't find your zone from grok data. Please pass the developer your analyzed domain if this comes up."
-            )
+            msg = "Can't find your zone from grok data. Please pass the developer your analyzed domain if this comes up."
             logger.logger.error(msg)
             return None, msg
 
@@ -86,9 +84,7 @@ def get_high_level_instructions(
         logger.logger.debug("In get instructions, parent zone: ", parent_zone_name)
         parent_zone_doe_params = get_doe_params(analysis, parent_zone_name)
         if not parent_zone_name:
-            msg = (
-                "Can't find your parent zone from grok data. Please pass the developer your analyzed domain if this comes up."
-            )
+            msg = "Can't find your parent zone from grok data. Please pass the developer your analyzed domain if this comes up."
             logger.logger.error(msg)
             return None, msg
         if (
@@ -113,9 +109,7 @@ def get_high_level_instructions(
         # logger.logger.info("In get instructions, dnskey_map: ", dnskey_map)
         auth_servers = identify_auth_servers(analysis, zone_name)
         if not auth_servers:
-            msg = (
-                "Can't find authoritative server(s) for your zone. Please pass the developer your analyzed domain if this comes up."
-            )
+            msg = "Can't find authoritative server(s) for your zone. Please pass the developer your analyzed domain if this comes up."
             logger.logger.error(msg)
             return None, msg
         doe_params = get_doe_params(
@@ -408,18 +402,14 @@ def get_high_level_instructions(
                         + ") for which there are no RRSIG(s). Resigning the zone should resolve the issue."
                     )
                 if not is_solution_found:
-                    msg = (
-                        "There must be something else going wrong. Please pass the developer your analyzed domain if this comes up."
-                    )
+                    msg = "There must be something else going wrong. Please pass the developer your analyzed domain if this comes up."
                     logger.logger.error(msg)
                     return None, msg
                 # if len(extraneous_ds_tags) == len(ds_map):  # applicable for case 3 only
                 #     instructions.append("Note that this will correctly disable DNSSEC for your zone.")
             elif top_errcode == "MISSING_RRSIG":  # untested
                 if not dnskey_map:
-                    msg = (
-                        "This edge case where no DNSKEY is present but zone is not insecure should never occur. Please pass the developer your analyzed domain if this comes up."
-                    )
+                    msg = "This edge case where no DNSKEY is present but zone is not insecure should never occur. Please pass the developer your analyzed domain if this comes up."
                     # msg = (
                     #     "No DNSKEY is present but there are error(s) which means the zone is not insecure. So, it has DS records; which means the error should be MISSING_SEP_FOR_ALG and resolving that should automatically resolve this and code should never reach here. Please contact the developer with the domain if this edge case comes up."
                     # )
@@ -502,9 +492,7 @@ def get_high_level_instructions(
                 )
             elif top_errcode == "OPT_OUT_FLAG_NOT_SET":  # untested
                 if not doe_params or doe_params[0] != "NSEC3":
-                    msg = (
-                        "This edge case should never occur as the error code indicates the domain owner used NSEC3 record(s) to prove denial of existence. Please pass the developer your analyzed domain if this comes up."
-                    )
+                    msg = "This edge case should never occur as the error code indicates the domain owner used NSEC3 record(s) to prove denial of existence. Please pass the developer your analyzed domain if this comes up."
                     # msg = (
                     #     "It can't be. It needs to be NSEC3 records for sure. Code should never reach here. Please contact the developer with the grok file if this comes up."
                     # )

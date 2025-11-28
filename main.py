@@ -40,8 +40,6 @@ from DFixer import execute_instructions
 from utils.logging_utils import logger
 from config import *
 
-output_file_name = "stdout"  # "tmp/test-results/main.txt"
-
 
 class Result:
     def __init__(self, filename):
@@ -81,6 +79,10 @@ class Result:
                 print(self.to_json())  # Fallback to stdout
 
 
+output_file_name = "stdout"
+result = Result(filename=output_file_name)
+
+
 def process_a_grok_file(domain=None, input_line=None):
     psl = PublicSuffixList()
 
@@ -92,15 +94,18 @@ def process_a_grok_file(domain=None, input_line=None):
         logger.logger.info(f"Retrieving grok info for fqdn {domain}")
         grok_resolve_command = f"dnsviz probe -A {domain} -a . | dnsviz grok"
         logger.logger.info(f"using grok command : {grok_resolve_command}")
-        result = subprocess.run(grok_resolve_command, shell=True, capture_output=True)
-        logger.logger.debug(result)
-        input_line = json.dumps([-1, [200, json.loads(result.stdout)]])
+        grok_result = subprocess.run(
+            grok_resolve_command, shell=True, capture_output=True
+        )
+        logger.logger.debug(grok_result)
+        input_line = json.dumps([-1, [200, json.loads(grok_result.stdout)]])
 
     # Load the input
     try:
         line = json.loads(input_line)
     except Exception as e:
-        return e.__str__()
+        result.add("exception", e.__str__())
+        return result.return_and_write()
 
     id_, analysis = line[0], line[1][1]
 
@@ -110,7 +115,6 @@ def process_a_grok_file(domain=None, input_line=None):
     # This is the grok data that we are currently handling
     json.dump(analysis, open(INPUT_GROK_PATH, "w"), indent=4)
 
-    result = Result(filename=output_file_name)
     result.add("id", id_)
 
     if line[1][0] not in ["200", 200]:
@@ -181,13 +185,22 @@ def process_a_grok_file(domain=None, input_line=None):
             result.add("params", params)
 
         if params == "Exception!!!Probably Delegated":
-            result.add("zrep_failure", "At the moment, ZReplicator does not handle CNAME or DNAME delegations, which is probably the case here. Please pass the developer your analyzed domain if this is not the case.")
+            result.add(
+                "zrep_failure",
+                "At the moment, ZReplicator does not handle CNAME or DNAME delegations, which is probably the case here. Please pass the developer your analyzed domain if this is not the case.",
+            )
             return result.return_and_write()
         elif params == "Exception!!!Unsigned Parent Zone":
-            result.add("zrep_failure", "At the moment, ZReplicator does not reproduce zones whose parent zone is unsigned, which is probably the case here. Please pass the developer your analyzed domain if this is not the case.")
+            result.add(
+                "zrep_failure",
+                "At the moment, ZReplicator does not reproduce zones whose parent zone is unsigned, which is probably the case here. Please pass the developer your analyzed domain if this is not the case.",
+            )
             return result.return_and_write()
         elif params == "Exception!!!No Parent Zone":
-            result.add("zrep_failure", "At the moment, ZReplicator does not reproduce zones with no parent zone, which is probably the case here. Please pass the developer your analyzed domain if this is not the case.")
+            result.add(
+                "zrep_failure",
+                "At the moment, ZReplicator does not reproduce zones with no parent zone, which is probably the case here. Please pass the developer your analyzed domain if this is not the case.",
+            )
             return result.return_and_write()
 
         error_list = [err.error_type for err in params[2].errors]
@@ -399,15 +412,15 @@ def main(domain=None, ids_=None):
             logger.logger.info("Starting DFixer + ZRep analysis")
             return process_a_grok_file(domain, None)
         else:
-            print("Please pass an argument")
-            return
-
-    except KeyboardInterrupt:
-        logger.logger.error("Analysis interrupted by user")
+            msg = "No valid domain is passed"
+            logger.logger.error(msg)
+            result.add("exception", msg)
+            return result.return_and_write()
     except Exception as e:
         logger.logger.error(f"Fatal error in main: {e}")
         logger.logger.error(traceback.format_exc())
-        sys.exit(1)
+        result.add("exception", str(e))
+        return result.return_and_write()
 
     logger.logger.info("Analysis complete")
 
