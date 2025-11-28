@@ -152,6 +152,7 @@ def get_result(job_id: str, db: Session = Depends(get_db)):
             "status": record.status,
             "domain": record.domain if record else None,
             "explanations": record.explanations if record else None,
+            "exception_msg": record.exception_msg if record else None,
             "instr_wo_zrep": record.instr_wo_zrep if record else None,
             "instr_w_zrep": record.instr_w_zrep if record else None,
             "created_at": format_timestamp_utc(record.created_at),

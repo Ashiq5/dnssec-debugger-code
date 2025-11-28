@@ -2104,6 +2104,15 @@ button.alt:active,
     margin: 0.25em;
 }
 
+pre.error {
+  background-color: #f8d7da;  /* light red */
+  color: #842029;             /* dark red text */
+  border: 1px solid #f5c2c7;
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  white-space: pre-wrap;      /* optional: wrap long lines */
+}
+
 /* Content */
 
 #content > section,

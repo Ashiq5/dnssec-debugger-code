@@ -17,14 +17,16 @@ SessionLocal = sessionmaker(bind=engine)
 def run_main(domain: str, record_id: int):
     instr_w_zrep = ""
     instr_wo_zrep = ""
+    exception_msg = None
     result = json.loads(main.main(domain))
     if "exception" in result:
         val = result.get(
             "exception",
             "Sorry, something went wrong. Please reach out to the developers with your domain name",
         )
-        instr_wo_zrep = val
-        instr_w_zrep = val
+        exception_msg = val
+        instr_wo_zrep = "N/A"
+        instr_w_zrep = "N/A"
         explanations = "N/A"
     elif len(result.get("intended_errcodes", [])) == 0:
         instr_wo_zrep = "There exists no misconfiguration in your DNSSEC configuration!"
@@ -35,8 +37,9 @@ def run_main(domain: str, record_id: int):
             "message",
             "Sorry, something went wrong. Please reach out to the developers with your domain name",
         )
-        instr_w_zrep = val
-        instr_wo_zrep = val
+        exception_msg = val
+        instr_w_zrep = "N/A"
+        instr_wo_zrep = "N/A"
         explanations = "N/A"
     else:
         explanations = "\n".join(result.get("explanations", []))
@@ -80,14 +83,14 @@ def run_main(domain: str, record_id: int):
         if "zrep_failure" in result:
             instr_w_zrep = result.get("zrep_failure")
         if not instr_w_zrep:
-            instr_w_zrep = "Sorry, something went wrong in DFixer. Please try again."
+            instr_w_zrep = "Sorry, something went wrong. Please reach out to the developers with your domain name."
 
     # Update database with result
     db = SessionLocal()
     db.execute(
         text(
             "UPDATE requests SET status='Completed', instr_wo_zrep=:instr_wo_zrep, instr_w_zrep=:instr_w_zrep,\
-            explanations=:explanations, completed_at=:time WHERE id=:id"
+            explanations=:explanations, completed_at=:time, exception_msg=:exception_msg WHERE id=:id"
         ),
         {
             "instr_w_zrep": instr_w_zrep,
@@ -95,6 +98,7 @@ def run_main(domain: str, record_id: int):
             "explanations": explanations,
             "time": datetime.datetime.utcnow(),
             "id": record_id,
+            "exception_msg": exception_msg
         },
     )
     db.commit()

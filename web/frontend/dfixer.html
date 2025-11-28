@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
     <h2>Job Result</h2>
+    <pre id="domain">TBD</pre>
     <pre id="status">TBD</pre>
     <pre id="created_at">TBD</pre>
+    <pre id="exception" style="display: none" class="error"></pre>
     <br>
     <h3>Probable Root Cause(s)</h3>
     <pre id="expl"></pre>
@@ -31,11 +33,13 @@
         any commands.</p>
 
     <script>
+        const domain = document.getElementById("domain");
         const statusDiv = document.getElementById("status");
         const expl = document.getElementById("expl")
         const instrWoZrep = document.getElementById("iterations-container-wo-zrep");
         const instrWZrep = document.getElementById("iterations-container-w-zrep");
         const created_at = document.getElementById("created_at");
+        const exception = document.getElementById("exception");
 
         const params = new URLSearchParams(window.location.search);
         const jobId = params.get("job_id");
@@ -120,13 +124,21 @@
         async function fetchResult() {
             const resp = await fetch(`/result/${jobId}`);
             const data = await resp.json();
+            domain.textContent = `Domain: ${data.domain}`;
             statusDiv.textContent = `Status: ${data.status}`;
-            created_at.textContent = `Created At: ${data.created_at}`;
+            created_at.textContent = `Time: ${data.created_at}`;
             expl.textContent = `${data.explanations}`;
             if (data.status === "Completed") {
                 document.querySelectorAll('.spinner-responsive').forEach(spinner => {
                   spinner.style.display = 'none';
                 });
+                const exception_msg = `${data.exception_msg}`;
+                if (exception_msg !== "null") {
+                    exception.textContent = `Error: ${data.exception_msg}`;
+                    exception.style.display = 'block';
+                } else {
+                    exception.style.display = 'none';
+                }
                 // outputPre.textContent = data.output || "No output available.
                 const wo_zrep_container = document.getElementById('iterations-container-wo-zrep');
                 const w_zrep_container = document.getElementById('iterations-container-w-zrep');

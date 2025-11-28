@@ -1,4 +1,3 @@
-import argparse
 import json
 import os
 import subprocess
@@ -104,7 +103,7 @@ def process_a_grok_file(domain=None, input_line=None):
     try:
         line = json.loads(input_line)
     except Exception as e:
-        result.add("exception", e.__str__())
+        result.add("exception", "Exception in parsing DNSViz output. " + e.__str__())
         return result.return_and_write()
 
     id_, analysis = line[0], line[1][1]
@@ -396,7 +395,7 @@ def process_a_grok_file(domain=None, input_line=None):
     except Exception as e:
         logger.logger.error("\n\nException!!!")
         traceback.print_exc()
-        result.add("exception", str(e))
+        result.add("exception", "Exception in DFixer/ZReplicator. " + str(e))
         return result.return_and_write()
 
 
@@ -414,12 +413,12 @@ def main(domain=None, ids_=None):
         else:
             msg = "No valid domain is passed"
             logger.logger.error(msg)
-            result.add("exception", msg)
+            result.add("exception", "Exception in entrypoint, no parameter to entry method passed. " + msg)
             return result.return_and_write()
     except Exception as e:
         logger.logger.error(f"Fatal error in main: {e}")
         logger.logger.error(traceback.format_exc())
-        result.add("exception", str(e))
+        result.add("exception", "Exception generated in processing DNSViz output. Is your input domain resolvable? " + str(e))
         return result.return_and_write()
 
     logger.logger.info("Analysis complete")
