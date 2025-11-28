@@ -19,8 +19,12 @@ def run_main(domain: str, record_id: int):
     instr_wo_zrep = ""
     result = json.loads(main.main(domain))
     if "exception" in result:
-        instr_w_zrep = result.get("exception")
-        instr_wo_zrep = instr_w_zrep
+        val = result.get(
+            "exception",
+            "Sorry, something went wrong. Please reach out to the developers with your domain name",
+        )
+        instr_wo_zrep = val
+        instr_w_zrep = val
         explanations = "N/A"
     elif len(result.get("intended_errcodes", [])) == 0:
         instr_wo_zrep = "There exists no misconfiguration in your DNSSEC configuration!"
