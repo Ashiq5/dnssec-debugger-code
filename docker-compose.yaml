@@ -10,7 +10,7 @@ services:
     volumes:
       - ./data/db:/var/lib/postgresql/data
     ports:
-      - "5432:5432"   # expose Postgres to host
+      - "127.0.0.1:5432:5432"   # expose Postgres to host
 
   web:
     build:
@@ -26,7 +26,7 @@ services:
       # Connect via host port since Postgres is mapped to localhost:5432
       DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/dnssec_debugger"
     ports:
-      - "8000:8000"   # expose FastAPI to host
+      - "127.0.0.1:8000:8000"   # expose FastAPI to host
     command: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
 
   worker:
@@ -50,4 +50,4 @@ services:
     container_name: redis
     restart: always
     ports:
-      - "6379:6379"
+      - "127.0.0.1:6379:6379"
