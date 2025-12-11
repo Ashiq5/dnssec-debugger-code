@@ -4,9 +4,9 @@ services:
     container_name: postgres_db
     restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: dnssec_debugger
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
     volumes:
       - ./data/db:/var/lib/postgresql/data
     ports:
@@ -23,11 +23,10 @@ services:
     volumes:
       - ./:/data/ErroneousZoneGeneration
     environment:
-      # Connect via host port since Postgres is mapped to localhost:5432
-      DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/dnssec_debugger"
+      DATABASE_URL: ${PROTOCOL}://${DB_USER}:${DB_PASS}@${INTERNAL_HOST}:${PORT}/${DB_NAME}
     ports:
       - "127.0.0.1:8000:8000"   # expose FastAPI to host
-    command: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+    command: uvicorn app:app --host 127.0.0.1 --port 8000 --reload
 
   worker:
     build:
